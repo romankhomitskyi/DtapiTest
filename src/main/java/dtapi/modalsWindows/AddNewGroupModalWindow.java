@@ -56,10 +56,7 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         wait.prevenseOfElement(By.xpath("//mat-option/span"));
     }
 
-    /*private void clickSpecialityOptions(String specialityName){
-        wait.visibilityOfElement(By.xpath(String.format(specialityDropDownOption,specialityName)));
-        driver.findElement(By.xpath(String.format(specialityDropDownOption,specialityName))).click();
-    }*/
+
     private void clickSpecialityOptions(String specialityName) {
 
         wait.prevenseOfElement(By.xpath("//mat-option/span"));

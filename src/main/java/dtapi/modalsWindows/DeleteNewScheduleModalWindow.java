@@ -1,19 +1,14 @@
 package dtapi.modalsWindows;
 
-import dtapi.dtapiBase.WaitUtils;
-import dtapi.pages.QuestionPage;
+import dtapi.pages.ScheduleTestingPage;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-public class DeleteQuestionModalWindow extends BaseDeleteItemModalWindow {
-    private WaitUtils wait;
-
-    public DeleteQuestionModalWindow(WebDriver driver, Logger log) {
+public class DeleteNewScheduleModalWindow extends BaseDeleteItemModalWindow{
+    public DeleteNewScheduleModalWindow(WebDriver driver, Logger log) {
         super(driver, log);
-        wait = new WaitUtils(driver, 10);
     }
-
-    public QuestionPage deleteQuestion() {
+    public ScheduleTestingPage deleteSchedule() {
         String addSubjectPageWindow = driver.getWindowHandle();
         clickSubmitButton();
         for (String windowHandle : driver.getWindowHandles()) {
@@ -23,6 +18,6 @@ public class DeleteQuestionModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new QuestionPage(driver, log);
+        return new ScheduleTestingPage(driver, log);
     }
 }

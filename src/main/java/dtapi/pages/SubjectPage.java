@@ -87,12 +87,12 @@ public class SubjectPage extends Paginator {
 
         return new TestPage(driver, log);
     }
-    public TestSchedulePage navigateToTestSchedulePage(String subjectName) {
+    public ScheduleTestingPage navigateToTestSchedulePage(String subjectName) {
         getSubjectTableContainer()
                 .getSubjectContainerComponentBySubjectName(subjectName)
                 .clickScheduleIcon();
 
-        return new  TestSchedulePage(driver, log);
+        return new  ScheduleTestingPage(driver, log);
     }
     public boolean verifySubjectEdited(String subjectName) {
 

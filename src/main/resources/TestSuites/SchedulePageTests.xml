@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="url" value="https://travisdtapi.firebaseapp.com/login"></parameter>
+    <test verbose="2" preserve-order="true" name="TestSchedulePAge" parallel="tests" thread-count="3">
+        <classes>
+            <class name="scheduleTests.ScheduleTest">
+                <methods>
+
+                    <include name="verifyCrudOnGroupPage"/>
+
+                </methods>
+
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
+
+
+
