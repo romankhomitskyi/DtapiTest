@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="url" value="https://travisdtapi.firebaseapp.com/login"></parameter>
+    <suite-files>
+        <suite-file path="FacultiesPageTests.xml" />
+        <suite-file path="SpecialityPageTests.xml" />
+
+    </suite-files>
+
+
+</suite>
+
+
+
