@@ -54,7 +54,6 @@ hs_err_pid*
 /reports/
 /.idea/
 /.iml
-/testng.xml
 /img
 *.ucls
 
