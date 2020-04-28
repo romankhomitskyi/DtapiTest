@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="url" value="https://travisdtapi.firebaseapp.com/login"></parameter>
+    <test verbose="2" preserve-order="true" name="PaginationTests" parallel="tests" thread-count="3">
+        <groups>
+            <run>
+                <include name="checkNavigation"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="paginationTest.PaginationOnAdminPageTests">
+                <methods>
+                    <include name="checkShowDropDownMenu"/>
+                    <include name="checkNavigation"/>
+                    <include name="checkUpdatePagination"/>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+
+
+</suite>
+
+
+

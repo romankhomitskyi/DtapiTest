@@ -1,0 +1,6 @@
+login=логін
+password=пароль
+button.login=увійти
+button.language=мова
+heading=авторизація
+error=invalid login or password

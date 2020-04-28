@@ -1,0 +1,7 @@
+login=login
+password=password
+button.login=login
+button.language=language
+heading=authorization
+error=invalid login or password
+

@@ -1,0 +1,7 @@
+no,login,password,errorMessage,description
+1,yurik,qwerty,Invalid login or password,incorrect password
+2,yuri,qwerty123,Invalid login or password,incorrect login
+3,yuri,qwerty,Invalid login or password,incorrect login,incorrect password
+4,,qwerty123,Invalid login or password,empty login
+5,yurik,,Invalid login or password,empty password
+6,,,Invalid login or password,empty login and password
