@@ -113,4 +113,3 @@ hs_err_pid*
 # npm
 /node_modules/
 /**/node_modules/
-config.properties
