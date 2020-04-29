@@ -1,5 +1,6 @@
 package dtapi.modalsWindows;
 
+import dtapi.data.testSettings.TestSettings;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.SettingsTestPage;
 import org.apache.logging.log4j.Logger;
@@ -39,10 +40,10 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         type(countOfTasks, countOfTask);
     }
 
-    private void fillCountOfTaskField(String countOfTasks) {
+    private void fillCountOfTaskField(TestSettings countOfTasks) {
         clickСountOfTaskField();
         clearСountOfTaskField();
-        setСountOfTaskField(countOfTasks);
+        setСountOfTaskField(countOfTasks.getTasks());
     }
     private void clickCountOfGradesField() {
         wait.visibilityOfElement(countOfGrades);
@@ -62,10 +63,10 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         type(countsOfGrades, countOfGrades);
     }
 
-    private void fillCountOfGradesField(String countsOfGrades) {
-        clickСountOfTaskField();
-        clearСountOfTaskField();
-        setСountOfTaskField(countsOfGrades);
+    private void fillCountOfGradesField(TestSettings countsOfGrades) {
+        clickCountOfGradesField();
+        clearCountOfGradesField();
+        setCountOfGradesField(countsOfGrades.getRate());
     }
     private void clickLvlDropDown() {
         wait.visibilityOfElement(lvlDropDown);
@@ -76,12 +77,12 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         wait.visibilityOfAllElements2(listBox);
 
     }
-    private void clickLvlOptions(String lvl) {
+    private void clickLvlOptions(TestSettings lvl) {
         wait.visibilityOfElement2(driver.findElement(By.xpath("//mat-option/span")));
         wait.prevenseOfElement(By.xpath("//mat-option/span"));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
-            if (options.getText().equals(lvl)) {
+            if (options.getText().equals(lvl.getQuestionLvl().toString())) {
                 wait.waitForElementClickability2(options);
                 options.click();
                 wait.invisibilityOfEmelement2(options);
@@ -90,15 +91,15 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         }
 
     }
-    private void setLvlDropDownOption(String lvl) {
+    private void setLvlDropDownOption(TestSettings lvl) {
         clickLvlDropDown();
         clickLvlOptions(lvl);
 
     }
-    private void fillAllSettingsOfTest(String lvl, String countOfTask, String countOfGrades) {
-        setLvlDropDownOption(lvl);
-        setСountOfTaskField(countOfTask);
-        setCountOfGradesField(countOfGrades);
+    private void fillAllSettingsOfTest(TestSettings testSettings) {
+        setLvlDropDownOption(testSettings);
+        fillCountOfTaskField(testSettings);
+        fillCountOfGradesField(testSettings);
 
 
     }
@@ -108,14 +109,15 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         driver.findElement(addNewSettingsButton).click();
     }
 
-    private void addNewSettings(String lvl, String countOfTask, String countOfGrades) {
-        fillAllSettingsOfTest(lvl,countOfTask,countOfGrades);
+    private void addNewSettings(TestSettings testSettings) {
+        fillAllSettingsOfTest(testSettings);
         clickAddSettingsButton();
     }
 
-    public SettingsTestPage fillAllSettingsAndSubmitForm(String lvl, String countOfTask, String countOfGrades) {
+
+    public SettingsTestPage fillAllSettingsAndSubmitForm(TestSettings testSettings) {
         String addSubjectPageWindow = driver.getWindowHandle();
-        addNewSettings(lvl,countOfTask,countOfGrades);
+        addNewSettings(testSettings);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 wait.invisibilityOfEmelement2(getSubmitButton());

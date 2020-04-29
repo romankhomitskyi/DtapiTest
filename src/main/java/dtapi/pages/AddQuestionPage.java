@@ -19,12 +19,13 @@ public class AddQuestionPage extends BasePageObject {
     private By questionField = By.xpath("//textarea");
     private By addAnswer = By.xpath("//span[contains(text(),'Додати відповідь')]/parent::button");
     private By createAnswer = By.xpath("//button[@type='submit']");
-
+    private By listBox = By.xpath("//div[contains(@class,'mat-primary')]");
+    private By questionTypeDropDown = By.xpath("//mat-select[@formcontrolname='type']");
+    private By questionLvlDropDown = By.xpath( "//mat-select[@formcontrolname='level']");
     public AddQuestionPage(WebDriver driver, Logger log) {
         super(driver, log);
         wait = new WaitUtils(driver, 10);
     }
-
 
     public List<AnswerComponent> getAnswerComponent() {
         answerComponents = new ArrayList<>();
@@ -33,7 +34,66 @@ public class AddQuestionPage extends BasePageObject {
         }
         return answerComponents;
     }
+    private void clickQuestionTypeDropDown() {
+        wait.visibilityOfElement2(driver.findElement(questionTypeDropDown));
+        wait.prevenseOfElement(questionTypeDropDown);
+        wait.waitForElementClickability(questionTypeDropDown);
+        click(questionTypeDropDown);
+        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+    }
 
+
+    private void clickQuestionTypeOptions(NewQuestion questionType) {
+
+        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
+        for (WebElement options : dropDown) {
+            if (options.getText().equals(questionType.getQuestionType().toString())) {
+                wait.waitForElementClickability2(options);
+                options.click();
+                wait.invisibilityOfEmelement2(options);
+                break;
+            }
+        }
+
+    }
+
+    private void setQuestionTypeDropDownOption(NewQuestion questionType) {
+        clickQuestionTypeDropDown();
+        clickQuestionTypeOptions(questionType);
+
+    }
+    private void clickQuestionLvlDropDown() {
+        wait.visibilityOfElement2(driver.findElement(questionLvlDropDown));
+        wait.prevenseOfElement(questionLvlDropDown);
+        wait.waitForElementClickability(questionLvlDropDown);
+        click(questionLvlDropDown);
+        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+    }
+
+
+    private void clickQuestionLvlDropDownOptions(NewQuestion question) {
+
+        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
+        for (WebElement options : dropDown) {
+            if (options.getText().equals(question.getQuestionLvl().toString())) {
+                wait.waitForElementClickability2(options);
+                options.click();
+                wait.invisibilityOfEmelement2(options);
+                break;
+
+            }
+
+        }
+
+    }
+
+    private void setQuestionLvlDropDownOption(NewQuestion questionLvl) {
+        clickQuestionLvlDropDown();
+        clickQuestionLvlDropDownOptions(questionLvl);
+
+    }
     public void clickAnswerComponentDeleteButtons() {
         for (AnswerComponent current : getAnswerComponent()) {
             current.clickDeleteButtons();
@@ -144,13 +204,30 @@ public class AddQuestionPage extends BasePageObject {
 
     public QuestionPage fillAllQuestion(NewQuestion question) {
         fillQuestionField(question);
+        setQuestionTypeDropDownOption(question);
+        setQuestionLvlDropDownOption(question);
+        clickAddAnswerButton(question);
+        setAnswerFields(question);
+        clickCreateQustionButton();
+        return new QuestionPage(driver, log);
+    }
+    public QuestionPage editQuestion(NewQuestion question) {
+        fillQuestionField(question);
+        setQuestionLvlDropDownOption(question);
         setAnswerFields(question);
         clickCreateQustionButton();
         return new QuestionPage(driver, log);
     }
 
-    public AddQuestionPage clickAddAnswerButton() {
-        driver.findElement(addAnswer).click();
+
+    public AddQuestionPage clickAddAnswerButton(NewQuestion question) {
+        for (int i = 0; i <question.getAnswers().size() ; i++) {
+            wait.prevenseOfElement(addAnswer);
+            wait.visibilityOfElement(addAnswer);
+
+            driver.findElement(addAnswer).click();
+        }
+
         return new AddQuestionPage(driver, log);
     }
 

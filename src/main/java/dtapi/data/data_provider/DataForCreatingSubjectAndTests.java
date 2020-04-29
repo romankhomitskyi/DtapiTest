@@ -5,6 +5,8 @@ import dtapi.data.question.NewQuestion;
 import dtapi.data.question.NewQuestionRepository;
 import dtapi.data.subject.NewSubjectRepository;
 import dtapi.data.test.NewTestRepository;
+import dtapi.data.testSettings.TestSettings;
+import dtapi.data.testSettings.TestSettingsRepository;
 import dtapi.data.user.UserRepository;
 import org.testng.annotations.DataProvider;
 
@@ -46,7 +48,8 @@ public class DataForCreatingSubjectAndTests {
                         NewTestRepository.planets().getTaskCount(),
                         NewTestRepository.planets().getTime(),
                         NewTestRepository.planets().getNumberOfAttempts(),
-                        questionList()
+                        questionList(),
+                        settingsList()
                         }
         };
     }
@@ -56,32 +59,37 @@ public class DataForCreatingSubjectAndTests {
         questions.add(NewQuestionRepository.getQuestion1());
         questions.add(NewQuestionRepository.getQuestion2());
         questions.add(NewQuestionRepository.getQuestion3());
+        questions.add(NewQuestionRepository.getQuestion4());
         return questions;
     }
     private List<NewQuestion> getQuestionList(){
         return questionList();
     }
+
     @DataProvider(name = "questionList")
     public Object[][] questionProvider() {
         return getQuestionList().stream()
                 .map(student -> new Object[]{student})
                 .toArray(Object[][]::new);
     }
-    private List<NewQuestion>  questionList2() {
-        List<NewQuestion> questions = new ArrayList<>();
-        questions.add(NewQuestionRepository.getQuestion4());
-        questions.add(NewQuestionRepository.getQuestion5());
 
-        return questions;
+    private List<TestSettings>  settingsList() {
+        List<TestSettings> settings = new ArrayList<>();
+        settings.add(TestSettingsRepository.getSettings1());
+        settings.add(TestSettingsRepository.getSetting2());
+        settings.add(TestSettingsRepository.getSetting3());
+        settings.add(TestSettingsRepository.getSetting4());
+        settings.add(TestSettingsRepository.getSetting5());
+        return settings;
     }
-    private List<NewQuestion> getQuestionList2(){
-        return questionList2();
+    private List<TestSettings> getSettingsList(){
+        return settingsList();
     }
-    @DataProvider(name = "questionList2")
-    public Object[][] questionProvider2() {
-        return getQuestionList2().stream()
+
+    @DataProvider(name = "settingsList")
+    public Object[][] settingsProvider() {
+        return getSettingsList().stream()
                 .map(student -> new Object[]{student})
                 .toArray(Object[][]::new);
     }
-
 }

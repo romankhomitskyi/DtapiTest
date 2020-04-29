@@ -1,25 +1,26 @@
 package dtapi.data.testSettings;
 
+import dtapi.data.enums.QuestionLvl;
+
 public class TestSettings {
-    private String testLvls;
+    private QuestionLvl questionLvl;
     private String tasks;
     private String rate;
 
 
-    public TestSettings(String testLvls, String tasks, String rate) {
-        this.testLvls = testLvls;
+    public TestSettings(QuestionLvl questionLvl, String tasks, String rate) {
+        this.questionLvl = questionLvl;
         this.tasks = tasks;
         this.rate = rate;
     }
 
 
-
-    public String getTestLvls() {
-        return testLvls;
+    public QuestionLvl getQuestionLvl() {
+        return questionLvl;
     }
 
-    public void setTestLvls(String testLvls) {
-        this.testLvls = testLvls;
+    public void setQuestionLvl(QuestionLvl questionLvl) {
+        this.questionLvl = questionLvl;
     }
 
     public String getTasks() {

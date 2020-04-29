@@ -30,27 +30,17 @@ public class QuestionPage extends Paginator {
         return questionTableContainer;
     }
 
-    /*public AddQuestionPage clickAddQuesButton() {
-        wait.prevenseOfElement(addQuestion);
-        wait.visibilityOfElement(addQuestion);
-        driver.findElement(addQuestion).click();
-        return new AddQuestionPage(driver, log);
-    }*/
+
     public AddQuestionPage clickAddQuesButton() {
         wait.prevenseOfElement(addQuestion);
         wait.visibilityOfElement(addQuestion);
         driver.findElement(addQuestion).click();
         return new AddQuestionPage(driver, log);
     }
-    /*public QuestionPage fillAllQuestion(NewQuestion question) {
-        fillQuestionField(question);
-        setAnswerFields(question);
-        clickCreateQustionButton();
-        return new QuestionPage(driver, log);
-    }*/
+
     public QuestionPage addQuestionWithAnswers(List<NewQuestion> questions) {
 
-        int i = 0;
+        int i = 1;
         QuestionPage questionPage = getQuestionWithAnswers(questions.get(0));
 
         while (i != questions.size()) {
@@ -63,17 +53,13 @@ public class QuestionPage extends Paginator {
 
     public QuestionPage getQuestionWithAnswers(NewQuestion question) {
         clickAddQuesButton()
-                .clickAddAnswerButton()
-                .clickAddAnswerButton()
-                .clickAddAnswerButton()
-                .clickAddAnswerButton()
                 .fillAllQuestion(question);
         return new QuestionPage(driver,log);
     }
 
-    public AddQuestionPage navigateToEditQuestionPage(String questionText) {
+    public AddQuestionPage navigateToEditQuestionPage(NewQuestion question) {
         getQuestionTableContainer()
-                .getQuestionComponentByQuestionText(questionText)
+                .getQuestionComponentByQuestionText(question.getQuestionName())
                 .clickEditQuestionIcon();
 
 

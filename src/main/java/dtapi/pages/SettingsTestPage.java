@@ -2,6 +2,7 @@ package dtapi.pages;
 
 import dtapi.components.SettingTestTableContainer;
 import dtapi.components.SettingTestTableContainerComponent;
+import dtapi.data.testSettings.TestSettings;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewSettingOfTestModalWindow;
@@ -9,6 +10,8 @@ import dtapi.modalsWindows.DeleteSettingOfTestModalWindow;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.List;
 
 public class SettingsTestPage extends Paginator {
     private By addNewSettingsButton = By.xpath("//span[contains(text(),'Додати налаштування')]/parent::button");
@@ -29,7 +32,24 @@ public class SettingsTestPage extends Paginator {
     public SettingTestTableContainer getSettingTestTableContainer() {
         return settingTestTableContainer;
     }
+    public SettingsTestPage addTestSettings(List<TestSettings> settings) {
 
+        int i = 1;
+        SettingsTestPage settingsTestPage = getTestSetting(settings.get(0));
+
+        while (i != settings.size()) {
+            settingsTestPage = settingsTestPage.getTestSetting(settings.get(i));
+            i++;
+        }
+
+        return new SettingsTestPage(driver,log);
+    }
+
+    public SettingsTestPage getTestSetting(TestSettings testSettings) {
+        switchToAddAddNewSettingOfTestModalWindow()
+                .fillAllSettingsAndSubmitForm(testSettings);
+        return new SettingsTestPage(driver,log);
+    }
     public AddNewSettingOfTestModalWindow switchToAddAddNewSettingOfTestModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
         wait.prevenseOfElement(addNewSettingsButton);

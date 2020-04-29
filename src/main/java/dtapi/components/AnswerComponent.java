@@ -7,7 +7,7 @@ public final class AnswerComponent {
 
     private WebElement answerLayout;
 
-    private By answerInput = By.xpath(".//input[@type='text']");
+    private By answerInput = By.xpath(".//input[@formcontrolname='answer_text']");
     private By deleteAnswerButton = By.xpath(".//span[contains(text(),'Видалити відповідь')]/parent::button");
     private By rightAnswerCheckBox = By.xpath(".//label[@class='mat-checkbox-layout']");
 
