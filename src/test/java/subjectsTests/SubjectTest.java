@@ -9,6 +9,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static dtapi.data.question.NewQuestionRepository.getQuestion1;
+import static dtapi.data.question.NewQuestionRepository.getQuestion2;
+
 public class SubjectTest extends TestUtilities {
     /**
      * loading application, logging in, click subject icon, switching to new subject modal window
@@ -23,43 +26,6 @@ public class SubjectTest extends TestUtilities {
      * param timeCount from NewTestRepository
      * param numberOfAttempts from NewTestRepository
      */
-    /*@Test(dataProvider = "addNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 2, groups = {"addNewSubjectAndTest"})
-    public void addNewTest(IUser validAdmin,
-                           String oldName,
-                           String oldDesc,
-                           String newName,
-                           String newDesc,
-                           String oldTestName,
-                           int oldTaskCount,
-                           int oldTimeCount,
-                           int oldNumberOfAttempts,
-                           String newTestName,
-                           int newTaskCount,
-                           int newTimeCount,
-                           int newNumberOfAttempts,
-                           List<NewQuestion> questions
-    )
-    {
-         loadSignInPage()
-                .successfulAdminLogin(validAdmin)
-                .clickSubjectIcon()
-                .switchAddNewSubjectToModalWindow()
-                .fillAllSubjectFieldsAndSubmitForm(oldName,oldDesc)
-                .switchToEditSubjectModalWindow(oldName)
-                .fillAllSubjectFieldsAndSubmitForm(newName,newDesc)
-                .navigateToTestOfSubjectPage(newName)
-                .switchToAddTestModalWindow()
-                .fillAllTestFieldsAndSubmitForm(oldTestName,oldTaskCount,oldTimeCount,oldNumberOfAttempts)
-                .switchToEditTestModalWindow(oldTestName)
-                .fillAllTestFieldsAndSubmitForm(newTestName,newTaskCount,newTimeCount,newNumberOfAttempts)
-                .navigateToQuestionPage(newTestName)
-                .addQuestionWithAnswers(questions);
-
-
-       *//* Assert.assertTrue(testPage.verifyTestEdited(newTestName), "Isn't exist");*//*
-
-
-    }*/
     @Test(dataProvider = "addNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 2, groups = {"addNewSubjectAndTest"})
     public void addNewTest(IUser validAdmin,
                            String oldName,
@@ -78,22 +44,58 @@ public class SubjectTest extends TestUtilities {
                            List<TestSettings> settings
     )
     {
-        loadSignInPage()
+         loadSignInPage()
                 .successfulAdminLogin(validAdmin)
                 .clickSubjectIcon()
-               /* .navigateToTestOfSubjectPage(newName)
+                .switchAddNewSubjectToModalWindow()
+                .fillAllSubjectFieldsAndSubmitForm(oldName,oldDesc)
+                .switchToEditSubjectModalWindow(oldName)
+                .fillAllSubjectFieldsAndSubmitForm(newName,newDesc)
+                .navigateToTestOfSubjectPage(newName)
+                .switchToAddTestModalWindow()
+                .fillAllTestFieldsAndSubmitForm(oldTestName,oldTaskCount,oldTimeCount,oldNumberOfAttempts)
+                .switchToEditTestModalWindow(oldTestName)
+                .fillAllTestFieldsAndSubmitForm(newTestName,newTaskCount,newTimeCount,newNumberOfAttempts)
                 .navigateToQuestionPage(newTestName)
                 .addQuestionWithAnswers(questions)
                 .navigateToEditQuestionPage(getQuestion1())
-                .editQuestion(getQuestion2())
-                .clickSubjectLink()*/
+                .editQuestion(getQuestion2());
+
+
+
+
+        /*Assert.assertTrue(testPage.verifyTestEdited(newTestName), "Isn't exist");*/
+
+
+    }
+    @Test(dataProvider = "addNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 2, groups = {"addNewSubjectAndTest"})
+    public void addNewTest2(IUser validAdmin,
+                           String oldName,
+                           String oldDesc,
+                           String newName,
+                           String newDesc,
+                           String oldTestName,
+                           int oldTaskCount,
+                           int oldTimeCount,
+                           int oldNumberOfAttempts,
+                           String newTestName,
+                           int newTaskCount,
+                           int newTimeCount,
+                           int newNumberOfAttempts,
+                           List<NewQuestion> questions,
+                           List<TestSettings> settings
+    )
+    {
+        loadSignInPage()
+                .successfulAdminLogin(validAdmin)
+                .clickSubjectLink()
                 .navigateToTestOfSubjectPage(newName)
                 .navigateToSettingsTestPage(newTestName)
                 .addTestSettings(settings);
 
 
 
-        /* Assert.assertTrue(testPage.verifyTestEdited(newTestName), "Isn't exist");*/
+
 
 
     }

@@ -1,5 +1,6 @@
 package dtapi.data.data_provider;
 
+import dtapi.data.group.NewGroupRepository;
 import dtapi.data.schedule.NewScheduleRepository;
 import dtapi.data.subject.NewSubjectRepository;
 import dtapi.data.user.UserRepository;
@@ -13,7 +14,7 @@ public class DataForCreatingSchedule {
         return new Object[][]{
                 {UserRepository.get().getAdmin(),
                         NewSubjectRepository.planet().getSubjectName(),
-                        NewScheduleRepository.schedule().getGroupName(),
+                        NewGroupRepository.geoAndMed().getGroupId(),
                         NewScheduleRepository.schedule().getStartDate(),
                         NewScheduleRepository.schedule().getEndDate(),
                         NewScheduleRepository.schedule().getStartTime(),

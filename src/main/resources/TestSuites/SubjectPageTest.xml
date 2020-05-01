@@ -13,6 +13,7 @@
             <class name="subjectsTests.SubjectTest">
                 <methods>
                     <include name="addNewTest" />
+                    <include name="addNewTest2" />
 
 
                 </methods>
