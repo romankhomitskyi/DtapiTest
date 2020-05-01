@@ -193,10 +193,10 @@ public final class Student implements IStudent, ISurname, IFirstName,
                 .setFirstName(userData.get(StudentColumns.FIRSTNAME.getIndex()))
                 .setFatherName(userData.get(StudentColumns.FATHERNAME.getIndex()))
                 .setGradeBookId(userData.get(StudentColumns.GRADEBOOKID.getIndex()))
-                .setStudentLogin(System.getenv().get(userData.get(StudentColumns.STUDENTLOGIN.getIndex())))
+                .setStudentLogin(userData.get(StudentColumns.STUDENTLOGIN.getIndex()))
                 .setStudentEmail(userData.get(StudentColumns.STUDENTEMAIL.getIndex()))
-                .setStudentPassword(System.getenv().get(userData.get(StudentColumns.STUDENTPASSWORD.getIndex())))
-                .setStudentConfirmPassword(System.getenv().get(userData.get(StudentColumns.STUDENTCONFIRMPASSWORD.getIndex())))
+                .setStudentPassword(userData.get(StudentColumns.STUDENTPASSWORD.getIndex()))
+                .setStudentConfirmPassword(userData.get(StudentColumns.STUDENTCONFIRMPASSWORD.getIndex()))
                 .build();
     }
 

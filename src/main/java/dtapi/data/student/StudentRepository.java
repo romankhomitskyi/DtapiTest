@@ -27,10 +27,10 @@ public final class StudentRepository {
                 .setFirstName("Роман")
                 .setFatherName("Ігорович")
                 .setGradeBookId("ЮК-21-12")
-                .setStudentLogin(System.getenv().get("NEW_USER_LOGIN"))
+                .setStudentLogin("romik")
                 .setStudentEmail("vasasw@papacarlos.com")
-                .setStudentPassword(System.getenv().get("NEW_USER_PASSWORD"))
-                .setStudentConfirmPassword(System.getenv().get("NEW_USER_PASSWORD"))
+                .setStudentPassword("qwerty123")
+                .setStudentConfirmPassword("qwerty123")
                 .build();
     }
     public IStudent getSecondStudent() {
@@ -39,10 +39,10 @@ public final class StudentRepository {
                 .setFirstName("Петро")
                 .setFatherName("Романович")
                 .setGradeBookId("КД-1-12")
-                .setStudentLogin(System.getenv().get("SECOND_USER_LOGIN"))
+                .setStudentLogin("petrik")
                 .setStudentEmail("gegehtr@gmail.com")
-                .setStudentPassword(System.getenv().get("NEW_USER_PASSWORD"))
-                .setStudentConfirmPassword(System.getenv().get("NEW_USER_PASSWORD"))
+                .setStudentPassword("qwerty123")
+                .setStudentConfirmPassword("qwerty123")
                 .build();
     }
 

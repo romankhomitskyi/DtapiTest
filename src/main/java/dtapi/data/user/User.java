@@ -84,8 +84,8 @@ public final class User implements ILogin, IPassword, IUser, IBuildUser {
             userData.add(EMPTY_STRING);
         }
         return User.get()
-                .setLogin(System.getenv().get(userData.get(UserColumns.LOGIN.getIndex())))
-                .setPassword(System.getenv().get(userData.get(UserColumns.PASSWORD.getIndex())))
+                .setLogin(userData.get(UserColumns.LOGIN.getIndex()))
+                .setPassword(userData.get(UserColumns.PASSWORD.getIndex()))
                 .build();
     }
 

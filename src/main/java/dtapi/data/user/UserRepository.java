@@ -23,31 +23,31 @@ public final class UserRepository {
 
     public IUser getAdmin() {
         return User.get()
-                .setLogin(System.getenv().get("VALID_ADMIN_LOGIN"))
-                .setPassword(System.getenv().get("VALID_ADMIN_PASSWORD"))
+                .setLogin("admin")
+                .setPassword("dtapi_admin")
                 .build();
     }
 
     public IUser getInvalidAdmin() {
         return User.get()
-                .setLogin(System.getenv().get("VALID_ADMIN_LOGIN"))
-                .setPassword(System.getenv().get("INVALID_ADMIN_PASSWORD"))
+                .setLogin("admin")
+                .setPassword("dtapi")
 
                 .build();
     }
 
     public IUser getUser() {
         return User.get()
-                .setLogin(System.getenv().get("VALID_LOGIN_USER"))
-                .setPassword(System.getenv().get("VALID_USER_PASSWORD"))
+                .setLogin("yurik")
+                .setPassword("qwerty123")
 
                 .build();
     }
 
     public IUser getInvalidUser() {
         return User.get()
-                .setLogin(System.getenv().get("VALID_LOGIN_USER"))
-                .setPassword(System.getenv().get("INVALID_USER_PASSWORD"))
+                .setLogin("yurik")
+                .setPassword("qwerty")
 
                 .build();
     }
