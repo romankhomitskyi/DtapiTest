@@ -1,10 +1,13 @@
 package adminPageTest;
 
+import dtapi.data.admin.IAdmin;
 import dtapi.data.data_provider.DataForAdminPageTest;
 import dtapi.data.user.IUser;
 import dtapi.dtapiBase.TestUtilities;
+import dtapi.modalsWindows.AddNewAdminModalWindow;
 import dtapi.pages.*;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class AdminPageTest extends TestUtilities {
 
@@ -52,7 +55,54 @@ public class AdminPageTest extends TestUtilities {
 
     }
 
+    @Test(dataProvider = "addNewAdmin", dataProviderClass = DataForAdminPageTest.class, priority = 2, groups = {"a addNewAdmin"})
+    public void addNewAdmin(IUser validAdmin,
+                              IAdmin fistAdmin,
+                              IAdmin secondAdmin
 
+    ) {
+        AdminsPage adminsPage = loadSignInPage()
+                .successfulAdminLogin(validAdmin)
+                .clickAdminsLink()
+                .switchToAddNewAdminModalWindow()
+                .fillAllAdminFieldsAndSubmitForm(fistAdmin)
+                .refreshPage();
+        Assert.assertTrue(adminsPage.verifyAdminAdded(fistAdmin), "Isn't exist");
+        adminsPage.switchToEditAdminModalWindow(fistAdmin)
+                .fillAllAdminFieldsAndSubmitForm(secondAdmin)
+                .refreshPage();
+        Assert.assertTrue(adminsPage.verifyAdminEdited(secondAdmin), "Isn't edited");
+        adminsPage.switchToDeleteAdminModalWindow(secondAdmin)
+                .deleteAdmin()
+                .refreshPage();
+        Assert.assertTrue(adminsPage.verifyAdminRemoved(secondAdmin), "Isn't deleted");
+
+
+
+    }
+    @Test(dataProvider = "validationCreatingAdmin", dataProviderClass = DataForAdminPageTest.class, priority = 3, groups = {"validationCreatingStudents"})
+    public void verifyValidationOnAddNewAdminModalWindow(IUser validAdmin,
+                                                           IAdmin admin1,
+                                                           IAdmin admin2,
+                                                           IAdmin admin3
+
+
+
+    ) {
+        AddNewAdminModalWindow addNewAdminModalWindow = loadSignInPage()
+                .successfulAdminLogin(validAdmin)
+                .clickAdminsLink()
+                .switchToAddNewAdminModalWindow()
+                .fillInvalidDataInAdminFields(admin1);
+        Assert.assertFalse(addNewAdminModalWindow.isAdminButtonEnabled(), "Is enabled");
+        addNewAdminModalWindow.fillInvalidDataInAdminFields(admin2);
+        Assert.assertFalse(addNewAdminModalWindow.isAdminButtonEnabled(), "Is enabled");
+        addNewAdminModalWindow.fillInvalidDataInAdminFields(admin3);
+        Assert.assertFalse(addNewAdminModalWindow.isAdminButtonEnabled(), "Is enabled");
+
+
+
+    }
 
 
 

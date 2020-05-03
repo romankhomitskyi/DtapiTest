@@ -24,11 +24,42 @@ public class NewSubjectRepository {
                 "Вивчаємо блогерство"
         );
     }
+    public static NewSubject highMath() {
+        return new NewSubject(
+                "Вища математика",
+                "Вивчаємо блогерство"
+        );
+    }
 
     public static NewSubject garden() {
         return new NewSubject(
                 "Садівництво",
                 "Вивчаємо садівництво"
+        );
+    }
+    public static NewSubject emptyField() {
+        return new NewSubject(
+                "",
+                ""
+        );
+    }
+    public static NewSubject englishSymbols() {
+        return new NewSubject(
+                "ertry",
+                "rtyhuj"
+        );
+    }
+    public static NewSubject numbers() {
+        return new NewSubject(
+                "23ркрк",
+                "543ркрк"
+        );
+    }
+
+    public static NewSubject existSubject() {
+        return new NewSubject(
+                "Вища математика",
+                "Один із фундаментальних предмет"
         );
     }
 

@@ -13,25 +13,14 @@ public class DataForLoginTest {
         if ("login".equalsIgnoreCase(testCase)) {
             return new Object[][]{{
                     UserRepository.get().getUser(),}};
-        } else if ("failLoginWithInvalidPassword".equalsIgnoreCase(testCase)) {
+        } else if ("failLogin".equalsIgnoreCase(testCase)) {
             return new Object[][]{
-                    {UserRepository.get().getInvalidUser(), MainPage.ERROR_MESSAGE},
+                    {UserRepository.get().getInvalidUser(),
+                            MainPage.ERROR_MESSAGE,
+                            UserRepository.get().getInvalidUser2(),
+                            UserRepository.get().getInvalidUser3()
+                    },
             };
-        } else if ("failLoginWithEmptyField".equalsIgnoreCase(testCase)) {
-            return new Object[][]{
-                    {UserRepository.get().getInvalidUser2(), MainPage.ERROR_MESSAGE},
-            };
-
-        } else if ("failLoginWithInvalidLogin".equalsIgnoreCase(testCase)) {
-            return new Object[][]{
-                    {UserRepository.get().getInvalidUser3(), MainPage.ERROR_MESSAGE},
-            };
-
-        } else if ("loginAdmin".equalsIgnoreCase(testCase)) {
-            return new Object[][]{
-                    {UserRepository.get().getAdmin()},
-            };
-
         } else {
             return new Object[][]{{"ERROR: Data Provider can't find method: " + testCase}};
         }

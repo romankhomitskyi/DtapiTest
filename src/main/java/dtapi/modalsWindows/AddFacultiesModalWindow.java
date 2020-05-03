@@ -1,5 +1,6 @@
 package dtapi.modalsWindows;
 
+import dtapi.data.faculties.NewFaculties;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.FacultiesPage;
 import org.apache.logging.log4j.Logger;
@@ -16,10 +17,30 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
         wait = new WaitUtils(driver, 20);
     }
 
-
-    public FacultiesPage fillAllFacultiesFieldsAndSubmitForm(String name, String desc) {
+    public InformModalWindow fillInvalidFacultiesDataAndAndSubmitForm(NewFaculties faculties) {
         String addSubjectPageWindow = driver.getWindowHandle();
-        addNewFaculties(name, desc);
+        addNewFaculties(faculties);
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(addSubjectPageWindow)) {
+                driver.switchTo().window(windowHandle);
+            }
+        }
+
+        return new InformModalWindow(driver, log);
+    }
+    public AddFacultiesModalWindow fillInvalidFacultiesData(NewFaculties faculties) {
+
+        fillInvalidData(faculties);
+        return new AddFacultiesModalWindow(driver,log);
+    }
+    private void fillInvalidData(NewFaculties faculties) {
+        fillAllFields(faculties);
+
+    }
+
+    public FacultiesPage fillAllFacultiesFieldsAndSubmitForm(NewFaculties faculties) {
+        String addSubjectPageWindow = driver.getWindowHandle();
+        addNewFaculties(faculties);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -29,8 +50,8 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
         return new FacultiesPage(driver, log);
     }
 
-    private void addNewFaculties(String name, String desc) {
-        fillAllFields(name, desc);
+    private void addNewFaculties(NewFaculties faculties) {
+        fillAllFields(faculties);
         clickSubmitButton();
     }
 
@@ -46,16 +67,16 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
         find(firstInput).clear();
     }
 
-    private void setFacultiesNameField(String name) {
+    private void setFacultiesNameField(NewFaculties faculties) {
         wait.visibilityOfElement(firstInput);
         wait.prevenseOfElement(firstInput);
-        type(name, firstInput);
+        type(faculties.getFacultiesName(), firstInput);
     }
 
-    private void fillFacultiesNameField(String name) {
+    private void fillFacultiesNameField(NewFaculties faculties) {
         clickFacultiesNameField();
         clearFacultiesTitleField();
-        setFacultiesNameField(name);
+        setFacultiesNameField(faculties);
     }
 
     private void clickFacultiesTexAreaField() {
@@ -70,21 +91,21 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
         find(textArea).clear();
     }
 
-    private void setFacultiesTextAreaField(String desc) {
+    private void setFacultiesTextAreaField(NewFaculties faculties) {
         wait.visibilityOfElement(textArea);
         wait.prevenseOfElement(textArea);
-        type(desc, textArea);
+        type(faculties.getFacultiesDesc(), textArea);
     }
 
-    private void fillTextAreaField(String desc) {
+    private void fillTextAreaField(NewFaculties faculties) {
         clickFacultiesTexAreaField();
         clearFacultiesTextAreaField();
-        setFacultiesTextAreaField(desc);
+        setFacultiesTextAreaField(faculties);
     }
 
-    private void fillAllFields(String name, String desc) {
-        fillFacultiesNameField(name);
-        fillTextAreaField(desc);
+    private void fillAllFields(NewFaculties faculties) {
+        fillFacultiesNameField(faculties);
+        fillTextAreaField(faculties);
 
     }
 }

@@ -6,10 +6,9 @@
         <classes>
             <class name="groupsTest.GroupsTests">
                 <methods>
-                    <!--<include name="addNewGroup" />-->
                     <include name="verifyCrudOnGroupPage"/>
-                  <!--  <include name="deleteNewGroup" />-->
                     <include name="verifyGroupsFilters" />
+                    <include name="verifyValidationOnAddNewGroupModalWindow" />
                 </methods>
 
             </class>

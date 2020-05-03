@@ -1,5 +1,6 @@
 package dtapi.modalsWindows;
 
+import dtapi.data.subject.NewSubject;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.SubjectPage;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +17,7 @@ public class AddSubjectModalWindow extends BaseModalWindow {
         super(driver, log);
         wait = new WaitUtils(driver,10);
     }
+
 
     public SubjectPage fillAllSubjectFieldsAndSubmitForm(String name, String desc) {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -86,5 +88,55 @@ public class AddSubjectModalWindow extends BaseModalWindow {
         fillSubjectNameField(name);
         fillTextAreaField(desc);
 
+    }
+    public AddSubjectModalWindow fillInvalidSubjectData(NewSubject subject) {
+        fillInvalidData(subject);
+        return new AddSubjectModalWindow(driver,log);
+    }
+    public InformModalWindow fillInvalidSubjectDataAndClickSubmitButton(NewSubject subject) {
+        String addSubjectPageWindow = driver.getWindowHandle();
+        fillInvalidData(subject);
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(addSubjectPageWindow)) {
+
+                driver.switchTo().window(windowHandle);
+
+
+            }
+        }
+        return new InformModalWindow(driver,log);
+    }
+    private void fillInvalidData(NewSubject subject) {
+        fillAllFields( subject);
+        clickSubmitButton();
+
+    }
+
+    private void fillAllFields(NewSubject subject) {
+        fillInvalidSubjectNameField(subject);
+        fillInvalidSubjectDescField(subject);
+
+    }
+    private void setInvalidSubjectNameField(NewSubject subject) {
+        wait.visibilityOfElement(firstInput);
+        wait.prevenseOfElement(firstInput);
+        type(subject.getSubjectName(),firstInput);
+    }
+
+    private void fillInvalidSubjectNameField(NewSubject subject) {
+        clickSubjectNameField();
+        clearSubjectTitleField();
+        setInvalidSubjectNameField(subject);
+    }
+    private void setInvalidSubjectDescField(NewSubject subject) {
+        wait.visibilityOfElement(textArea);
+        wait.prevenseOfElement(textArea);
+        type(subject.getSubjectDesc(),textArea);
+    }
+
+    private void fillInvalidSubjectDescField(NewSubject subject) {
+        clickSubjectTexAreaField();
+        clearSubjectTextAreaField();
+        setInvalidSubjectDescField(subject);
     }
 }

@@ -1,5 +1,6 @@
 package dtapi.data.data_provider;
 
+import dtapi.data.admin.AdminRepository;
 import dtapi.data.enums.Pagination;
 import dtapi.data.subject.NewSubjectRepository;
 import dtapi.data.test.NewTestRepository;
@@ -53,6 +54,29 @@ public class DataForAdminPageTest {
                         NewTestRepository.planets().getTaskCount(),
                         NewTestRepository.planets().getTime(),
                         NewTestRepository.planets().getNumberOfAttempts()}
+        };
+    }
+    @DataProvider
+    public Object[][] addNewAdmin(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        AdminRepository.get().getFirstAdmin(),
+                        AdminRepository.get().getSecondAdmin()
+
+                }
+        };
+    }
+    @DataProvider
+    public Object[][] validationCreatingAdmin(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        AdminRepository.get().getAdminWithEmptyFields(),
+                        AdminRepository.get().getAdminWithInvalidLogin(),
+                        AdminRepository.get().getAdminWithInvalidConfirmPassword()
+
+
+
+                }
         };
     }
 }

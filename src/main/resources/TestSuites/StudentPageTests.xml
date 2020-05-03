@@ -6,7 +6,8 @@
         <classes>
             <class name="studentTest.StudentTest">
                 <methods>
-                    <include name="addNewStudent"/>
+                   <!-- <include name="addNewStudent"/>-->
+                    <include name="verifyValidationOnAddNewStudentModalWindow"/>
                 </methods>
 
             </class>

@@ -13,10 +13,9 @@
             <class name="adminPageTest.AdminPageTest">
                 <methods>
                     <include name="verifyNavigationThroughTabs"/>
-                    <!--<include name="verifyAddingNewSubject" />
-                    <include name="addNewSubjectAndNavigateToUserPage" />
-                    <include name="addNewTest" />-->
-                    <!--<include name="addNewTest2" />-->
+                    <include name="addNewAdmin"/>
+                    <include name="verifyValidationOnAddNewAdminModalWindow"/>
+
                 </methods>
 
             </class>

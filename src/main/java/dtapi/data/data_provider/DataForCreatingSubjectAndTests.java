@@ -1,8 +1,11 @@
 package dtapi.data.data_provider;
 
 import dtapi.data.enums.Pagination;
+import dtapi.data.group.NewGroupRepository;
 import dtapi.data.question.NewQuestion;
 import dtapi.data.question.NewQuestionRepository;
+import dtapi.data.schedule.NewScheduleRepository;
+import dtapi.data.student.StudentRepository;
 import dtapi.data.subject.NewSubjectRepository;
 import dtapi.data.test.NewTestRepository;
 import dtapi.data.testSettings.TestSettings;
@@ -33,6 +36,13 @@ public class DataForCreatingSubjectAndTests {
         };
     }
     @DataProvider
+    public Object[][] failCreatingSubject(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                       }
+        };
+    }
+    @DataProvider
     public Object[][] addNewTest(Method method) {
         return new Object[][]{
                 {UserRepository.get().getAdmin(),
@@ -49,7 +59,12 @@ public class DataForCreatingSubjectAndTests {
                         NewTestRepository.planets().getTime(),
                         NewTestRepository.planets().getNumberOfAttempts(),
                         questionList(),
-                        settingsList()
+                        settingsList(),
+                        NewGroupRepository.geoAndMed().getGroupId(),
+                        NewScheduleRepository.schedule().getStartDate(),
+                        NewScheduleRepository.schedule().getEndDate(),
+                        NewScheduleRepository.schedule().getStartTime(),
+                        NewScheduleRepository.schedule().getEndTime()
                         }
         };
     }
@@ -91,5 +106,15 @@ public class DataForCreatingSubjectAndTests {
         return getSettingsList().stream()
                 .map(student -> new Object[]{student})
                 .toArray(Object[][]::new);
+    }
+    @DataProvider
+    public Object[][] results(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        StudentRepository.get().getSecondStudent(),
+                        NewGroupRepository.geoAndMed().getGroupId(),
+                        NewTestRepository.planets().getTestName(),
+                        "0"}
+        };
     }
 }

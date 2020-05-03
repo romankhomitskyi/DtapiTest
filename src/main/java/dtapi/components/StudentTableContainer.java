@@ -91,28 +91,7 @@ public class StudentTableContainer extends Paginator{
             return getStudentContainerComponentByName(studentNSF);
         }
 
-        /**
-         * goes trough the list of components present at the page, and checks if component with name from param is present
-         *
-         * @param
-         * @return component with name from param
-         */
-   /* protected GroupTableContainerComponent getContainerComponentByName(String groupCode) {
-        GroupTableContainerComponent result = null;
 
-        for (GroupTableContainerComponent current : getContainerComponents()) {
-            if (current.getGroupCodeText().toLowerCase().equals(groupCode.toLowerCase())) {
-                result = current;
-                break;
-
-            }
-        }
-
-        if (result == null) {
-            throw new RuntimeException(String.format("Group with groupCode: %s not found", groupCode));
-        }
-        return result;
-    }*/
         protected StudentTableContainerComponent getStudentContainerComponentByName(String studentNSF) {
             StudentTableContainerComponent result = null;
             WebDriverWait waits = new WebDriverWait(driver, 10);

@@ -1,11 +1,13 @@
 package dtapi.modalsWindows;
 
+import dtapi.data.group.NewGroup;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.GroupPage;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -22,6 +24,48 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         super(driver, log);
         wait = new WaitUtils(driver, 10);
     }
+    public AddNewGroupModalWindow fillInvalidGroupData(NewGroup group) {
+        fillInvalidData(group);
+        return new AddNewGroupModalWindow(driver,log);
+    }
+    public InformModalWindow fillInvalidGroupDataAndClickSubmitButton(String groudId,String gpoupSpeciality,String groupFaculty) {
+        String addSubjectPageWindow = driver.getWindowHandle();
+        addNewGroup(groudId, gpoupSpeciality, groupFaculty);
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(addSubjectPageWindow)) {
+                wait.invisibilityOfEmelement2(getSubmitButton());
+                driver.switchTo().window(windowHandle);
+
+
+            }
+        }
+        return new InformModalWindow(driver,log);
+    }
+    private void fillInvalidData(NewGroup group) {
+        fillAllFields( group);
+
+    }
+
+    private void fillAllFields(NewGroup group) {
+        fillInvalidGroupIdField(group);
+        clickSpecialityDropDown();
+        Actions actions = new Actions(driver);
+        actions.moveToElement( driver.findElement(groupId)).click().build().perform();
+        clickFacultyDropDown();
+        actions.moveToElement(driver.findElement(groupId)).click().build().perform();
+    }
+    private void setInvalidGroupIdField(NewGroup group) {
+        wait.visibilityOfElement(groupId);
+        wait.prevenseOfElement(groupId);
+        type(group.getGroupId(), groupId);
+    }
+
+    private void fillInvalidGroupIdField(NewGroup group) {
+        clickGroupIdField();
+        clearGroupIdField();
+        setInvalidGroupIdField(group);
+    }
+
 
 
     private void clickGroupIdField() {
@@ -36,10 +80,10 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         find(groupId).clear();
     }
 
-    private void setGroupIdField(String groupText) {
+    private void setGroupIdField(String newGroup) {
         wait.visibilityOfElement(groupId);
         wait.prevenseOfElement(groupId);
-        type(groupText, groupId);
+        type(newGroup, groupId);
     }
 
     private void fillGroupIdField(String groupText) {

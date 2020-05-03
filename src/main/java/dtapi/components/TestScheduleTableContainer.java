@@ -63,7 +63,7 @@ public class TestScheduleTableContainer extends Paginator {
     protected TestScheduleTableContainerComponent getTestScheduleTableContainerComponentByGroups(String group) {
         TestScheduleTableContainerComponent result = null;
         WebDriverWait waits = new WebDriverWait(driver, 10);
-        sleep(2000);
+        sleep(1500);
         List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(testScheduleTableContainerXpath))));
         List<TestScheduleTableContainerComponent> containerComponents = new ArrayList<>();
         for (WebElement current : rows) {

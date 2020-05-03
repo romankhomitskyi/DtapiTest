@@ -21,4 +21,13 @@ public class DataForCreatingSchedule {
                         NewScheduleRepository.schedule().getEndTime()}
         };
     }
+    @DataProvider
+    public Object[][] failCreatingSchedule(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        NewSubjectRepository.highMath().getSubjectName(),
+                        NewScheduleRepository.invalidDate().getGroupName(),
+                   }
+        };
+    }
 }

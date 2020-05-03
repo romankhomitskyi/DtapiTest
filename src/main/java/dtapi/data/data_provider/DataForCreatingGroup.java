@@ -61,4 +61,14 @@ public class DataForCreatingGroup {
                         NewFacultiesRepository.phisoloh().getFacultiesName(), Pagination.THE_LAST_PAGE}
         };
     }
+    @DataProvider
+    public Object[][] failCreatingGroup(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        NewGroupRepository.existGroup().getGroupId(),
+                        NewGroupRepository.existGroup().getGroupSpeciality(),
+                        NewGroupRepository.existGroup().getGroupFaculty()
+                        }
+        };
+    }
 }

@@ -44,7 +44,7 @@ public class BaseTest {
         capabilities.setCapability("chrome.binary", "./src//lib//chromedriver");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
-         driver = new RemoteWebDriver(
+        driver = new RemoteWebDriver(
                 URI.create("http://192.168.99.103:4444/wd/hub").toURL(),
                 capabilities
         );

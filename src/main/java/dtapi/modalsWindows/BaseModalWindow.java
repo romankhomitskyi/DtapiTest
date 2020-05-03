@@ -12,16 +12,23 @@ public class BaseModalWindow extends BasePageObject {
 
     protected By submitButton = By.xpath("//mat-dialog-container//button[@type='submit']");
     protected By cancelButton = By.xpath("//mat-dialog-container//button[@type='submit']/following-sibling::button");
-    private WaitUtils waitUtils;
+    private WaitUtils wait;
 
     public BaseModalWindow(WebDriver driver, Logger log) {
         super(driver, log);
-        waitUtils = new WaitUtils(driver, 5);
+        wait = new WaitUtils(driver, 5);
     }
+    public boolean isSubmitButtonEnabled() {
 
+        wait.prevenseOfElement(submitButton);
+        wait.visibilityOfElement(submitButton);
+       wait.scrollUntilElementVisible(driver.findElement(submitButton));
+        WebElement result = driver.findElement(submitButton);
+        return result.isEnabled();
+    }
     protected void clickSubmitButton() {
-        waitUtils.visibilityOfElement(submitButton);
-        waitUtils.prevenseOfElement(submitButton);
+        wait.visibilityOfElement(submitButton);
+        wait.prevenseOfElement(submitButton);
         click(submitButton);
     }
 

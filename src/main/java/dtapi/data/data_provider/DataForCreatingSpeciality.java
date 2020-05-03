@@ -46,4 +46,11 @@ public class DataForCreatingSpeciality {
                         NewSpecialityRepository.pravo().getNameSpeciality(), Pagination.THE_LAST_PAGE}
         };
     }
+    @DataProvider
+    public Object[][] failCreatingSpeciality(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                       }
+        };
+    }
 }

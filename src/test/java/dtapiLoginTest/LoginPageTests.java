@@ -3,14 +3,12 @@ package dtapiLoginTest;
 import dtapi.data.data_provider.DataForLoginTest;
 import dtapi.data.user.IUser;
 import dtapi.dtapiBase.TestUtilities;
-import dtapi.pages.AdminHomePage;
-import dtapi.pages.UserPage;
 import org.testng.Assert;
 
 public class LoginPageTests extends TestUtilities {
 
 
-    @org.testng.annotations.Test(dataProvider = "dataLoginTests", dataProviderClass = DataForLoginTest.class, priority = 1, groups = {"positiveTest", "smokeTest", "user"})
+    /*@org.testng.annotations.Test(dataProvider = "dataLoginTests", dataProviderClass = DataForLoginTest.class, priority = 1, groups = {"positiveTest", "smokeTest", "user"})
     public void login(IUser validUser) {
         UserPage userPage =
                 loadSignInPage()
@@ -30,38 +28,22 @@ public class LoginPageTests extends TestUtilities {
         String url = adminHomePage.getAdminUrl();
         Assert.assertEquals(adminHomePage.getCurrentUrl(), url);
 
-    }
+    }*/
 
-    @org.testng.annotations.Test(dataProvider = "dataLoginTests", dataProviderClass = DataForLoginTest.class, priority = 3, groups = {"negativeTest", "smokeTest", "check"})
-    public void failLoginWithInvalidPassword(IUser invalidUser, String errorMessage) {
+    @org.testng.annotations.Test(dataProvider = "dataLoginTests", dataProviderClass = DataForLoginTest.class, priority = 1, groups = {"negativeTest", "smokeTest", "check"})
+    public void failLogin(IUser invalidUser1, String errorMessage,IUser invalidUser2,IUser invalidUser3) {
         loadSignInPage()
-                .unsuccessfulLoginPage(invalidUser);
+                .unsuccessfulLoginPage(invalidUser1);
         String error = loadSignInPage().getErrorMessageText();
-        sleep(2000);
-        //takeScreenshot("login");
+        Assert.assertEquals(error, errorMessage);
+        loadSignInPage().unsuccessfulLoginPage(invalidUser2);
+        Assert.assertEquals(error, errorMessage);
+        loadSignInPage().unsuccessfulLoginPage(invalidUser3);
         Assert.assertEquals(error, errorMessage);
 
     }
 
-    @org.testng.annotations.Test(dataProvider = "dataLoginTests", dataProviderClass = DataForLoginTest.class, priority = 4, groups = {"negativeTest", "smokeTest", "check"})
-    public void failLoginWithEmptyField(IUser invalidUser, String errorMessage) {
-        loadSignInPage().unsuccessfulLoginPage(invalidUser);
-        String error = loadSignInPage().getErrorMessageText();
-        sleep(2000);
-        //takeScreenshot("login");
-        Assert.assertEquals(error, errorMessage);
 
-    }
-
-    @org.testng.annotations.Test(dataProvider = "dataLoginTests", dataProviderClass = DataForLoginTest.class, priority = 5, groups = {"negativeTest", "smokeTest", "check"})
-    public void failLoginWithInvalidLogin(IUser invalidUser, String errorMessage) {
-        loadSignInPage().unsuccessfulLoginPage(invalidUser);
-        String error = loadSignInPage().getErrorMessageText();
-        sleep(2000);
-        //takeScreenshot("login");
-        Assert.assertEquals(error, errorMessage);
-
-    }
 
 
 }

@@ -2,31 +2,26 @@ package subjectsTests;
 
 import dtapi.data.data_provider.DataForCreatingSubjectAndTests;
 import dtapi.data.question.NewQuestion;
+import dtapi.data.student.IStudent;
 import dtapi.data.testSettings.TestSettings;
 import dtapi.data.user.IUser;
 import dtapi.dtapiBase.TestUtilities;
+import dtapi.modalsWindows.AddSubjectModalWindow;
+import dtapi.modalsWindows.InformModalWindow;
+import dtapi.pages.ResultsPage;
+import dtapi.pages.ScheduleTestingPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 import static dtapi.data.question.NewQuestionRepository.getQuestion1;
 import static dtapi.data.question.NewQuestionRepository.getQuestion2;
+import static dtapi.data.subject.NewSubjectRepository.*;
 
 public class SubjectTest extends TestUtilities {
-    /**
-     * loading application, logging in, click subject icon, switching to new subject modal window
-     * filling all fields, finding created subject, clicking on test of suject icon, switching to
-     * new test modal window and filling all fields and then finding new test
-     * <p>
-     * param  validAdmin from UserRepository
-     * param name from NewSubjectRepository
-     * param desc from NewSubjectRepository
-     * param Pagination from Enum class
-     * param taskCount from NewTestRepository
-     * param timeCount from NewTestRepository
-     * param numberOfAttempts from NewTestRepository
-     */
-    @Test(dataProvider = "addNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 2, groups = {"addNewSubjectAndTest"})
+
+    @Test(dataProvider = "addNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 1, groups = {"addNewSubjectAndTest"})
     public void addNewTest(IUser validAdmin,
                            String oldName,
                            String oldDesc,
@@ -41,10 +36,15 @@ public class SubjectTest extends TestUtilities {
                            int newTimeCount,
                            int newNumberOfAttempts,
                            List<NewQuestion> questions,
-                           List<TestSettings> settings
+                           List<TestSettings> settings,
+                           String groupName,
+                           String startDate,
+                           String endDate,
+                           String startTime,
+                           String endTime
     )
     {
-         loadSignInPage()
+        ScheduleTestingPage scheduleTestingPage = loadSignInPage()
                 .successfulAdminLogin(validAdmin)
                 .clickSubjectIcon()
                 .switchAddNewSubjectToModalWindow()
@@ -59,7 +59,17 @@ public class SubjectTest extends TestUtilities {
                 .navigateToQuestionPage(newTestName)
                 .addQuestionWithAnswers(questions)
                 .navigateToEditQuestionPage(getQuestion1())
-                .editQuestion(getQuestion2());
+                .editQuestion(getQuestion2())
+                 .clickSubjectLink()
+                 .navigateToTestOfSubjectPage(newName)
+                 .navigateToSettingsTestPage(newTestName)
+                 .addTestSettings(settings)
+                 .clickSubjectLink()
+                 .navigateToTestSchedulePage(newName)
+                 .switchToAddNewScheduleModalWindow()
+                 .fillAllScheduleFieldsAndSubmitForm(groupName,startDate,endDate,startTime,endTime);
+
+        Assert.assertTrue(scheduleTestingPage.verifyScheduleAdded(groupName), "Isn't present");
 
 
 
@@ -100,9 +110,44 @@ public class SubjectTest extends TestUtilities {
 
     }
 
+    @Test(dataProvider = "failCreatingSubject", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 3, groups = {"failCreatingSubject"})
+    public void verifyValidationOnAddNewSubjectModalWindow(IUser validAdmin
+
+    ) {
+        AddSubjectModalWindow subjectModalWindow = loadSignInPage()
+                .successfulAdminLogin(validAdmin)
+                .clickSubjectIcon()
+                .switchAddNewSubjectToModalWindow()
+                .fillInvalidSubjectData(emptyField());
+        Assert.assertFalse(subjectModalWindow.isSubmitButtonEnabled(), "Is enabled");
+        subjectModalWindow.fillInvalidSubjectData(numbers());
+        Assert.assertFalse(subjectModalWindow.isSubmitButtonEnabled(), "Is enabled");
+        subjectModalWindow.fillInvalidSubjectData(englishSymbols());
+        Assert.assertFalse(subjectModalWindow.isSubmitButtonEnabled(), "Is enabled");
+        InformModalWindow informModalWindow = subjectModalWindow.fillInvalidSubjectDataAndClickSubmitButton(existSubject());
+        Assert.assertTrue(informModalWindow.isTextPresent(), "Isn't present");
+
+
+    }
 
 
 
+    @Test(dataProvider = "results", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 4, groups = {"results"})
+    public void verifyTestResults(IUser validAdmin,
+                                  IStudent student,
+                                  String groupId,
+                                  String  testName,
+                                  String result
 
+    ) {
+        ResultsPage resultsPage = loadSignInPage()
+                .successfulAdminLogin(validAdmin)
+                .clickResultsLink()
+                .showTestResults(groupId,testName);
+        Assert.assertTrue(resultsPage.verifyStudentResults(student,result), "isn't equal");
+
+
+
+    }
 
 }

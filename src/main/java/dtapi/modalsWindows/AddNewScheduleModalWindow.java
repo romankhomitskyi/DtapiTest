@@ -1,10 +1,12 @@
 package dtapi.modalsWindows;
 
+import dtapi.data.schedule.NewSchedule;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.DatePicker;
 import dtapi.pages.ScheduleTestingPage;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,6 +32,7 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
     private DatePicker datePicker;
 
     private void clickStartDateInput() {
+        wait.waitForElementClickability(startDateInput);
         wait.visibilityOfElement(startDateInput);
         wait.prevenseOfElement(startDateInput);
         click(startDateInput);
@@ -141,6 +144,7 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
                 wait.invisibilityOfEmelement2(options);
                 break;
             }
+
         }
 
     }
@@ -199,6 +203,70 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         }
 
         return new ScheduleTestingPage(driver, log);
+    }
+    public AddNewScheduleModalWindow fillInvalidScheduleData(String group,NewSchedule schedule) {
+        fillInvalidData(group,schedule);
+        return new AddNewScheduleModalWindow(driver,log);
+    }
+
+    private void fillInvalidData(String group,NewSchedule schedule) {
+        fillAllFields(group,schedule);
+
+    }
+
+    private void fillAllFields(String group,NewSchedule schedule) {
+        setGroupDropDownOption(group);
+        fillInvalidStartDateField(schedule);
+        fillInvalidEndDateField(schedule);
+        fillInvalidStartTimeField(schedule);
+        fillInvalidEndTimeField(schedule);
+
+
+    }
+
+    private void setInvalidEndDateField(NewSchedule schedule) {
+        wait.visibilityOfElement(endDateInput);
+        wait.prevenseOfElement(endDateInput);
+        type(schedule.getEndDate(),endDateInput);
+    }
+
+    private void fillInvalidEndDateField(NewSchedule schedule) {
+        clickEndDateInput();
+
+        driver.findElement(endDateInput).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+        setInvalidEndDateField(schedule);
+    }
+    private void setInvalidStartDateField(NewSchedule schedule) {
+        wait.visibilityOfElement(startDateInput);
+        wait.prevenseOfElement(startDateInput);
+        type(schedule.getStartDate(),startDateInput);
+    }
+
+    private void fillInvalidStartDateField(NewSchedule schedule) {
+       clickStartDateInput();
+       driver.findElement(startDateInput).sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+       setInvalidStartDateField(schedule);
+    }
+    private void setInvalidStartTimeField(NewSchedule schedule) {
+        wait.visibilityOfElement(startTimeField);
+        wait.prevenseOfElement(startTimeField);
+        type(schedule.getStartTime(),startTimeField);
+    }
+
+    private void fillInvalidStartTimeField(NewSchedule schedule) {
+        clickStartTimeField();
+        clearStartTimeField();
+        setInvalidStartTimeField(schedule);
+    }
+    private void fillInvalidEndTimeField(NewSchedule schedule) {
+        clickEndTimeField();
+        clearEndTimeField();
+        setInvalidEndTimeField(schedule);
+    }
+    private void setInvalidEndTimeField(NewSchedule schedule) {
+        wait.visibilityOfElement(endTimeField);
+        wait.prevenseOfElement(endTimeField);
+        type(schedule.getEndTime(),endTimeField);
     }
 
 }

@@ -250,7 +250,18 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
 
         return new StudentPage(driver, log);
     }
+    public AddNewStudentModalWindow fillInvalidDataInStudentFields(IStudent invalidStudent) {
 
+        fillInvalidData(invalidStudent);
+
+
+        return new AddNewStudentModalWindow(driver, log);
+    }
+    private void fillInvalidData(IStudent validStudent) {
+        fillAllStudentFields(validStudent);
+
+
+    }
     private void createStudent(IStudent validStudent) {
         fillAllStudentFields(validStudent);
         clickSubmitButton();

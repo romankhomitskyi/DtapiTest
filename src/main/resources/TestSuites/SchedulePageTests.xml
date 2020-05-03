@@ -7,7 +7,8 @@
             <class name="scheduleTests.ScheduleTest">
                 <methods>
 
-                    <include name="verifyCrudOnGroupPage"/>
+                   <!-- <include name="verifyCrudOnGroupPage"/>-->
+                    <include name="verifyValidationOnAddNewScheduleModalWindow"/>
 
                 </methods>
 

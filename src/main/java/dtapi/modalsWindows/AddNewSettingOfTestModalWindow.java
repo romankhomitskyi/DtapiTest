@@ -85,7 +85,7 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
             if (options.getText().equals(lvl.getQuestionLvl().toString())) {
                 wait.waitForElementClickability2(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);
+
                 break;
             }
         }
@@ -129,4 +129,5 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
 
         return new SettingsTestPage(driver, log);
     }
+
 }

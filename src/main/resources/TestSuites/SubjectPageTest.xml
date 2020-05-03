@@ -13,7 +13,9 @@
             <class name="subjectsTests.SubjectTest">
                 <methods>
                     <include name="addNewTest" />
-                    <include name="addNewTest2" />
+                    <!--<include name="addNewTest2" />-->
+                    <include name="verifyValidationOnAddNewSubjectModalWindow" />
+                    <include name="verifyTestResults" />
 
 
                 </methods>

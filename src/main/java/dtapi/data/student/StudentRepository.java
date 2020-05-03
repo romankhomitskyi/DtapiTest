@@ -26,9 +26,9 @@ public final class StudentRepository {
                 .setSurname("Хоміцький")
                 .setFirstName("Роман")
                 .setFatherName("Ігорович")
-                .setGradeBookId("ЮК-21-12")
-                .setStudentLogin("romik")
-                .setStudentEmail("vasasw@papacarlos.com")
+                .setGradeBookId("КЦ-21-12")
+                .setStudentLogin("romank")
+                .setStudentEmail("vasaswtrhr@papacarlos.com")
                 .setStudentPassword("qwerty123")
                 .setStudentConfirmPassword("qwerty123")
                 .build();
@@ -40,9 +40,58 @@ public final class StudentRepository {
                 .setFatherName("Романович")
                 .setGradeBookId("КД-1-12")
                 .setStudentLogin("petrik")
-                .setStudentEmail("gegehtr@gmail.com")
+                .setStudentEmail("gegehtrhrthrhr@gmail.com")
                 .setStudentPassword("qwerty123")
                 .setStudentConfirmPassword("qwerty123")
+                .build();
+    }
+
+    public IStudent getStudentWithEmptyFields() {
+        return Student.getStudent()
+                .setSurname("")
+                .setFirstName("")
+                .setFatherName("")
+                .setGradeBookId("")
+                .setStudentLogin("")
+                .setStudentEmail("")
+                .setStudentPassword("")
+                .setStudentConfirmPassword("")
+                .build();
+    }
+    public IStudent getStudentInvalidLogin() {
+        return Student.getStudent()
+                .setSurname("Шевченко")
+                .setFirstName("Петро")
+                .setFatherName("Романович")
+                .setGradeBookId("КД-1-12")
+                .setStudentLogin("romik")
+                .setStudentEmail("jrtjrjstjr@gmail.com")
+                .setStudentPassword("qwerty123")
+                .setStudentConfirmPassword("qwerty123")
+                .build();
+    }
+    public IStudent getStudentInvalidGradeBookId() {
+        return Student.getStudent()
+                .setSurname("Шевченко")
+                .setFirstName("Петро")
+                .setFatherName("Романович")
+                .setGradeBookId("ЮК-21-12")
+                .setStudentLogin("ololo")
+                .setStudentEmail("jrtjrjstjr@gmail.com")
+                .setStudentPassword("qwerty123")
+                .setStudentConfirmPassword("qwerty123")
+                .build();
+    }
+    public IStudent getStudentInvalidConfirmPassword() {
+        return Student.getStudent()
+                .setSurname("Шевченко")
+                .setFirstName("Петро")
+                .setFatherName("Романович")
+                .setGradeBookId("ЮК-21-134")
+                .setStudentLogin("ololo")
+                .setStudentEmail("jrtjrjstjr@gmail.com")
+                .setStudentPassword("qwerty123")
+                .setStudentConfirmPassword("qwerty")
                 .build();
     }
 

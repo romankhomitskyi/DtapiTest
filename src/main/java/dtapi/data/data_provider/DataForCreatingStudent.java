@@ -22,4 +22,19 @@ public class DataForCreatingStudent {
                         }
         };
     }
+    @DataProvider
+    public Object[][] validationCreatingStudents(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        NewGroupRepository.geoAndMed().getGroupId(),
+                        StudentRepository.get().getStudentWithEmptyFields(),
+                        StudentRepository.get().getStudentInvalidGradeBookId(),
+                        StudentRepository.get().getStudentInvalidLogin(),
+                        StudentRepository.get().getStudentInvalidConfirmPassword()
+
+
+
+                }
+        };
+    }
 }

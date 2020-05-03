@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 
 public class StudentPage extends Paginator {
     private By addStudentButton = By.xpath("//button[contains(@class,'addStudent')]");
+
     private StudentTableContainer studentTableContainer;
     private WaitUtils wait;
     public StudentPage(WebDriver driver, Logger log) {

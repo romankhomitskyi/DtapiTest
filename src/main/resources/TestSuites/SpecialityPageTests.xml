@@ -7,6 +7,7 @@
             <class name="specialityTest.SpecialityTest">
                 <methods>
                     <include name="verifyCrudOnSpecialityPage"/>
+                    <include name="verifyValidationOnAddNewSpecialityModalWindow"/>
                 </methods>
 
             </class>

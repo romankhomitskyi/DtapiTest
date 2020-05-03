@@ -1,19 +1,19 @@
 package dtapi.data.speciality;
 
 public class NewSpeciality {
-    private int codeSpeciality;
+    private String codeSpeciality;
     private String nameSpeciality;
 
-    public NewSpeciality(int codeSpeciality, String nameSpeciality) {
+    public NewSpeciality(String codeSpeciality, String nameSpeciality) {
         this.codeSpeciality = codeSpeciality;
         this.nameSpeciality = nameSpeciality;
     }
 
-    public int getCodeSpeciality() {
+    public String getCodeSpeciality() {
         return codeSpeciality;
     }
 
-    public void setCodeSpeciality(int codeSpeciality) {
+    public void setCodeSpeciality(String codeSpeciality) {
         this.codeSpeciality = codeSpeciality;
     }
 

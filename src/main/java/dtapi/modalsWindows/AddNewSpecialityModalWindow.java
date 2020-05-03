@@ -1,17 +1,20 @@
 package dtapi.modalsWindows;
 
+import dtapi.data.speciality.NewSpeciality;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.BasePageObject;
 import dtapi.pages.SpecialityPage;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class AddNewSpecialityModalWindow extends BasePageObject {
     private By submitButton = By.xpath("//span[contains(text(),'Підтвердити')]/parent::button");
     private By cancelButton = By.xpath("//span[contains(text(),'Скасувати')]/parent::button");
     private By codeSpeciality = By.xpath("//input[@placeholder='Код спеціальності']");
     private By nameOfSpeciality = By.xpath("//input[@placeholder='Назва спеціальності']");
+    private By error = By.xpath("//mat-error");
     private WaitUtils wait;
 
     public AddNewSpecialityModalWindow(WebDriver driver, Logger log) {
@@ -19,7 +22,9 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
         wait = new WaitUtils(driver, 5);
     }
 
-    public SpecialityPage fillAllSpecialityFieldsAndSubmitForm(int code, String name) {
+
+
+    public SpecialityPage fillAllSpecialityFieldsAndSubmitForm(String code, String name) {
         String addSubjectPageWindow = driver.getWindowHandle();
         addNewSpeciality(code, name);
         for (String windowHandle : driver.getWindowHandles()) {
@@ -44,13 +49,13 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
         find(codeSpeciality).clear();
     }
 
-    private void setSpecialityCodeField(int code) {
+    private void setSpecialityCodeField(String code) {
         wait.visibilityOfElement(codeSpeciality);
         wait.prevenseOfElement(codeSpeciality);
-        typeInt(code, codeSpeciality);
+        type(code, codeSpeciality);
     }
 
-    private void fillSpecialityCodeField(int code) {
+    private void fillSpecialityCodeField(String code) {
         clickSpecialityCodeField();
         clearSpecialityCodeField();
         setSpecialityCodeField(code);
@@ -80,13 +85,13 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
         setNameOfSpecialityField(desc);
     }
 
-    private void fillAllSpecialityFields(int code, String name) {
+    private void fillAllSpecialityFields(String code, String name) {
         fillSpecialityCodeField(code);
         fillNameOfSpecialityField(name);
 
     }
 
-    private void addNewSpeciality(int code, String name) {
+    private void addNewSpeciality(String code, String name) {
         fillAllSpecialityFields(code, name);
         clickSubmitButton();
     }
@@ -101,6 +106,50 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
     private void clickCancelButton() {
         click(cancelButton);
 
+    }
+    public boolean isErrorDisplayed() {
+
+        wait.prevenseOfElement(error);
+        wait.visibilityOfElement(error);
+        WebElement result = driver.findElement(error);
+        wait.scrollUntilElementVisible(result);
+        return result.isDisplayed();
+    }
+    public AddNewSpecialityModalWindow fillInvalidSpecialityData(NewSpeciality speciality) {
+        fillInvalidData(speciality);
+        return new AddNewSpecialityModalWindow(driver,log);
+    }
+
+    private void fillInvalidData(NewSpeciality specialityCodeField) {
+        fillAllFields( specialityCodeField);
+
+    }
+
+    private void fillAllFields(NewSpeciality specialityCodeField) {
+        fillInvalidSpecialityCodeField(specialityCodeField);
+        fillInvalidSpecialityNameField(specialityCodeField);
+
+    }
+    private void setInvalidSpecialityCodeField(NewSpeciality specialityCodeField) {
+        wait.visibilityOfElement(codeSpeciality);
+        wait.prevenseOfElement(codeSpeciality);
+        type(specialityCodeField.getCodeSpeciality(),codeSpeciality);
+    }
+
+    private void fillInvalidSpecialityCodeField(NewSpeciality specialityCodeField) {
+        clickSpecialityCodeField();
+        clearSpecialityCodeField();
+        setInvalidSpecialityCodeField(specialityCodeField);
+    }
+    private void fillInvalidSpecialityNameField(NewSpeciality specialityCodeField) {
+        clickNameOfSpecialityField();
+        clearNameOfSpecialityField();
+        setInvalidSpecialityNameField(specialityCodeField);
+    }
+    private void setInvalidSpecialityNameField(NewSpeciality specialityCodeField) {
+        wait.visibilityOfElement(nameOfSpeciality);
+        wait.prevenseOfElement(nameOfSpeciality);
+        type(specialityCodeField.getCodeSpeciality(),nameOfSpeciality);
     }
 
 }

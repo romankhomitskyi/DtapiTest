@@ -24,7 +24,7 @@ public class SpecialityTableContainer extends Paginator {
     public List<SpecialityTableContainerComponent> getSpecialityContainerComponents() {
         WebDriverWait waits = new WebDriverWait(driver, 10);
 
-        sleep(2000);
+        sleep(1500);
 
         List<SpecialityTableContainerComponent> containerComponents = new ArrayList<>();
         List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(specialityTableContainerXpath))));
@@ -64,7 +64,7 @@ public class SpecialityTableContainer extends Paginator {
         SpecialityTableContainerComponent result = null;
         WebDriverWait waits = new WebDriverWait(driver, 10);
 
-        sleep(2000);
+        sleep(1500);
 
         List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(specialityTableContainerXpath))));
         List<SpecialityTableContainerComponent> containerComponents = new ArrayList<>();
