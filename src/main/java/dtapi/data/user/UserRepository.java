@@ -54,16 +54,16 @@ public final class UserRepository {
 
     public IUser getInvalidUser2() {
         return User.get()
-                .setLogin(User.EMPTY_STRING)
-                .setPassword(User.EMPTY_STRING)
+                .setLogin("")
+                .setPassword("")
 
                 .build();
     }
 
     public IUser getInvalidUser3() {
         return User.get()
-                .setLogin(System.getenv().get("INVALID_USER_LOGIN"))
-                .setPassword(System.getenv().get("VALID_USER_PASSWORD"))
+                .setLogin("yur")
+                .setPassword("qwerty123")
 
                 .build();
     }
