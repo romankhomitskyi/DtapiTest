@@ -2,13 +2,11 @@ package subjectsTests;
 
 import dtapi.data.data_provider.DataForCreatingSubjectAndTests;
 import dtapi.data.question.NewQuestion;
-import dtapi.data.student.IStudent;
 import dtapi.data.testSettings.TestSettings;
 import dtapi.data.user.IUser;
 import dtapi.dtapiBase.TestUtilities;
 import dtapi.modalsWindows.AddSubjectModalWindow;
 import dtapi.modalsWindows.InformModalWindow;
-import dtapi.pages.ResultsPage;
 import dtapi.pages.ScheduleTestingPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -132,7 +130,7 @@ public class SubjectTest extends TestUtilities {
 
 
 
-    @Test(dataProvider = "results", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 4, groups = {"results"})
+   /* @Test(dataProvider = "results", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 4, groups = {"results"})
     public void verifyTestResults(IUser validAdmin,
                                   IStudent student,
                                   String groupId,
@@ -148,6 +146,6 @@ public class SubjectTest extends TestUtilities {
 
 
 
-    }
+    }*/
 
 }
