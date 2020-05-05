@@ -5,7 +5,7 @@ public class NewScheduleRepository {
     public static NewSchedule schedule() {
         return new NewSchedule(
                 "СІ-12-2",
-                "2020-05-1",
+                "2020-05-10",
                 "2020-05-15",
                 "08:00",
                 "10:00"
