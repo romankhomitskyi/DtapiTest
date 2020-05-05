@@ -43,6 +43,20 @@ public class ResultsPage extends AdminHeadrer {
 
         return false;
     }
+    public boolean verifyStudentResults(String result) {
+        int size = getResultsTableContainer().getResultsContainerComponents().size();
+        String  results = getResultsTableContainer()
+                .getStudentResultContainerComponentByStudentNSF(Integer.toString(size))
+                .getStudentResultText();
+        if(results.contains(result)){
+            System.out.println(result);
+            System.out.println(results);
+            return true;
+        }
+        System.out.println(result);
+        System.out.println(results);
+        return false;
+    }
     public ResultsTableContainer  getResultsTableContainer () {
         return resultsTableContainer ;
     }

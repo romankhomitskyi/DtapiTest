@@ -7,6 +7,7 @@ public class ResultsTableContainerComponent {
     private WebElement resultsTableContainerComponent;
 
     private By studentNSF = By.xpath(".//td[contains(@class,'cdk-column-student')]");
+    private By studentId = By.xpath(".//td[contains(@class,'cdk-column-id')]");
     private By studentResult = By.xpath(".//td[contains(@class,'cdk-column-result')]");
     private By studentScore = By.xpath(".//td[contains(@class,'cdk-column-score')]");
 
@@ -19,7 +20,14 @@ public class ResultsTableContainerComponent {
 
 
     }
+    public WebElement getStudentId() {
+        WebElement StudentId = resultsTableContainerComponent.findElement(studentId);
+        return StudentId;
+    }
 
+    public String getStudentIdText() {
+        return getStudentId().getText();
+    }
 
     public WebElement getStudentScore() {
         WebElement studentsScore = resultsTableContainerComponent.findElement(studentScore);

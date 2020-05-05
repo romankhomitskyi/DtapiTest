@@ -12,6 +12,9 @@ public class UserPage extends BasePageObject {
 
     private String studentUrl = "https://travisdtapi.firebaseapp.com/student/home";
     private By headerTestPage = By.xpath("//section[@class='test-details']/h3");
+    private By logOutButton = By.xpath("//span[contains(text(),'yurik')]/parent::button");
+    private By logOutButton2 = By.xpath("//button[contains(text(),'Вийти')]");
+
 
 
 
@@ -46,7 +49,12 @@ public class UserPage extends BasePageObject {
         return new TakingTestPage(driver, log);
     }
 
+ public MainPage logOut(){
+        driver.findElement(logOutButton).click();
+        driver.findElement(logOutButton2).click();
 
+     return new MainPage(driver,log);
+ }
 }
 
 

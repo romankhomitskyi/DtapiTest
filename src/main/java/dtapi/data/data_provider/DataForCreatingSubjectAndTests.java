@@ -5,7 +5,6 @@ import dtapi.data.group.NewGroupRepository;
 import dtapi.data.question.NewQuestion;
 import dtapi.data.question.NewQuestionRepository;
 import dtapi.data.schedule.NewScheduleRepository;
-import dtapi.data.student.StudentRepository;
 import dtapi.data.subject.NewSubjectRepository;
 import dtapi.data.test.NewTestRepository;
 import dtapi.data.testSettings.TestSettings;
@@ -111,10 +110,11 @@ public class DataForCreatingSubjectAndTests {
     public Object[][] results(Method method) {
         return new Object[][]{
                 {UserRepository.get().getAdmin(),
-                        StudentRepository.get().getSecondStudent(),
-                        NewGroupRepository.geoAndMed().getGroupId(),
-                        NewTestRepository.planets().getTestName(),
-                        "0"}
+                        UserRepository.get().getUser(),
+                        "ІФ-105",
+                        "New Test",
+                        "Khomitskyi Yura igor"
+                        }
         };
     }
 }

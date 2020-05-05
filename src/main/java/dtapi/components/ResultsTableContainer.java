@@ -61,7 +61,7 @@ public class ResultsTableContainer  extends Paginator {
         }
         for (ResultsTableContainerComponent current : containerComponents) {
 
-            if (current.getStudentNSFText().toLowerCase().contains(studentNSF.toLowerCase())) {
+            if (current.getStudentIdText().toLowerCase().contains(studentNSF.toLowerCase())) {
                 result = current;
                 break;
             }
@@ -81,7 +81,7 @@ public class ResultsTableContainer  extends Paginator {
                 }
                 for (ResultsTableContainerComponent current3 : containerComponents2) {
 
-                    if (current3.getStudentNSFText().toLowerCase().contains(studentNSF.toLowerCase())) {
+                    if (current3.getStudentIdText().toLowerCase().contains(studentNSF.toLowerCase())) {
                         result = current3;
                         break;
                     }

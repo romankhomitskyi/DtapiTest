@@ -25,9 +25,9 @@ public class MainPage extends BasePageObject {
 
     private By languageButton = By.xpath("//div[@class='float__lang__btn']/button");
     private By languageButtonText = By.xpath("//div[@class='float__lang__btn']/button/span");
-    private By loginField = By.xpath("//input[@id='mat-input-0']");
+    private By loginField = By.xpath("//input[@name='username']");
     private By loginFieldText = By.xpath("//input[@id='mat-input-0']/following-sibling::span//span");
-    private By passwordField = By.xpath("//input[@id='mat-input-1']");
+    private By passwordField = By.xpath("//input[@name='password']");
     private By passwordFieldText = By.xpath("//input[@id='mat-input-1']/following-sibling::span//span");
     private By buttonLogin = By.xpath("//form//button");
     private By heading = By.xpath("//form/h3");
@@ -48,8 +48,8 @@ public class MainPage extends BasePageObject {
 
     private void clickOnLoginField() {
 
-        wait.visibilityOfElement(loginField);
         wait.prevenseOfElement(loginField);
+        wait.visibilityOfElement(loginField);
         driver.findElement(loginField).click();
     }
 
