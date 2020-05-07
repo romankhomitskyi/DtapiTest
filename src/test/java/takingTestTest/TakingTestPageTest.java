@@ -28,7 +28,6 @@ public class TakingTestPageTest extends TestUtilities {
                         .successfulAdminLogin(validAdmin)
                         .clickResultsLink()
                 .showTestResults(groupId,testName);
-         System.out.println(result);
 
         Assert.assertTrue(resultsPage.verifyStudentResults(result), "isn't equal");
 

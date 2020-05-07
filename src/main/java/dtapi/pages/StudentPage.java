@@ -12,7 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class StudentPage extends Paginator {
-    private By addStudentButton = By.xpath("//button[contains(@class,'addStudent')]");
+    private By addStudentButton = By.xpath("//span[contains(text(),'Додати студента')]/parent::button");
 
     private StudentTableContainer studentTableContainer;
     private WaitUtils wait;

@@ -16,7 +16,7 @@ public class SpecialityPage extends Paginator {
     private By pageTitle = By.xpath("//div/h3");
     private WaitUtils wait;
     public static final String PAGE_TITLE = "Спеціальності";
-    private By addNewSpecialityButton = By.xpath("//span[contains(text(),'Додати спеціальність')]/parent::span/parent::button");
+    private By addNewSpecialityButton = By.xpath("//span[contains(text(),'Додати спеціальність')]/parent::button");
     private SpecialityTableContainer specialityTableContainer;
     public SpecialityPage(WebDriver driver, Logger log) {
         super(driver, log);

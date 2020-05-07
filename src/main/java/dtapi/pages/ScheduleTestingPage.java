@@ -16,7 +16,7 @@ public class ScheduleTestingPage  extends Paginator {
         initElements();
         wait = new WaitUtils(driver,10);
     }
-    private By addNewScheduleButton = By.xpath("//span[contains(text(),'Додати новий розклад')]/parent::button");
+    private By addNewScheduleButton = By.xpath("//span[contains(text(),'Додати розклад')]/parent::button");
     private WaitUtils wait;
 
     private TestScheduleTableContainer testScheduleTableContainer;
