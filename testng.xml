@@ -12,6 +12,7 @@
         <suite-file path="src/main/resources/TestSuites/StudentPageTests.xml" />
         <suite-file path="src/main/resources/TestSuites/SubjectPageTest.xml" />
         <suite-file path="src/main/resources/TestSuites/AdminPageTests.xml" />
+        <suite-file path="src/main/resources/TestSuites/TakingTestPage.xml" />
 
 
 
