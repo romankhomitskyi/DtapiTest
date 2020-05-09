@@ -25,31 +25,31 @@ public class AdminPageTest extends TestUtilities {
         SubjectPage subjectPage = loadSignInPage()
                 .successfulAdminLogin(validAdmin)
                 .clickSubjectIcon();
-        sleep(1000);
+
         String subjectTitleActual = subjectPage.getPageTitleText();
         Assert.assertTrue(subjectTitleActual.contains(subjectTitle), "Does not contain. \nActual" + subjectTitleActual + "\n Expected" + subjectTitle);
         SpecialityPage specialityPage =subjectPage.clickSpecialityLink();
-        sleep(1000);
+
         String specialityTitleActual = specialityPage.getPageTitleText();
         Assert.assertTrue(specialityTitleActual.contains(specialityTitle), "Does not contain. \nActual" + specialityTitleActual + "\n Expected" + specialityTitle);
          FacultiesPage facultiesPage = specialityPage.clickFacultiesLink();
-         sleep(1000);
+
          String faculityTitle = facultiesPage.getFacultiesPageTitleText();
         Assert.assertTrue(faculityTitle.contains(facultyTitle), "Does not contain. \nActual" + specialityTitleActual + "\n Expected" + specialityTitle);
         GroupPage groupsPage = facultiesPage.clickGroupLink();
-        sleep(1000);
+
         String groupsTitle = groupsPage.getGroupPageTitleText();
-        Assert.assertTrue(groupsTitle.contains(groupTitle), "Does not contain. \nActual" + specialityTitleActual + "\n Expected" + specialityTitle);
+        Assert.assertTrue(groupsTitle.contains(groupTitle), "Does not contain. \nActual" + groupsTitle + "\n Expected" + groupTitle);
         ResultsPage resultsPage = groupsPage.clickResultsLink();
-        sleep(1000);
+
         String resultPageTitle = resultsPage.getResultsPageTitleText();
         Assert.assertTrue(resultPageTitle.contains(resultTitle), "Does not contain. \nActual" + specialityTitleActual + "\n Expected" + specialityTitle);
         AdminsPage adminsPage = resultsPage.clickAdminsLink();
-        sleep(1000);
+
         String adminsPageTitle = adminsPage.getAdminsPageTitleText();
         Assert.assertTrue(adminsPageTitle.contains(adminTitle), "Does not contain. \nActual" + specialityTitleActual + "\n Expected" + specialityTitle);
         AdminHomePage adminHomePage = adminsPage.clickHomeLink();
-        sleep(1000);
+
         String homePageTitle = adminHomePage.getAdminPageTitleText();
         Assert.assertTrue(homePageTitle.contains( homeTitle), "Does not contain. \nActual" + specialityTitleActual + "\n Expected" + specialityTitle);
 

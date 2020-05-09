@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class TestPage extends Paginator {
-    private By headerTestPage = By.xpath("//div[@class='header']/h3");
+    private By headerTestPage = By.xpath("//h3");
     private By addNewTestButton = By.xpath("//span[contains(text(),'Додати тест')]/parent::button");
     private By dropDown = By.xpath("//mat-select[@id='mat-select-1']");
     private String dropDownOption = "//span[@class ='mat-option-text' and text()='%s']";

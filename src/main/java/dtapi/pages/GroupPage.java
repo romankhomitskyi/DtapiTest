@@ -19,7 +19,7 @@ public class GroupPage extends Paginator {
     private By viewGroupByFacultyButton = By.xpath("//span[contains(text(),'Перегляд груп по інституту')]/parent::button");
     private By searchGroupInput = By.xpath("//input");
     private WaitUtils wait;
-    public static final String PAGE_TITLE = "Групи і студенти";
+    public static final String PAGE_TITLE = "Групи";
     public GroupPage(WebDriver driver, Logger log) {
         super(driver, log);
         initElements();

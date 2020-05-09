@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 public class SpecialityPage extends Paginator {
 
 
-    private By pageTitle = By.xpath("//div/h3");
+    private By pageTitle = By.xpath("//h3");
     private WaitUtils wait;
     public static final String PAGE_TITLE = "Спеціальності";
     private By addNewSpecialityButton = By.xpath("//span[contains(text(),'Додати спеціальність')]/parent::button");

@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 
 public class AdminsPage extends BaseTable {
     private By adminsPageTitle = By.xpath("//h3");
-    private By addAdminButton = By.xpath("//button[contains(@class,'addAdmin')]");
+    private By addAdminButton = By.xpath("//span[contains(text(),'Додати адміна')]/parent::button");
     private WaitUtils wait;
     private AdminTableContainer adminTableContainer;
     public static final String PAGE_TITLE = "Адміни";

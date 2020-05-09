@@ -14,7 +14,7 @@ public class SubjectPage extends Paginator {
     private By searchSubjectInput = By.xpath("//input[@placeholder='Пошук']");
     private SubjectTableContainer subjectTableContainer;
     public static final String PAGE_TITLE = "Предмети";
-    private By pageTitle = By.xpath("//div/h2");
+    private By pageTitle = By.xpath("//h3");
     private WaitUtils wait;
 
     public SubjectPage(WebDriver driver, Logger log) {
