@@ -11,7 +11,6 @@ import java.util.List;
 
 public class MainPage extends BasePageObject {
 
-    private String pageUrl = "https://dtapi.if.ua/login";
     private WaitUtils wait;
 
     public MainPage(WebDriver driver, Logger log) {
@@ -20,31 +19,16 @@ public class MainPage extends BasePageObject {
 
 
     }
-
     public static final String ERROR_MESSAGE = "Не вірний пароль або логін";
-
-    private By languageButton = By.xpath("//div[@class='float__lang__btn']/button");
-    private By languageButtonText = By.xpath("//div[@class='float__lang__btn']/button/span");
     private By loginField = By.xpath("//input[@name='username']");
-    private By loginFieldText = By.xpath("//input[@id='mat-input-0']/following-sibling::span//span");
     private By passwordField = By.xpath("//input[@name='password']");
-    private By passwordFieldText = By.xpath("//input[@id='mat-input-1']/following-sibling::span//span");
     private By buttonLogin = By.xpath("//form//button");
     private By heading = By.xpath("//form/h3");
     private By errorMessage = By.xpath("//div[@class='ng-star-inserted']//label");
     private List<WebElement> languageOption;
 
-    //** Open Login Page **//
-    public void openPage() {
-        log.info("Opening page: " + pageUrl);
-        openUrl(pageUrl);
-        log.info("Page opened");
-    }
 
-    private List<WebElement> getLanguageButtons() {
-        languageOption = driver.findElements(By.xpath("//div[@class='mat-menu-content']/button/span"));
-        return languageOption;
-    }
+
 
     private void clickOnLoginField() {
 

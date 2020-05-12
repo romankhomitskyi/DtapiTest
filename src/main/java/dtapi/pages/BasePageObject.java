@@ -19,7 +19,6 @@ public class BasePageObject {
 
     }
 
-
     /*  Open page with given URL  */
     protected void openUrl(String url) {
         driver.get(url);
