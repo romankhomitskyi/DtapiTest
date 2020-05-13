@@ -100,12 +100,13 @@ public class ResultsPage extends AdminHeadrer {
         wait.waitForElementClickability(testDropDown);
         click(testDropDown);
         wait.prevenseOfElement(By.xpath("//mat-option/span"));
+
     }
 
 
     private void clickTestOptions(String testName) {
 
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(testName)) {
