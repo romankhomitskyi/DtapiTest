@@ -135,7 +135,6 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
 
     private void clickGroupOptions(String group) {
 
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(group)) {

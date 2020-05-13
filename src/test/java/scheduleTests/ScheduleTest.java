@@ -41,8 +41,7 @@ public class ScheduleTest extends TestUtilities {
                 .switchToAddNewScheduleModalWindow()
                 .fillInvalidScheduleData(groupName,invalidDate());
         Assert.assertFalse(scheduleTestingPage.isSubmitButtonEnabled(), "Is enabled");
-        scheduleTestingPage.fillInvalidScheduleData(groupName,invalidTime());
-        Assert.assertFalse(scheduleTestingPage.isSubmitButtonEnabled(), "Is enabled");
+
 
 
     }

@@ -1,7 +1,6 @@
 package dtapi.data.data_provider;
 
 import dtapi.data.enums.Pagination;
-import dtapi.data.group.NewGroupRepository;
 import dtapi.data.question.NewQuestion;
 import dtapi.data.question.NewQuestionRepository;
 import dtapi.data.schedule.NewScheduleRepository;
@@ -59,7 +58,7 @@ public class DataForCreatingSubjectAndTests {
                         NewTestRepository.planets().getNumberOfAttempts(),
                         questionList(),
                         settingsList(),
-                        NewGroupRepository.geoAndMed().getGroupId(),
+                        NewScheduleRepository.schedule().getGroupName(),
                         NewScheduleRepository.schedule().getStartDate(),
                         NewScheduleRepository.schedule().getEndDate(),
                         NewScheduleRepository.schedule().getStartTime(),
