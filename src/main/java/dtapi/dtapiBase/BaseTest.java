@@ -45,7 +45,7 @@ public class BaseTest {
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
         driver = new RemoteWebDriver(
-                URI.create("http://192.168.99.103:4444/wd/hub").toURL(),
+                URI.create("http://192.168.99.106:4444/wd/hub").toURL(),
                 capabilities
         );
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
