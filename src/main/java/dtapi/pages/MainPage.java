@@ -24,7 +24,7 @@ public class MainPage extends BasePageObject {
     private By passwordField = By.xpath("//input[@name='password']");
     private By buttonLogin = By.xpath("//form//button");
     private By heading = By.xpath("//form/h3");
-    private By errorMessage = By.xpath("//div[@class='ng-star-inserted']//label");
+    private By errorMessage = By.xpath("//label[contains(text(),'Не вірний пароль або логін')]");
     private List<WebElement> languageOption;
 
 
