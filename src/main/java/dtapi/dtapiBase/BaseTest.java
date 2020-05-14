@@ -33,7 +33,6 @@ public class BaseTest {
         log = LogManager.getLogger(testName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
-        capabilities.setVersion("80.0");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         ChromeOptions options = new ChromeOptions();
