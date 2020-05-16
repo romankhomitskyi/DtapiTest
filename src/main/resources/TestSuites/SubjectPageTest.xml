@@ -13,9 +13,11 @@
             <class name="subjectsTests.SubjectTest">
                 <methods>
                     <include name="addNewTest" />
+                    <include name="deleteTestAndSubject" />
+                    <include name="failDeletingItems" />
                     <!--<include name="addNewTest2" />-->
-                    <include name="verifyValidationOnAddNewSubjectModalWindow" />
-                    <include name="verifyTestResults" />
+                   <!-- <include name="verifyValidationOnAddNewSubjectModalWindow" />
+                    <include name="verifyTestResults" />-->
 
 
                 </methods>

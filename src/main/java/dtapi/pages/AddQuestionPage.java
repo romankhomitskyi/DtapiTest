@@ -212,7 +212,7 @@ public class AddQuestionPage extends BasePageObject {
         return new QuestionPage(driver, log);
     }
     public QuestionPage editQuestion(NewQuestion question) {
-        fillQuestionField(question);
+       /* fillQuestionField(question);*/
         setQuestionLvlDropDownOption(question);
         setAnswerFields(question);
         clickCreateQustionButton();

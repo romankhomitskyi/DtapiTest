@@ -1,5 +1,6 @@
 package dtapi.components;
 
+import dtapi.data.testSettings.TestSettings;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import org.apache.logging.log4j.Logger;
@@ -85,6 +86,9 @@ public class SettingTestTableContainer  extends Paginator {
     public SettingTestTableContainerComponent getSettingsTestsContainerComponentById(String settingTestId) {
         return getSettingsTestContainerComponentById(settingTestId);
     }
+    public SettingTestTableContainerComponent getSettingsTestsContainerComponentById(TestSettings testSettings) {
+        return getSettingsTestContainerComponentById(testSettings.getRate());
+    }
 
 
     protected SettingTestTableContainerComponent getSettingsTestContainerComponentById(String settingTestId) {
@@ -98,7 +102,7 @@ public class SettingTestTableContainer  extends Paginator {
         }
         for (SettingTestTableContainerComponent current : containerComponents) {
 
-            if (current.getSettingTestIdText().toLowerCase().equals(settingTestId.toLowerCase())) {
+            if (current.getCountGradeText().toLowerCase().equals(settingTestId.toLowerCase())) {
                 result = current;
                 break;
             }
@@ -118,7 +122,7 @@ public class SettingTestTableContainer  extends Paginator {
                 }
                 for (SettingTestTableContainerComponent current3 : containerComponents2) {
 
-                    if (current3.getSettingTestIdText().toLowerCase().equals(settingTestId.toLowerCase())) {
+                    if (current3.getCountGradeText().toLowerCase().equals(settingTestId.toLowerCase())) {
                         result = current3;
                         break;
                     }
@@ -139,4 +143,5 @@ public class SettingTestTableContainer  extends Paginator {
 
 
     }
+
 }

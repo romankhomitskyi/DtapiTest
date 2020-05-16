@@ -21,4 +21,12 @@ public class NewTestRepository {
                 1
         );
     }
+    public static NewTest existTest() {
+        return new NewTest(
+                "Фінальний тес",
+                20,
+                10,
+                1
+        );
+    }
 }

@@ -1,9 +1,12 @@
 package dtapi.data.data_provider;
 
 import dtapi.data.enums.Pagination;
+import dtapi.data.faculties.NewFacultiesRepository;
+import dtapi.data.group.NewGroupRepository;
 import dtapi.data.question.NewQuestion;
 import dtapi.data.question.NewQuestionRepository;
 import dtapi.data.schedule.NewScheduleRepository;
+import dtapi.data.speciality.NewSpecialityRepository;
 import dtapi.data.subject.NewSubjectRepository;
 import dtapi.data.test.NewTestRepository;
 import dtapi.data.testSettings.TestSettings;
@@ -41,6 +44,18 @@ public class DataForCreatingSubjectAndTests {
         };
     }
     @DataProvider
+    public Object[][] failDeleting(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        NewFacultiesRepository.existFaculty().getFacultiesName(),
+                        NewSpecialityRepository.existSpeciality().getNameSpeciality(),
+                        NewGroupRepository.existGroup().getGroupId(),
+                        NewSubjectRepository.existSubject().getSubjectName(),
+                        NewTestRepository.existTest().getTestName()
+                }
+        };
+    }
+    @DataProvider
     public Object[][] addNewTest(Method method) {
         return new Object[][]{
                 {UserRepository.get().getAdmin(),
@@ -64,6 +79,19 @@ public class DataForCreatingSubjectAndTests {
                         NewScheduleRepository.schedule().getStartTime(),
                         NewScheduleRepository.schedule().getEndTime()
                         }
+        };
+    }
+    @DataProvider
+    public Object[][] deleteNewTest(Method method) {
+        return new Object[][]{
+                {UserRepository.get().getAdmin(),
+                        NewSubjectRepository.planet().getSubjectName(),
+                        NewTestRepository.planets().getTestName(),
+                        questionList(),
+                        settingsList(),
+                        NewScheduleRepository.schedule().getGroupName(),
+
+                }
         };
     }
 

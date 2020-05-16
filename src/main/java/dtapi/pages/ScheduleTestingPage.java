@@ -5,7 +5,7 @@ import dtapi.components.TestScheduleTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewScheduleModalWindow;
-import dtapi.modalsWindows.DeleteSettingOfTestModalWindow;
+import dtapi.modalsWindows.DeleteScheduleModalWindow;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -45,7 +45,7 @@ public class ScheduleTestingPage  extends Paginator {
         }
         return new  AddNewScheduleModalWindow(driver, log);
     }
-    public DeleteSettingOfTestModalWindow switchToDeleteScheduleModalWindow(String group) {
+    public DeleteScheduleModalWindow switchToDeleteScheduleModalWindow(String group) {
         String shoppingCartWindow = driver.getWindowHandle();
         getTestScheduleTableContainer()
                 .getTestScheduleTableContainerComponentByGroup(group)
@@ -55,7 +55,7 @@ public class ScheduleTestingPage  extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteSettingOfTestModalWindow(driver, log);
+        return new  DeleteScheduleModalWindow(driver, log);
     }
     public  AddNewScheduleModalWindow switchToEditScheduleModalWindow(String  group) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -97,5 +97,17 @@ public class ScheduleTestingPage  extends Paginator {
         }
 
         return false;
+    }
+    public SubjectPage backToSubjectPage() {
+
+        driver.navigate().back();
+        return new SubjectPage(driver,log);
+    }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

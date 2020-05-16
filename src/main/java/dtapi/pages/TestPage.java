@@ -5,6 +5,7 @@ import dtapi.components.TestOfSubjectTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddTestModalWindow;
+import dtapi.modalsWindows.DeleteTestModalWindow;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -60,6 +61,18 @@ public class TestPage extends Paginator {
         }
         return new AddTestModalWindow(driver, log);
     }
+    public DeleteTestModalWindow switchToDeleteTestModalWindow(String testName) {
+        String shoppingCartWindow = driver.getWindowHandle();
+        getTestOfSubjectTableContainer()
+                .getTestContainerComponentByTestName(testName)
+                .clickDeleteTestIcon();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(shoppingCartWindow)) {
+                driver.switchTo().window(windowHandle);
+            }
+        }
+        return new DeleteTestModalWindow(driver, log);
+    }
 
     public AddTestModalWindow switchToAddTestModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -105,6 +118,18 @@ public class TestPage extends Paginator {
     }
     public Boolean verifyTestPageHeaderText(String subjectName) {
         return getTestPageHeaderText().contains(subjectName);
+    }
+    public SubjectPage backToSubjectPage() {
+        sleep(1000);
+        driver.navigate().back();
+        return new SubjectPage(driver,log);
+    }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     /* private void clickDropDownOnTestPage() {

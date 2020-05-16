@@ -16,6 +16,7 @@ import java.util.List;
 public class SettingsTestPage extends Paginator {
     private By addNewSettingsButton = By.xpath("//span[contains(text(),'Додати налаштування')]/parent::button");
     private WaitUtils wait;
+    private By deleteSettingTestIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
     public SettingsTestPage(WebDriver driver, Logger log) {
         super(driver, log);
         initElements();
@@ -44,6 +45,18 @@ public class SettingsTestPage extends Paginator {
 
         return new SettingsTestPage(driver,log);
     }
+    public SettingsTestPage deleteTestsSettings(List<TestSettings> settings) {
+
+        int i = 1;
+        SettingsTestPage settingsTestPage = deleteAllTestSetting(settings.get(0));
+
+        while (i != settings.size()) {
+            settingsTestPage = settingsTestPage.deleteAllTestSetting(settings.get(i));
+            i++;
+        }
+
+        return new SettingsTestPage(driver,log);
+    }
 
     public SettingsTestPage getTestSetting(TestSettings testSettings) {
         switchToAddAddNewSettingOfTestModalWindow()
@@ -64,7 +77,14 @@ public class SettingsTestPage extends Paginator {
         }
         return new AddNewSettingOfTestModalWindow(driver, log);
     }
-    public DeleteSettingOfTestModalWindow switchToDeleteSettingsModalWindow(String settingId) {
+    public SettingsTestPage deleteAllTestSetting(TestSettings testSettings) {
+        switchToDeleteSettingsModalWindow(testSettings)
+                .deleteSettings()
+                .clickExitButton();
+        return new SettingsTestPage(driver,log);
+    }
+
+    public DeleteSettingOfTestModalWindow switchToDeleteSettingsModalWindow(TestSettings settingId) {
         String shoppingCartWindow = driver.getWindowHandle();
         getSettingTestTableContainer()
                 .getSettingsTestsContainerComponentById(settingId)
@@ -116,5 +136,17 @@ public class SettingsTestPage extends Paginator {
         }
 
         return false;
+    }
+    public TestPage backToTestPage() {
+
+        driver.navigate().back();
+        return new TestPage(driver,log);
+    }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

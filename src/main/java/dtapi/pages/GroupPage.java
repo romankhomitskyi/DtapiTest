@@ -210,40 +210,6 @@ public class GroupPage extends Paginator {
             e.printStackTrace();
         }
     }
-    /*
-     *//**
-     * finds container component by product from param and clicks remove button
-     *
-     * @param product
-     * @return new ShoppingCartPage after removing a component
-     *//*
-    public ShoppingCartPage removeComponentByProduct(Product product) {
-        this.getShoppingCartProductsContainer()
-                .getContainerComponentByProduct(product)
-                .clickRemoveButton();
-        waitUtils.setImplicitWait(0);
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.stalenessOf(this.getShoppingCartProductsContainer()
-                        .getContainerComponentByProduct(product).getProductName()));
-        waitUtils.setImplicitWait(10);
-        return new ShoppingCartPage(driver);
-    }
 
-
-
-    *//**
-     * goes through container components list and checks if product form param is not present in it
-     *
-     * @param expectedRemovedItem product expected to be removed
-     * @return false if product is present in list, true if not present
-     *//*
-    public boolean verifyProductRemoved(Product expectedRemovedItem) {
-        for (ShoppingCartContainerComponent component : getShoppingCartProductsContainer().getContainerComponents()) {
-            if (component.getProductNameText().equals(expectedRemovedItem.getName())) {
-                return false;
-            }
-        }
-        return true;
-    }*/
 
 }

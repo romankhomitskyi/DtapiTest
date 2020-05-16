@@ -87,6 +87,7 @@ public class MainPage extends BasePageObject {
     private void login(IUser user) {
         fillLoginField(user.getLogin());
         fillPasswordField(user.getPassword());
+
         clickLoginButton();
     }
 
@@ -129,5 +130,11 @@ public class MainPage extends BasePageObject {
 
 
 
-
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

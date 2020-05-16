@@ -40,8 +40,8 @@ public final class NewQuestionRepository {
                 "Скільки місяців в році",
                 QuestionType.TEXT_FIELD,
                 QuestionLvl.THIRD_LVL)
-                .addAnswer("7", false)
-                .addAnswer("1", false);
+                .addAnswer("12", false);
+
 
 
     }

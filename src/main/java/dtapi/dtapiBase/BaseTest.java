@@ -74,7 +74,7 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        sleep(2000);
+        sleep(1300);
         driver.quit();
     }
 }

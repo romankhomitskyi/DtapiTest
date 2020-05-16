@@ -5,6 +5,7 @@ import dtapi.components.SubjectTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddSubjectModalWindow;
+import dtapi.modalsWindows.DeleteSubjectModalWindow;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -61,6 +62,18 @@ public class SubjectPage extends Paginator {
         }
         return new AddSubjectModalWindow(driver, log);
     }
+    public DeleteSubjectModalWindow switchToDeleteSubjectModalWindow(String subjectName) {
+        String shoppingCartWindow = driver.getWindowHandle();
+        getSubjectTableContainer()
+                .getSubjectContainerComponentBySubjectName(subjectName)
+                .clickDeleteSubjectIcon();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(shoppingCartWindow)) {
+                driver.switchTo().window(windowHandle);
+            }
+        }
+        return new DeleteSubjectModalWindow(driver, log);
+    }
 
     private void changeUrl() {
         String mainPage = (driver.getCurrentUrl());
@@ -103,6 +116,15 @@ public class SubjectPage extends Paginator {
         }
         return false;
     }
+    public boolean verifySubjectRemoved(String subjectName) {
+
+        for (SubjectTableContainerComponent component : getSubjectTableContainer().getSubjectContainerComponents()) {
+            if (component.getSubjectNameText().equals(subjectName)) {
+                return false;
+            }
+        }
+        return true;
+    }
     public boolean verifySubjectAdded(String subjectName) {
 
         String  subjectsName = getSubjectTableContainer().
@@ -114,4 +136,5 @@ public class SubjectPage extends Paginator {
 
         return false;
     }
+
 }

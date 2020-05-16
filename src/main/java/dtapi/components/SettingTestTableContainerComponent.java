@@ -85,5 +85,6 @@ public class SettingTestTableContainerComponent {
 
     public void clickDeleteSettingTestIcon() {
         getDeleteSettingTestIcon().click();
+
     }
 }

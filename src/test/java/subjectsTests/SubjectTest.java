@@ -8,6 +8,7 @@ import dtapi.dtapiBase.TestUtilities;
 import dtapi.modalsWindows.AddSubjectModalWindow;
 import dtapi.modalsWindows.InformModalWindow;
 import dtapi.pages.ScheduleTestingPage;
+import dtapi.pages.SubjectPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -73,6 +74,78 @@ public class SubjectTest extends TestUtilities {
 
 
         /*Assert.assertTrue(testPage.verifyTestEdited(newTestName), "Isn't exist");*/
+
+
+    }
+    @Test(dataProvider = "deleteNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 2, groups = {"deleteNewTest"})
+    public void deleteTestAndSubject(IUser validAdmin,
+                           String newName,
+                           String newTestName,
+                           List<NewQuestion> questions,
+                           List<TestSettings> settings,
+                           String groupName
+
+    ) {
+        SubjectPage subjectPage = loadSignInPage()
+                .successfulAdminLogin(validAdmin)
+                .clickSubjectLink()
+                .navigateToTestOfSubjectPage(newName)
+                .navigateToSettingsTestPage(newTestName)
+                .deleteTestsSettings(settings)
+                .backToTestPage()
+                .navigateToQuestionPage(newTestName)
+                .deleteTestsQuestions(questions)
+                .backToTestPage()
+                .switchToDeleteTestModalWindow(newTestName)
+                .deleteTest()
+                .clickExitButton()
+                .clickSubjectLink()
+                .navigateToTestSchedulePage(newName)
+                .switchToDeleteScheduleModalWindow(groupName)
+                .deleteSchedule()
+                .backToSubjectPage()
+                .switchToDeleteSubjectModalWindow(newName)
+                .deleteSubject();
+        Assert.assertTrue(subjectPage.verifySubjectRemoved(newName), "Exist");
+    }
+
+        @Test(dataProvider = "failDeleting", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 3, groups = {"deletingItems"})
+        public void failDeletingItems(IUser validAdmin,
+            String facultyName,
+            String specialityName,
+            String groupName,
+            String subjectName,
+            String testName
+
+    )
+        {
+           InformModalWindow informModalWindow = loadSignInPage()
+                    .successfulAdminLogin(validAdmin)
+                    .clickFacultiesLink()
+                    .switchToDeleteFacultiesModalWindow(facultyName)
+                    .switchToFacultiesInformModalWindow();
+            Assert.assertTrue(informModalWindow.isTextPresent(), "Inform Window isn't present");
+                    informModalWindow.clickExitButtonAndSwitchToFacultyPage()
+                            .clickSpecialityLink()
+                            .switchToDeleteSpecialityModalWindow(specialityName)
+                            .switchToSpecialityInformWindow();
+            Assert.assertTrue(informModalWindow.isTextPresent(), "Inform Window isn't present");
+                            informModalWindow.clickExitButtonAndSwitchToSpecialityPage()
+                                    .clickGroupLink()
+                                    .switchToDeleteGroupModalWindow(groupName)
+                                    .switchToGroupInformModalWindow();
+            Assert.assertTrue(informModalWindow.isTextPresent(), "Inform Window isn't present");
+                            informModalWindow.clickExitButtonAndSwitchToGroupPage()
+                                    .clickSubjectLinks()
+                                    .navigateToTestOfSubjectPage(subjectName)
+                                    .switchToDeleteTestModalWindow(testName)
+                                    .deleteTest();
+            Assert.assertTrue(informModalWindow.isTextPresent(), "Inform Window isn't present");
+                            informModalWindow.clickExitButton()
+                                    .clickSubjectLink()
+                                    .switchToDeleteSubjectModalWindow(subjectName)
+                                    .switchToSubjectInformModalWindow();
+            Assert.assertTrue(informModalWindow.isTextPresent(), "Inform Window isn't present");
 
 
     }

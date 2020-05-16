@@ -65,10 +65,27 @@ public class QuestionPage extends Paginator {
 
         return new AddQuestionPage(driver, log);
     }
-    public DeleteQuestionModalWindow switchToDeleteQuestionModalWindow(String questionText) {
+    public SettingsTestPage deleteTestsQuestions(List<NewQuestion> questions) {
+
+        int i = 1;
+        QuestionPage questionPage = deleteAllQuestions(questions.get(0));
+
+        while (i != questions.size()) {
+            questionPage = questionPage.deleteAllQuestions(questions.get(i));
+            i++;
+        }
+
+        return new SettingsTestPage(driver,log);
+    }
+    private QuestionPage deleteAllQuestions(NewQuestion question) {
+        switchToDeleteQuestionModalWindow(question)
+                .deleteQuestion();
+        return new QuestionPage(driver,log);
+    }
+    public DeleteQuestionModalWindow switchToDeleteQuestionModalWindow(NewQuestion question) {
         String shoppingCartWindow = driver.getWindowHandle();
         getQuestionTableContainer()
-                .getQuestionComponentByQuestionText(questionText)
+                .getQuestionComponentByQuestionText(question)
                 .clickDeleteQuestionIcon();
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
@@ -106,6 +123,16 @@ public class QuestionPage extends Paginator {
         }
         return true;
     }
-
-
+    public TestPage backToTestPage() {
+        sleep(1000);
+        driver.navigate().back();
+        return new TestPage(driver,log);
+    }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

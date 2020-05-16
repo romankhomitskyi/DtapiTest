@@ -1,5 +1,6 @@
 package dtapi.components;
 
+import dtapi.data.question.NewQuestion;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import org.apache.logging.log4j.Logger;
@@ -65,6 +66,9 @@ public class QuestionTableContainer extends Paginator {
     }
     public  QuestionTableContainerComponent getQuestionComponentByQuestionText(String questionText) {
         return getQuestionComponentByQuestionsText(questionText);
+    }
+    public  QuestionTableContainerComponent getQuestionComponentByQuestionText(NewQuestion questionText) {
+        return getQuestionComponentByQuestionsText(questionText.getQuestionName());
     }
     protected QuestionTableContainerComponent getQuestionComponentByQuestionsText(String questionText) {
         QuestionTableContainerComponent result = null;

@@ -22,13 +22,20 @@ public class AdminHeadrer extends BaseHeader {
     }
 
     public SubjectPage clickSubjectLink() {
-        wait.waitForElementClickability(subjectsLink);
-        wait.visibilityOfElement(subjectsLink);
+        wait.prevenseOfElement(subjectsLink);
         wait.visibilityOfElement(subjectsLink);
         click(subjectsLink);
         wait.prevenseOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
+        return new SubjectPage(driver, log);
+    }
+    public SubjectPage clickSubjectLinks() {
+        wait.prevenseOfElement(subjectsLink);
+        wait.visibilityOfElement(subjectsLink);
+        click(subjectsLink);
+
+
         return new SubjectPage(driver, log);
     }
 
