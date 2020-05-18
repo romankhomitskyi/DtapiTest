@@ -22,6 +22,7 @@ public class AdminHeadrer extends BaseHeader {
     }
 
     public SubjectPage clickSubjectLink() {
+        wait.waitForElementClickability(subjectsLink);
         wait.prevenseOfElement(subjectsLink);
         wait.visibilityOfElement(subjectsLink);
         click(subjectsLink);

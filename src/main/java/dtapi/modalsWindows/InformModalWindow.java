@@ -43,6 +43,18 @@ public class InformModalWindow extends BaseModalWindow {
 
         return new SettingsTestPage(driver, log);
     }
+    public TestPage clickExitsButton() {
+        String addSubjectPageWindow = driver.getWindowHandle();
+        clickExitButtons();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(addSubjectPageWindow)) {
+                driver.switchTo().window(windowHandle);
+
+            }
+        }
+
+        return new TestPage(driver, log);
+    }
     public FacultiesPage clickExitButtonAndSwitchToFacultyPage() {
         String addSubjectPageWindow = driver.getWindowHandle();
         clickExitButtons();

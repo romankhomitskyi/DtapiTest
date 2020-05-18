@@ -84,6 +84,10 @@ public class WaitUtils {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].scrollIntoView();", element);
     }
+    public void javaClick(WebElement element) {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].click();", element);
+    }
 
 
     public void visibilityOfElement(By element) {

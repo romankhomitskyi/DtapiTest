@@ -3,7 +3,7 @@ package dtapi.pages;
 import dtapi.components.ResultsTableContainer;
 import dtapi.data.student.IStudent;
 import dtapi.dtapiBase.WaitUtils;
-import dtapi.elements.AdminHeadrer;
+import dtapi.elements.Paginator;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ResultsPage extends AdminHeadrer {
+public class ResultsPage extends Paginator {
     private By resultsPageTitle = By.xpath("//h3");
     private WaitUtils wait;
     private By groupDropDown = By.xpath("//mat-select[contains(@class,'mat-select') and contains(@placeholder,'Виберіть групу')]");
@@ -44,6 +44,7 @@ public class ResultsPage extends AdminHeadrer {
         return false;
     }
     public boolean verifyStudentResults(String result) {
+        clickLastButton();
         int size = getResultsTableContainer().getResultsContainerComponents().size();
         String  results = getResultsTableContainer()
                 .getStudentResultContainerComponentByStudentNSF(Integer.toString(size))
