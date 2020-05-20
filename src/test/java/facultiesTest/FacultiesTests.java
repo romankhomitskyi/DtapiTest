@@ -14,7 +14,7 @@ import static dtapi.data.faculties.NewFacultiesRepository.*;
 
 public class FacultiesTests extends TestUtilities {
     @Test(dataProvider = "crudOperationsOnFacultyPage", dataProviderClass = DataForCreatingFaculties.class, priority = 1, groups = {"crudOperationsOnFacultypage"})
-    public void verifyCrudOperations(IUser validAdmin,
+    public void verifyCrudOperationsOnFacultyPage(IUser validAdmin,
                               String facultyName,
                               String facultyDesc,
                               String newFacultyName,

@@ -34,6 +34,7 @@ public class BaseTest {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
         capabilities.setVersion("80.0");
+        capabilities.setCapability("videoName", method.getName());
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         ChromeOptions options = new ChromeOptions();
@@ -74,8 +75,9 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        sleep(1300);
+        sleep(2000);
         driver.quit();
     }
+
 }
 

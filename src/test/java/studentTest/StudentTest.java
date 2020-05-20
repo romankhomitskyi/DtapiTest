@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class StudentTest extends TestUtilities {
     @Test(dataProvider = "addNewStudent", dataProviderClass = DataForCreatingStudent.class, priority = 1, groups = {"addNewStudent"})
-    public void addNewStudent(IUser validAdmin,
+    public void verifyAddingNewStudent(IUser validAdmin,
                               String groupID,
                               IStudent validStudent,
                               IStudent secondStudent,

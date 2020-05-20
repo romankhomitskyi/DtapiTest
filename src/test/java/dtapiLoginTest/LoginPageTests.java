@@ -31,7 +31,7 @@ public class LoginPageTests extends TestUtilities {
     }*/
 
     @org.testng.annotations.Test(dataProvider = "dataLoginTests", dataProviderClass = DataForLoginTest.class, priority = 1, groups = {"negativeTest", "smokeTest", "check"})
-    public void failLogin(IUser invalidUser1, String errorMessage,IUser invalidUser2,IUser invalidUser3) {
+    public void verifyLoginPageValidation(IUser invalidUser1, String errorMessage,IUser invalidUser2,IUser invalidUser3) {
         loadSignInPage()
                 .unsuccessfulLoginPage(invalidUser1);
         String error = loadSignInPage().getErrorMessageText();

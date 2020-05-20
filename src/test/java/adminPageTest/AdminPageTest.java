@@ -56,7 +56,7 @@ public class AdminPageTest extends TestUtilities {
     }
 
     @Test(dataProvider = "addNewAdmin", dataProviderClass = DataForAdminPageTest.class, priority = 2, groups = {"a addNewAdmin"})
-    public void addNewAdmin(IUser validAdmin,
+    public void verifyAddingNewAdmin(IUser validAdmin,
                               IAdmin fistAdmin,
                               IAdmin secondAdmin
 

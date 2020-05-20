@@ -13,7 +13,7 @@ public class DataForLoginTest {
         if ("login".equalsIgnoreCase(testCase)) {
             return new Object[][]{{
                     UserRepository.get().getUser(),}};
-        } else if ("failLogin".equalsIgnoreCase(testCase)) {
+        } else if ("verifyLoginPageValidation".equalsIgnoreCase(testCase)) {
             return new Object[][]{
                     {UserRepository.get().getInvalidUser(),
                             MainPage.ERROR_MESSAGE,

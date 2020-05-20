@@ -21,7 +21,7 @@ import static dtapi.data.subject.NewSubjectRepository.*;
 public class SubjectTest extends TestUtilities {
 
     @Test(dataProvider = "addNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 1, groups = {"addNewSubjectAndTest"})
-    public void addNewTest(IUser validAdmin,
+    public void verifyAddingNewTest(IUser validAdmin,
                            String oldName,
                            String oldDesc,
                            String newName,
@@ -78,7 +78,7 @@ public class SubjectTest extends TestUtilities {
 
     }
     @Test(dataProvider = "deleteNewTest", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 2, groups = {"deleteNewTest"})
-    public void deleteTestAndSubject(IUser validAdmin,
+    public void verifyDeletingTestAndSubject(IUser validAdmin,
                            String newName,
                            String newTestName,
                            List<NewQuestion> questions,
@@ -110,7 +110,7 @@ public class SubjectTest extends TestUtilities {
     }
 
         @Test(dataProvider = "failDeleting", dataProviderClass = DataForCreatingSubjectAndTests.class, priority = 3, groups = {"deletingItems"})
-        public void failDeletingItems(IUser validAdmin,
+        public void verifyFailDeletingItems(IUser validAdmin,
             String facultyName,
             String specialityName,
             String groupName,
