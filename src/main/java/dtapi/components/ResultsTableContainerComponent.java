@@ -8,7 +8,7 @@ public class ResultsTableContainerComponent {
 
     private By studentNSF = By.xpath(".//td[contains(@class,'cdk-column-student')]");
     private By studentId = By.xpath(".//td[contains(@class,'cdk-column-id')]");
-    private By studentResult = By.xpath(".//td[contains(@class,'cdk-column-result')]");
+    private By studentResult = By.xpath(".//td[contains(@class,'cdk-column-twenty')]");
     private By studentScore = By.xpath(".//td[contains(@class,'cdk-column-score')]");
 
 

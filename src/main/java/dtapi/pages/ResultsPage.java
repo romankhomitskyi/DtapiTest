@@ -45,15 +45,18 @@ public class ResultsPage extends Paginator {
     }
     public boolean verifyStudentResults(String result) {
         clickLastButton();
+        sleep(500);
         int size = getResultsTableContainer().getResultsContainerComponents().size();
         String  results = getResultsTableContainer()
                 .getStudentResultContainerComponentByStudentNSF(Integer.toString(size))
                 .getStudentResultText();
         if(results.contains(result)){
+            System.out.println(size);
             System.out.println(result);
             System.out.println(results);
             return true;
         }
+        System.out.println(size);
         System.out.println(result);
         System.out.println(results);
         return false;
@@ -145,5 +148,12 @@ public class ResultsPage extends Paginator {
         wait.prevenseOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
+    }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

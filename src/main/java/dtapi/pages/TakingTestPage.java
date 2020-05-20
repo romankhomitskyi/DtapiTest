@@ -22,8 +22,8 @@ public class TakingTestPage extends BasePageObject {
         private By fiveQuestion = By.xpath("//div[contains(text(),'5')]");
         private By sixQuestion = By.xpath("//div[contains(text(),'6')]");
         private By finishTestButton = By.xpath("//span[contains(text(),'Завершити тест')]/parent::button");
-        private By mark = By.xpath("//p[contains(text(),'Ваша оцінка')]");
-        private By exitButton = By.xpath("//button[contains(text(),'Вийти')]");
+        private By mark = By.xpath("//p[contains(text(),'Оцінка в 12-бальній системі')]");
+        private By exitButton = By.xpath("//span[contains(text(),'Вийти')]/parent::button");
         private WaitUtils wait;
 
 
@@ -96,7 +96,7 @@ public class TakingTestPage extends BasePageObject {
 
     }
     public String getMark(){
-        String page = find(mark).getText().split(" ")[2];
+        String page = find(mark).getText().split(" ")[4];
         return page;
     }
     public UserPage clickExitButton(){

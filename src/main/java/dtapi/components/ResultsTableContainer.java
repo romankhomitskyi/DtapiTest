@@ -53,7 +53,7 @@ public class ResultsTableContainer  extends Paginator {
     protected ResultsTableContainerComponent getStudentResultContainerComponentByName(String studentNSF) {
         ResultsTableContainerComponent result = null;
         WebDriverWait waits = new WebDriverWait(driver, 10);
-        sleep(1500);
+        sleep(1000);
         List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(resultsTableContainerXpath))));
         List<ResultsTableContainerComponent> containerComponents = new ArrayList<>();
         for (WebElement current : rows) {
