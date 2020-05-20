@@ -27,6 +27,7 @@ public class DeleteFacultiesModalWindow extends BaseDeleteItemModalWindow {
     public InformModalWindow switchToFacultiesInformModalWindow () {
         String addSubjectPageWindow = driver.getWindowHandle();
         clickSubmitButton();
+
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -46,5 +47,12 @@ public class DeleteFacultiesModalWindow extends BaseDeleteItemModalWindow {
         }
 
         return new FacultiesPage(driver, log);
+    }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

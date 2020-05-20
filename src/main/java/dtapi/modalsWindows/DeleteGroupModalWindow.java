@@ -25,9 +25,17 @@ public class DeleteGroupModalWindow extends BaseDeleteItemModalWindow {
 
         return new GroupPage(driver, log);
     }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     public InformModalWindow switchToGroupInformModalWindow() {
         String addSubjectPageWindow = driver.getWindowHandle();
         clickSubmitButton();
+
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);

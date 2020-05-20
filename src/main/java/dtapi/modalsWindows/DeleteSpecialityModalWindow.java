@@ -24,8 +24,16 @@ public class DeleteSpecialityModalWindow extends BaseDeleteItemModalWindow {
 
         return new SpecialityPage(driver, log);
     }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     public InformModalWindow switchToSpecialityInformWindow() {
         String addSubjectPageWindow = driver.getWindowHandle();
+
         clickSubmitButton();
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {

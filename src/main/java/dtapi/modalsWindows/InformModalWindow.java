@@ -33,7 +33,9 @@ public class InformModalWindow extends BaseModalWindow {
 
     public SettingsTestPage clickExitButton() {
         String addSubjectPageWindow = driver.getWindowHandle();
+        sleep(500);
         clickExitButtons();
+        sleep(500);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -55,9 +57,18 @@ public class InformModalWindow extends BaseModalWindow {
 
         return new TestPage(driver, log);
     }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     public FacultiesPage clickExitButtonAndSwitchToFacultyPage() {
         String addSubjectPageWindow = driver.getWindowHandle();
+        sleep(500);
         clickExitButtons();
+        sleep(500);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -67,9 +78,12 @@ public class InformModalWindow extends BaseModalWindow {
 
         return new FacultiesPage(driver, log);
     }
+
     public GroupPage clickExitButtonAndSwitchToGroupPage() {
         String addSubjectPageWindow = driver.getWindowHandle();
+        sleep(500);
         clickExitButtons();
+     sleep(500);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -79,9 +93,12 @@ public class InformModalWindow extends BaseModalWindow {
 
         return new GroupPage(driver, log);
     }
+
     public SpecialityPage clickExitButtonAndSwitchToSpecialityPage() {
         String addSubjectPageWindow = driver.getWindowHandle();
+        sleep(500);
         clickExitButtons();
+        sleep(500);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);

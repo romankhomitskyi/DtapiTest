@@ -14,7 +14,9 @@ public class DeleteTestModalWindow extends BaseDeleteItemModalWindow{
 
     public InformModalWindow deleteTest() {
         String addSubjectPageWindow = driver.getWindowHandle();
+        sleep(500);
         clickSubmitButton();
+        sleep(500);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -23,4 +25,12 @@ public class DeleteTestModalWindow extends BaseDeleteItemModalWindow{
 
         return new InformModalWindow(driver, log);
     }
+    protected void sleep(long n) {
+        try {
+            Thread.sleep(n);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

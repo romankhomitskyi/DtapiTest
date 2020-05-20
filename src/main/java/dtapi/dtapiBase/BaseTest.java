@@ -37,6 +37,8 @@ public class BaseTest {
         capabilities.setCapability("videoName", method.getName() + ".mp4");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
+        capabilities.setCapability("screenResolution", "1920x1080x24");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("test-type");
 
