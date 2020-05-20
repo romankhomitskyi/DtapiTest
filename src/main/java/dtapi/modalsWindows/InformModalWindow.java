@@ -18,10 +18,10 @@ public class InformModalWindow extends BaseModalWindow {
     }
 
     public boolean isTextPresent() {
+        sleep(300);
         wait.prevenseOfElement(divText);
         wait.visibilityOfElement(divText);
         WebElement result = driver.findElement(divText);
-        wait.scrollUntilElementVisible(result);
         return result.isDisplayed();
     }
 
