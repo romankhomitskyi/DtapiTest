@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 public class AdminTableContainerComponent {
     private WebElement adminTableContainerComponent;
 
-    private By adminLogin = By.xpath(".//td[contains(@class,'cdk-column-userNameColumn')]");
+    private By adminLogin = By.xpath(".//td[contains(@class,'cdk-column-username')]");
     private By editAdminIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
     private By deleteAdmin = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
 

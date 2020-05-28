@@ -65,16 +65,16 @@ public class AdminPageTest extends TestUtilities {
                 .successfulAdminLogin(validAdmin)
                 .clickAdminsLink()
                 .switchToAddNewAdminModalWindow()
-                .fillAllAdminFieldsAndSubmitForm(fistAdmin)
-                .refreshPage();
+                .fillAllAdminFieldsAndSubmitForm(fistAdmin);
+
         Assert.assertTrue(adminsPage.verifyAdminAdded(fistAdmin), "Isn't exist");
         adminsPage.switchToEditAdminModalWindow(fistAdmin)
-                .fillAllAdminFieldsAndSubmitForm(secondAdmin)
-                .refreshPage();
+                .fillAllAdminFieldsAndSubmitForm(secondAdmin);
+
         Assert.assertTrue(adminsPage.verifyAdminEdited(secondAdmin), "Isn't edited");
         adminsPage.switchToDeleteAdminModalWindow(secondAdmin)
-                .deleteAdmin()
-                .refreshPage();
+                .deleteAdmin();
+
         Assert.assertTrue(adminsPage.verifyAdminRemoved(secondAdmin), "Isn't deleted");
 
 

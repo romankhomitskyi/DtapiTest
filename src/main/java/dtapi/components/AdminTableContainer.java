@@ -35,7 +35,7 @@ public class AdminTableContainer extends Paginator {
     public List<AdminTableContainerComponent> getAdminContainerComponents() {
         WebDriverWait waits = new WebDriverWait(driver, 10);
 
-        /*waits.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.xpath(groupTableContainerXpath))));*/
+        sleep(2000);
         List<AdminTableContainerComponent> containerComponents = new ArrayList<>();
         List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(adminTableContainerXpath))));
 
@@ -59,7 +59,7 @@ public class AdminTableContainer extends Paginator {
     protected AdminTableContainerComponent getAdminContainerComponentsByLogin(String adminLog) {
         AdminTableContainerComponent result = null;
         WebDriverWait waits = new WebDriverWait(driver, 10);
-
+        sleep(2000);
         List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(adminTableContainerXpath))));
         List<AdminTableContainerComponent> containerComponents = new ArrayList<>();
         for (WebElement current : rows) {

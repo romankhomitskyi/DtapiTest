@@ -18,7 +18,7 @@ public class AdminHeadrer extends BaseHeader {
 
     public AdminHeadrer(WebDriver driver, Logger log) {
         super(driver, log);
-        wait = new WaitUtils(driver, 5);
+        wait = new WaitUtils(driver, 15);
     }
 
     public SubjectPage clickSubjectLink() {
