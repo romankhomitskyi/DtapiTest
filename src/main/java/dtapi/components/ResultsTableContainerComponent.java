@@ -10,6 +10,7 @@ public class ResultsTableContainerComponent {
     private By studentId = By.xpath(".//td[contains(@class,'cdk-column-id')]");
     private By studentResult = By.xpath(".//td[contains(@class,'cdk-column-twenty')]");
     private By studentScore = By.xpath(".//td[contains(@class,'cdk-column-score')]");
+    private By sessionDate = By.xpath(".//td[contains(@class,'cdk-column-session_date')]");
 
 
 
@@ -19,6 +20,14 @@ public class ResultsTableContainerComponent {
         this.resultsTableContainerComponent = resultsTableContainerComponent;
 
 
+    }
+    public WebElement getSessionDate() {
+        WebElement sessionsDate = resultsTableContainerComponent.findElement(sessionDate);
+        return sessionsDate;
+    }
+
+    public String getSessionDateText() {
+        return getSessionDate().getText();
     }
     public WebElement getStudentId() {
         WebElement StudentId = resultsTableContainerComponent.findElement(studentId);

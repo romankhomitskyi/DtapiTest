@@ -116,7 +116,7 @@ public class DataForCreatingSubjectAndTests {
 
     private List<TestSettings>  settingsList() {
         List<TestSettings> settings = new ArrayList<>();
-        settings.add(TestSettingsRepository.getSettings1());
+       /* settings.add(TestSettingsRepository.getSettings1());*/
         settings.add(TestSettingsRepository.getSetting2());
         settings.add(TestSettingsRepository.getSetting3());
         settings.add(TestSettingsRepository.getSetting4());

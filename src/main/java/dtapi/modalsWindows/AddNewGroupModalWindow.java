@@ -22,7 +22,7 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
 
     public AddNewGroupModalWindow(WebDriver driver, Logger log) {
         super(driver, log);
-        wait = new WaitUtils(driver, 10);
+        wait = new WaitUtils(driver, 15);
     }
     public AddNewGroupModalWindow fillInvalidGroupData(NewGroup group) {
         fillInvalidData(group);
@@ -97,13 +97,12 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         wait.prevenseOfElement(specialityDropDown);
         wait.waitForElementClickability(specialityDropDown);
         click(specialityDropDown);
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.visibilityOfAllElements2(By.xpath("//mat-option/span"));
     }
 
 
     private void clickSpecialityOptions(String specialityName) {
 
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(specialityName)) {
@@ -123,12 +122,10 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
     }
 
     private void clickFacultyDropDown() {
-        wait.prevenseOfElement(facultyDropDown);
-        wait.visibilityOfElement(facultyDropDown);
+
         wait.waitForElementClickability(facultyDropDown);
         click(facultyDropDown);
-        wait.visibilityOfElement2(driver.findElement(listBox));
-        wait.prevenseOfElement(listBox);
+        wait.visibilityOfAllElements2(By.xpath("//mat-option/span"));
 
     }
 
@@ -137,12 +134,11 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         driver.findElement(By.xpath(String.format(facultyDropDownOption,facultyName))).click();
     }*/
     private void clickFacultyOptions(String facultyName) {
-        wait.visibilityOfElement2(driver.findElement(By.xpath("//mat-option/span")));
-        wait.waitForElementClickability2(driver.findElement(By.xpath("//mat-option/span")));
 
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(facultyName)) {
+                wait.waitForElementClickability2(options);
                 options.click();
                 wait.invisibilityOfEmelement2(options);// click the desired option
                 break;

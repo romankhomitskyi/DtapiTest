@@ -1,7 +1,6 @@
 package dtapi.pages;
 
 import dtapi.components.ResultsTableContainer;
-import dtapi.data.student.IStudent;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ResultsPage extends Paginator {
@@ -30,25 +31,16 @@ public class ResultsPage extends Paginator {
         resultsTableContainer  = new ResultsTableContainer (driver, log);
 
     }
-    public boolean verifyStudentResults(IStudent studentNSF,String result) {
 
-        String  results = getResultsTableContainer()
-        .getStudentResultContainerComponentByStudentNSF(studentNSF.getSurname())
-                .getStudentResultText();
-        if(results.equals(result)){
-            System.out.println(result);
-            System.out.println(results);
-            return true;
-        }
-
-        return false;
-    }
     public boolean verifyStudentResults(String result) {
         clickLastButton();
         sleep(500);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String strDate = formatter.format(date);
         int size = getResultsTableContainer().getResultsContainerComponents().size();
         String  results = getResultsTableContainer()
-                .getStudentResultContainerComponentByStudentNSF(Integer.toString(size))
+                .getStudentResultContainerComponentBySessionDate(strDate)
                 .getStudentResultText();
         if(results.contains(result)){
             System.out.println(size);

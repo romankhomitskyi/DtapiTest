@@ -45,12 +45,12 @@ public class ResultsTableContainer  extends Paginator {
         }
         return containerComponents;
     }
-    public ResultsTableContainerComponent getStudentResultContainerComponentByStudentNSF(String studentNSF) {
-        return getStudentResultContainerComponentByName(studentNSF);
+    public ResultsTableContainerComponent getStudentResultContainerComponentBySessionDate(String studentNSF) {
+        return getStudentResultContainerComponentSessionDate(studentNSF);
     }
 
 
-    protected ResultsTableContainerComponent getStudentResultContainerComponentByName(String studentNSF) {
+    protected ResultsTableContainerComponent getStudentResultContainerComponentSessionDate(String sessionDate) {
         ResultsTableContainerComponent result = null;
         WebDriverWait waits = new WebDriverWait(driver, 10);
         sleep(1000);
@@ -61,7 +61,7 @@ public class ResultsTableContainer  extends Paginator {
         }
         for (ResultsTableContainerComponent current : containerComponents) {
 
-            if (current.getStudentIdText().toLowerCase().contains(studentNSF.toLowerCase())) {
+            if (current.getSessionDateText().toLowerCase().contains(sessionDate.toLowerCase())) {
                 result = current;
                 break;
             }
@@ -81,7 +81,7 @@ public class ResultsTableContainer  extends Paginator {
                 }
                 for (ResultsTableContainerComponent current3 : containerComponents2) {
 
-                    if (current3.getStudentIdText().toLowerCase().contains(studentNSF.toLowerCase())) {
+                    if (current3.getSessionDateText().toLowerCase().contains(sessionDate.toLowerCase())) {
                         result = current3;
                         break;
                     }
@@ -95,7 +95,7 @@ public class ResultsTableContainer  extends Paginator {
         }
 
         if (result == null) {
-            throw new RuntimeException(String.format("Student with studentNSF: %s not found", studentNSF));
+            throw new RuntimeException(String.format("Student with sessionDate: %s not found", sessionDate));
         }
 
         return result;
