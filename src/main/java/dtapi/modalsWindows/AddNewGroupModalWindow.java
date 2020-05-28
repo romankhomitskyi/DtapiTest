@@ -124,7 +124,7 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
     private void clickFacultyDropDown() {
 
         wait.waitForElementClickability(facultyDropDown);
-        click(facultyDropDown);
+        driver.findElement(facultyDropDown).click();
         wait.visibilityOfAllElements2(By.xpath("//mat-option/span"));
 
     }

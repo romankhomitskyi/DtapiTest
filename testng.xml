@@ -15,6 +15,5 @@
         <suite-file path="src/main/resources/TestSuites/AdminPageTests.xml" />
         <suite-file path="src/main/resources/TestSuites/TakingTestPage.xml" />
 
-
     </suite-files>
 </suite>

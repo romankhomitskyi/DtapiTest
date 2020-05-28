@@ -37,7 +37,7 @@ public class NewGroupRepository {
     public static NewGroup existGroup() {
         return new NewGroup(
                 "НР-12",
-                "Комп'ютерна інженеріяаіаі",
+                "Комп'ютерна інженерія",
                 "Автоматизація та компютерні наукии"
 
         );
