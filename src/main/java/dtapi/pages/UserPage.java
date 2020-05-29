@@ -50,7 +50,9 @@ public class UserPage extends BasePageObject {
     }
 
  public MainPage logOut(){
+        wait.waitForElementClickability(logOutButton);
         driver.findElement(logOutButton).click();
+     wait.waitForElementClickability(logOutButton2);
         driver.findElement(logOutButton2).click();
 
      return new MainPage(driver,log);
