@@ -1,6 +1,7 @@
 package dtapi.pages;
 
 import dtapi.components.ResultsTableContainer;
+import dtapi.components.ResultsTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -35,22 +38,24 @@ public class ResultsPage extends Paginator {
     public boolean verifyStudentResults(String result) {
         clickLastButton();
         sleep(500);
+
+        List<Integer> id = new ArrayList<>();
+            for (ResultsTableContainerComponent component : getResultsTableContainer().getResultsContainerComponents()) {
+               id.add(Integer.parseInt(component.getStudentIdText()));
+            }
+        Collections.max(id);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         String strDate = formatter.format(date);
-        int size = getResultsTableContainer().getResultsContainerComponents().size();
         String  results = getResultsTableContainer()
-                .getStudentResultContainerComponentBySessionDate(strDate)
+                .getStudentResultContainerComponentByStudentId(Collections.max(id).toString())
                 .getStudentResultText();
         if(results.contains(result)){
-            System.out.println(size);
-            System.out.println(result);
-            System.out.println(results);
+            System.out.println(" Результат мого коду" +results );
+            System.out.println(" Результат тесту" +result );
             return true;
         }
-        System.out.println(size);
-        System.out.println(result);
-        System.out.println(results);
+
         return false;
     }
     public ResultsTableContainer  getResultsTableContainer () {

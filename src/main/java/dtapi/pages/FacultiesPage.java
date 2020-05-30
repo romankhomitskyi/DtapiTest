@@ -94,8 +94,9 @@ public class FacultiesPage extends Paginator {
         return new AddFacultiesModalWindow(driver, log);
     }
 
+
     public boolean verifyFacultyRemoved(String  facultyName) {
-       
+
         for (FacultyTableContainerComponent component : getFacultyTableContainer().getFacultyContainerComponents()) {
             if (component.getFacultyNameText().equals(facultyName)) {
                 return false;
@@ -103,7 +104,6 @@ public class FacultiesPage extends Paginator {
         }
         return true;
     }
-
     public boolean verifyFacultyEdited(String facultyName) {
 
         for (FacultyTableContainerComponent component : getFacultyTableContainer().getFacultyContainerComponents()) {
