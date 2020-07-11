@@ -4,23 +4,34 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class SubjectTableContainerComponent {
-    private By subjectId = By.xpath(".//td[contains(@class,'cdk-column-subject_id')]");
-    private By subjectName = By.xpath(".//td[contains(@class,'cdk-column-subject_name')]");
-    private By subjectDesc = By.xpath(".//td[contains(@class,'cdk-column-subject_description')]");
-    private By subjectTestIcon = By.xpath(".//td//mat-icon[contains(text(),'assignment_turned_in')]");
-    private By scheduleIcon = By.xpath(".//td//mat-icon[contains(text(),'date_range')]");
-    private By editSubjectIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteSubjectIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
     private WebElement subjectTableComponent;
+
+    private WebElement subjectId;
+    private WebElement subjectName;
+    private WebElement subjectDesc;
+    private WebElement subjectTestIcon;
+    private WebElement scheduleIcon;
+    private WebElement editSubjectIcon;
+    private WebElement deleteSubjectIcon;
 
     public SubjectTableContainerComponent(WebElement subjectTableComponent) {
 
         this.subjectTableComponent = subjectTableComponent;
-
+        initElements();
     }
+
+    private void initElements() {
+
+        subjectName = subjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-subject_name')]"));
+        subjectDesc = subjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-subject_description')]"));
+        subjectTestIcon  = subjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'assignment_turned_in')]"));
+        scheduleIcon  = subjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'date_range')]"));
+        editSubjectIcon =subjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+        deleteSubjectIcon= subjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
+    }
+
     public WebElement getSubjectId() {
-        WebElement subjectsId = subjectTableComponent.findElement(subjectId);
-        return subjectsId;
+        return subjectId;
     }
 
     public String getSubjectIdText() {
@@ -29,10 +40,7 @@ public class SubjectTableContainerComponent {
 
 
     public WebElement getSubjectName() {
-
-
-        WebElement subjectsName = subjectTableComponent.findElement(subjectName);
-        return subjectsName;
+        return subjectName;
     }
 
     public String getSubjectNameText() {
@@ -41,9 +49,7 @@ public class SubjectTableContainerComponent {
     }
 
     public WebElement getSubjectDesc() {
-        WebElement subjectsDesc = subjectTableComponent.findElement(subjectDesc);
-
-        return subjectsDesc;
+        return subjectDesc;
     }
 
     public String getSubjectDescText() {
@@ -51,12 +57,8 @@ public class SubjectTableContainerComponent {
     }
 
 
-
-
     public WebElement getEditSubjectIcon() {
-
-        WebElement editsSubjectIcon = subjectTableComponent.findElement(editSubjectIcon);
-        return  editsSubjectIcon;
+        return  editSubjectIcon;
     }
 
     public void clickEditSubjectIcon() {
@@ -64,8 +66,7 @@ public class SubjectTableContainerComponent {
     }
 
     public WebElement getSubjectTestIcon() {
-        WebElement subjectsTestIcon = subjectTableComponent.findElement(subjectTestIcon);
-        return subjectsTestIcon;
+        return subjectTestIcon;
     }
 
     public void clickSubjectTestIcon() {
@@ -73,8 +74,7 @@ public class SubjectTableContainerComponent {
     }
 
     public WebElement getScheduleIcon() {
-        WebElement schedulesIcon = subjectTableComponent.findElement(scheduleIcon);
-        return schedulesIcon;
+        return scheduleIcon;
     }
 
     public void clickScheduleIcon() {
@@ -82,8 +82,7 @@ public class SubjectTableContainerComponent {
     }
 
     public WebElement getDeleteSubjectIcon() {
-        WebElement deleteSubjectsIcon = subjectTableComponent.findElement(deleteSubjectIcon);
-        return deleteSubjectsIcon;
+        return deleteSubjectIcon;
     }
 
     public void clickDeleteSubjectIcon() {

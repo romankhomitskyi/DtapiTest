@@ -18,14 +18,14 @@ public class FacultiesPage extends Paginator {
     private FacultyTableContainer facultyTableContainer;
     public static final String PAGE_TITLE = "Факультети";
 
-    public FacultiesPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public FacultiesPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
         initElements();
     }
     private void initElements() {
 
-        facultyTableContainer = new FacultyTableContainer(driver, log);
+        facultyTableContainer = new FacultyTableContainer(driver);
     }
     public FacultyTableContainer getFacultyTableContainer() {
         return facultyTableContainer;
@@ -48,7 +48,7 @@ public class FacultiesPage extends Paginator {
             }
         }
 
-        return new AddFacultiesModalWindow(driver, log);
+        return new AddFacultiesModalWindow(driver);
     }
     public DeleteFacultiesModalWindow switchToDeleteFacultiesModalWindow(String facultyName) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -60,7 +60,7 @@ public class FacultiesPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteFacultiesModalWindow(driver, log);
+        return new  DeleteFacultiesModalWindow(driver);
     }
 
     private void clickSearchFacultiesInput() {
@@ -91,7 +91,7 @@ public class FacultiesPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddFacultiesModalWindow(driver, log);
+        return new AddFacultiesModalWindow(driver);
     }
 
 

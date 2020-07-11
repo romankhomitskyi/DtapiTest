@@ -4,7 +4,6 @@ import dtapi.data.speciality.NewSpeciality;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.BasePageObject;
 import dtapi.pages.SpecialityPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,8 +16,8 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
     private By error = By.xpath("//mat-error");
     private WaitUtils wait;
 
-    public AddNewSpecialityModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddNewSpecialityModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 5);
     }
 
@@ -34,7 +33,7 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
             }
         }
 
-        return new SpecialityPage(driver, log);
+        return new SpecialityPage(driver);
     }
 
     private void clickSpecialityCodeField() {
@@ -117,7 +116,7 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
     }
     public AddNewSpecialityModalWindow fillInvalidSpecialityData(NewSpeciality speciality) {
         fillInvalidData(speciality);
-        return new AddNewSpecialityModalWindow(driver,log);
+        return new AddNewSpecialityModalWindow(driver);
     }
 
     private void fillInvalidData(NewSpeciality specialityCodeField) {

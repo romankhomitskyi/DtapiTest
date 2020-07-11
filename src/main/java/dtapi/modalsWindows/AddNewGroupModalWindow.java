@@ -3,7 +3,6 @@ package dtapi.modalsWindows;
 import dtapi.data.group.NewGroup;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.GroupPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,13 +19,13 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
     private WaitUtils wait;
 
 
-    public AddNewGroupModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddNewGroupModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 15);
     }
     public AddNewGroupModalWindow fillInvalidGroupData(NewGroup group) {
         fillInvalidData(group);
-        return new AddNewGroupModalWindow(driver,log);
+        return new AddNewGroupModalWindow(driver);
     }
     public InformModalWindow fillInvalidGroupDataAndClickSubmitButton(String groudId,String gpoupSpeciality,String groupFaculty) {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -39,7 +38,7 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
 
             }
         }
-        return new InformModalWindow(driver,log);
+        return new InformModalWindow(driver);
     }
     private void fillInvalidData(NewGroup group) {
         fillAllFields( group);
@@ -178,6 +177,6 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
             }
         }
 
-        return new GroupPage(driver, log);
+        return new GroupPage(driver);
     }
 }

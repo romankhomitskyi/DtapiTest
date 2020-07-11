@@ -18,14 +18,14 @@ public class SpecialityPage extends Paginator {
     public static final String PAGE_TITLE = "Спеціальності";
     private By addNewSpecialityButton = By.xpath("//span[contains(text(),'Додати спеціальність')]/parent::button");
     private SpecialityTableContainer specialityTableContainer;
-    public SpecialityPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public SpecialityPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
         initElements();
     }
     private void initElements() {
 
-        specialityTableContainer = new SpecialityTableContainer(driver, log);
+        specialityTableContainer = new SpecialityTableContainer(driver);
     }
     public SpecialityTableContainer getSpecialityTableContainer() {
         return specialityTableContainer;
@@ -46,7 +46,7 @@ public class SpecialityPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewSpecialityModalWindow(driver, log);
+        return new AddNewSpecialityModalWindow(driver);
     }
     public DeleteSpecialityModalWindow switchToDeleteSpecialityModalWindow(String specialityName) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -58,7 +58,7 @@ public class SpecialityPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteSpecialityModalWindow(driver, log);
+        return new  DeleteSpecialityModalWindow(driver);
     }
 
     public AddNewSpecialityModalWindow switchToAddNewSpecialityModalWindow() {
@@ -71,7 +71,7 @@ public class SpecialityPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewSpecialityModalWindow(driver, log);
+        return new AddNewSpecialityModalWindow(driver);
     }
     public boolean verifySpecialityRemoved(String specialityName) {
 

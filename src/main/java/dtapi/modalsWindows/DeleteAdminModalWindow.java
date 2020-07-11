@@ -2,13 +2,12 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.AdminsPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public class DeleteAdminModalWindow extends BaseDeleteItemModalWindow {
     private WaitUtils wait;
-    public DeleteAdminModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public DeleteAdminModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
     public AdminsPage deleteAdmin() {
@@ -20,6 +19,6 @@ public class DeleteAdminModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new AdminsPage(driver, log);
+        return new AdminsPage(driver);
     }
 }

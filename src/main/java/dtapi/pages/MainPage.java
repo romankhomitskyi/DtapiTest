@@ -13,8 +13,8 @@ public class MainPage extends BasePageObject {
 
     private WaitUtils wait;
 
-    public MainPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public MainPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 2);
 
 
@@ -103,13 +103,13 @@ public class MainPage extends BasePageObject {
 
     public UserPage successfulLogin(IUser validUser) {
         login(validUser);
-        return new UserPage(driver, log);
+        return new UserPage(driver);
     }
 
     public AdminHomePage successfulAdminLogin(IUser validAdmin) {
         login(validAdmin);
         wait.waitForPageLoad();
-        return new AdminHomePage(driver, log);
+        return new AdminHomePage(driver);
     }
 
     public void unsuccessfulLoginPage(IUser invalidUser) {

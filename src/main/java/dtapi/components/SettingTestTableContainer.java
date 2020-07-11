@@ -16,7 +16,7 @@ import java.util.List;
 public class SettingTestTableContainer  extends Paginator {
 
 
-    public SettingTestTableContainer(WebDriver driver, Logger log) {
+    public SettingTestTableContainer(WebDriver driver) {
         super(driver, log);
         wait = new WaitUtils(driver,10);
     }

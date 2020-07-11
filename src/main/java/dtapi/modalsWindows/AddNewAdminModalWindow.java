@@ -3,7 +3,6 @@ package dtapi.modalsWindows;
 import dtapi.data.admin.IAdmin;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.AdminsPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,8 +14,8 @@ public class AddNewAdminModalWindow  extends BaseModalWindow{
     private By adminСonfirmPassword = By.xpath("//input[@placeholder='підтвердіть пароль']");
     private By addAdminButton = By.xpath("//span[contains(text(),'Відмінити')]/parent::button/preceding-sibling::button");
     private WaitUtils wait;
-    public AddNewAdminModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddNewAdminModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver,10);
     }
     public boolean isAdminButtonEnabled() {
@@ -155,14 +154,14 @@ public class AddNewAdminModalWindow  extends BaseModalWindow{
             }
         }
 
-        return new AdminsPage(driver, log);
+        return new AdminsPage(driver);
     }
     public AddNewAdminModalWindow fillInvalidDataInAdminFields(IAdmin invalidAdmin) {
 
         fillInvalidData(invalidAdmin);
 
 
-        return new AddNewAdminModalWindow(driver, log);
+        return new AddNewAdminModalWindow(driver);
     }
     private void fillInvalidData(IAdmin invalidAdmin) {
         fillAllAdminFields(invalidAdmin);

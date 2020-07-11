@@ -2,7 +2,6 @@ package dtapi.components;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,8 +15,8 @@ public class FacultyTableContainer extends Paginator {
     private final String facultyTableContainerXpath = "//div[@class='table-container']/table/tbody/tr";
     private WaitUtils wait;
 
-    public FacultyTableContainer(WebDriver driver, Logger log) {
-        super(driver, log);
+    public FacultyTableContainer(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
 

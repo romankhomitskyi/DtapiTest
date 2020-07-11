@@ -6,7 +6,6 @@ import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddSubjectModalWindow;
 import dtapi.modalsWindows.DeleteSubjectModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,14 +17,14 @@ public class SubjectPage extends Paginator {
     private By pageTitle = By.xpath("//h3");
     private WaitUtils wait;
 
-    public SubjectPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public SubjectPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
         initElements();
     }
     private void initElements() {
 
-        subjectTableContainer = new SubjectTableContainer(driver, log);
+        subjectTableContainer = new SubjectTableContainer(driver);
 
     }
     public SubjectTableContainer getSubjectTableContainer() {
@@ -48,7 +47,7 @@ public class SubjectPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddSubjectModalWindow(driver, log);
+        return new AddSubjectModalWindow(driver);
     }
     public AddSubjectModalWindow switchToEditSubjectModalWindow(String subjectName) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -60,7 +59,7 @@ public class SubjectPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddSubjectModalWindow(driver, log);
+        return new AddSubjectModalWindow(driver);
     }
     public DeleteSubjectModalWindow switchToDeleteSubjectModalWindow(String subjectName) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -72,7 +71,7 @@ public class SubjectPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new DeleteSubjectModalWindow(driver, log);
+        return new DeleteSubjectModalWindow(driver);
     }
 
     private void changeUrl() {
@@ -88,7 +87,7 @@ public class SubjectPage extends Paginator {
             e.printStackTrace();
         }
         changeUrl();
-        return new MainPage(driver, log);
+        return new MainPage(driver);
     }
 
 
@@ -98,14 +97,15 @@ public class SubjectPage extends Paginator {
                 .getSubjectContainerComponentBySubjectName(subjectName)
                 .clickSubjectTestIcon();
 
-        return new TestPage(driver, log);
+        return new TestPage(driver);
     }
     public ScheduleTestingPage navigateToTestSchedulePage(String subjectName) {
+
         getSubjectTableContainer()
                 .getSubjectContainerComponentBySubjectName(subjectName)
                 .clickScheduleIcon();
 
-        return new  ScheduleTestingPage(driver, log);
+        return new  ScheduleTestingPage(driver);
     }
     public boolean verifySubjectEdited(String subjectName) {
 
@@ -136,5 +136,9 @@ public class SubjectPage extends Paginator {
 
         return false;
     }
+
+   /* public boolean isElementPresent(By by) {
+        return !driver.findElements(by).isEmpty();
+    }*/
 
 }

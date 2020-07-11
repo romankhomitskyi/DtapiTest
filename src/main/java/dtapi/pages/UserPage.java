@@ -2,7 +2,6 @@ package dtapi.pages;
 
 import dtapi.components.StudentTestTableContainer;
 import dtapi.dtapiBase.WaitUtils;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,15 +26,15 @@ public class UserPage extends BasePageObject {
     private StudentTestTableContainer studentTestTableContainer;
     private WaitUtils wait;
 
-    public UserPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public UserPage(WebDriver driver) {
+        super(driver);
         initElements();
         wait = new WaitUtils(driver,10);
 
     }
     private void initElements() {
 
-        studentTestTableContainer = new StudentTestTableContainer(driver, log);
+        studentTestTableContainer = new StudentTestTableContainer(driver);
 
     }
     public StudentTestTableContainer getStudentTestTableContainer() {
@@ -46,7 +45,7 @@ public class UserPage extends BasePageObject {
                 .getStudentTestTableContainerComponentsByTestName(testName)
                 .clickStartTestIcon();
 
-        return new TakingTestPage(driver, log);
+        return new TakingTestPage(driver);
     }
 
  public MainPage logOut(){
@@ -55,7 +54,7 @@ public class UserPage extends BasePageObject {
      wait.waitForElementClickability(logOutButton2);
         driver.findElement(logOutButton2).click();
 
-     return new MainPage(driver,log);
+     return new MainPage(driver);
  }
 }
 

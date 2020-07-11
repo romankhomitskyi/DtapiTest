@@ -2,7 +2,6 @@ package dtapi.elements;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.*;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,8 +15,8 @@ public class AdminHeadrer extends BaseHeader {
     protected By adminsLink = By.xpath("//a[@routerlink='admin-user']");
     private WaitUtils wait;
 
-    public AdminHeadrer(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AdminHeadrer(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 15);
     }
 
@@ -29,7 +28,7 @@ public class AdminHeadrer extends BaseHeader {
         wait.prevenseOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
-        return new SubjectPage(driver, log);
+        return new SubjectPage(driver);
     }
     public SubjectPage clickSubjectLinks() {
         wait.prevenseOfElement(subjectsLink);
@@ -37,7 +36,7 @@ public class AdminHeadrer extends BaseHeader {
         click(subjectsLink);
 
 
-        return new SubjectPage(driver, log);
+        return new SubjectPage(driver);
     }
 
     public SpecialityPage clickSpecialityLink() {
@@ -47,14 +46,14 @@ public class AdminHeadrer extends BaseHeader {
         wait.prevenseOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
-        return new SpecialityPage(driver, log);
+        return new SpecialityPage(driver);
     }
 
     public AdminHomePage clickHomeLink() {
         wait.prevenseOfElement(homeLink);
         wait.visibilityOfElement(homeLink);
         click(homeLink);
-        return new AdminHomePage(driver, log);
+        return new AdminHomePage(driver);
     }
 
     public FacultiesPage clickFacultiesLink() {
@@ -64,7 +63,7 @@ public class AdminHeadrer extends BaseHeader {
         wait.prevenseOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
-        return new FacultiesPage(driver, log);
+        return new FacultiesPage(driver);
     }
 
     public GroupPage clickGroupLink() {
@@ -74,21 +73,21 @@ public class AdminHeadrer extends BaseHeader {
         wait.prevenseOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
-        return new GroupPage(driver, log);
+        return new GroupPage(driver);
     }
 
     public ResultsPage clickResultsLink() {
         wait.prevenseOfElement(resultsLink);
         wait.visibilityOfElement(resultsLink);
         click(resultsLink);
-        return new ResultsPage(driver, log);
+        return new ResultsPage(driver);
     }
 
     public AdminsPage clickAdminsLink() {
         wait.prevenseOfElement(adminsLink);
         wait.visibilityOfElement(adminsLink);
         click(adminsLink);
-        return new AdminsPage(driver, log);
+        return new AdminsPage(driver);
     }
 
 }

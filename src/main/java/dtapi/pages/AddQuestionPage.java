@@ -22,8 +22,9 @@ public class AddQuestionPage extends BasePageObject {
     private By listBox = By.xpath("//div[contains(@class,'mat-primary')]");
     private By questionTypeDropDown = By.xpath("//mat-select[@formcontrolname='type']");
     private By questionLvlDropDown = By.xpath( "//mat-select[@formcontrolname='level']");
-    public AddQuestionPage(WebDriver driver, Logger log) {
-        super(driver, log);
+
+    public AddQuestionPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
 
@@ -209,14 +210,14 @@ public class AddQuestionPage extends BasePageObject {
         clickAddAnswerButton(question);
         setAnswerFields(question);
         clickCreateQustionButton();
-        return new QuestionPage(driver, log);
+        return new QuestionPage(driver);
     }
     public QuestionPage editQuestion(NewQuestion question) {
        /* fillQuestionField(question);*/
         setQuestionLvlDropDownOption(question);
         setAnswerFields(question);
         clickCreateQustionButton();
-        return new QuestionPage(driver, log);
+        return new QuestionPage(driver);
     }
 
 
@@ -228,7 +229,7 @@ public class AddQuestionPage extends BasePageObject {
             driver.findElement(addAnswer).click();
         }
 
-        return new AddQuestionPage(driver, log);
+        return new AddQuestionPage(driver);
     }
 
     public void clickCreateQustionButton() {

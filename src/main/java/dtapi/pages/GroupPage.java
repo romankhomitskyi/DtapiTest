@@ -20,8 +20,9 @@ public class GroupPage extends Paginator {
     private By searchGroupInput = By.xpath("//input");
     private WaitUtils wait;
     public static final String PAGE_TITLE = "Групи";
-    public GroupPage(WebDriver driver, Logger log) {
-        super(driver, log);
+
+    public GroupPage(WebDriver driver) {
+        super(driver);
         initElements();
         wait = new WaitUtils(driver, 10);
     }
@@ -36,7 +37,7 @@ public class GroupPage extends Paginator {
 
     private void initElements() {
 
-        groupTableContainer = new GroupTableContainer(driver, log);
+        groupTableContainer = new GroupTableContainer(driver);
     }
 
     public GroupTableContainer getGroupTableContainer() {
@@ -53,7 +54,7 @@ public class GroupPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewGroupModalWindow(driver, log);
+        return new AddNewGroupModalWindow(driver);
     }
     public StudentPage findNewGroupAndClickStudentInGroupIcon(String groupCode) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -64,7 +65,7 @@ public class GroupPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new StudentPage(driver, log);
+        return new StudentPage(driver);
     }
     public DeleteGroupModalWindow switchToDeleteGroupModalWindow(String groupCode) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -75,7 +76,7 @@ public class GroupPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteGroupModalWindow(driver, log);
+        return new  DeleteGroupModalWindow(driver);
     }
     public AddNewGroupModalWindow switchToAddNewGroupModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -89,7 +90,7 @@ public class GroupPage extends Paginator {
                 wait.waitForPageLoad();
             }
         }
-        return new AddNewGroupModalWindow(driver, log);
+        return new AddNewGroupModalWindow(driver);
     }
 
 
@@ -162,7 +163,7 @@ public class GroupPage extends Paginator {
         clickSearchGroupInput();
         clearSearchGroupInput();
         setSearchGroupInput(groupId);
-        return new GroupPage(driver, log);
+        return new GroupPage(driver);
     }
 
     public ViewGroupBySpecialityWindow switchToViewGroupBySpecialityWindow() {
@@ -175,7 +176,7 @@ public class GroupPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new ViewGroupBySpecialityWindow(driver, log);
+        return new ViewGroupBySpecialityWindow(driver);
     }
 
     public ViewGroupByFacultyWindow switchToViewGroupByFacultyWindow() {
@@ -188,7 +189,7 @@ public class GroupPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new ViewGroupByFacultyWindow(driver, log);
+        return new ViewGroupByFacultyWindow(driver);
     }
 
 

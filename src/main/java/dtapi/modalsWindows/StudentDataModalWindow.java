@@ -21,9 +21,9 @@ public class StudentDataModalWindow {
     private By studentLogin = By.xpath("//div[contains(text(),'Унікальне')]/following-sibling::div");
     private By closeWindow = By.xpath("//mat-icon[contains(text(),'close')]");
 
-    public StudentDataModalWindow(WebDriver driver,Logger log) {
+    public StudentDataModalWindow(WebDriver driver) {
             this.driver = driver;
-            this.log = log;
+
             wait = new WaitUtils(driver,10);
 
     }

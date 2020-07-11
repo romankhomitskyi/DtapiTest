@@ -2,14 +2,13 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.FacultiesPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public class DeleteFacultiesModalWindow extends BaseDeleteItemModalWindow {
     private WaitUtils wait;
 
-    public DeleteFacultiesModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public DeleteFacultiesModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 5);
     }
 
@@ -22,7 +21,7 @@ public class DeleteFacultiesModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new FacultiesPage(driver, log);
+        return new FacultiesPage(driver);
     }
     public InformModalWindow switchToFacultiesInformModalWindow () {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -34,7 +33,7 @@ public class DeleteFacultiesModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new InformModalWindow(driver, log);
+        return new InformModalWindow(driver);
     }
 
     public FacultiesPage cancelDeleteFaculties() {
@@ -46,7 +45,7 @@ public class DeleteFacultiesModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new FacultiesPage(driver, log);
+        return new FacultiesPage(driver);
     }
     protected void sleep(long n) {
         try {

@@ -1,73 +1,36 @@
 package dtapi.dtapiBase;
 
+import dtapi.data.enums.Browsers;
 import dtapi.pages.MainPage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.lang.reflect.Method;
-import java.net.URI;
-import java.util.concurrent.TimeUnit;
 
-@Listeners({dtapi.dtapiBase.TestListener.class})
+
 public class BaseTest {
-    protected RemoteWebDriver driver;
-    protected Logger log;
-
-    protected String testSuiteName;
-    protected String testName;
-    protected String testMethodName;
-
-    protected void openUrl(String url) {
-        driver.get(url);
-    }
+    public WebDriver driver;
 
     @Parameters({"browser", "url"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(Method method, @Optional("chrome") String browser, String url, ITestContext ctx) throws Exception {
-        String testName = ctx.getCurrentXmlTest().getName();
-        log = LogManager.getLogger(testName);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setBrowserName("chrome");
-        capabilities.setVersion("80.0");
-        capabilities.setCapability("videoName", method.getName() + ".mp4");
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        capabilities.setCapability("screenResolution", "1920x1080x24");
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("test-type");
-
-        options.addArguments("--disable-web-security");
-        options.addArguments("--allow-running-insecure-content");
-        capabilities.setCapability("chrome.binary", "./src//lib//chromedriver");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
-        driver = new RemoteWebDriver(
-                URI.create("http://192.168.99.108:4444/wd/hub").toURL(),
-                capabilities
-        );
-        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+    public void setUp(Method method, @Optional("chrome") String browser, String url, ITestContext ctx) {
+        driver = Browsers.CHROME.create();
         driver.manage().window().maximize();
         openUrl(url);
-        this.testSuiteName = ctx.getSuite().getName();
-        this.testName = testName;
-        this.testMethodName = method.getName();
-
 
     }
 
 
     public MainPage loadSignInPage() {
-        return new MainPage(driver, log);
+        return new MainPage(driver);
 
     }
 
-    protected void sleep(long n) {
+    private void sleep(long n) {
         try {
             Thread.sleep(n);
         } catch (InterruptedException e) {
@@ -75,12 +38,14 @@ public class BaseTest {
         }
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-        sleep(2000);
-        driver.quit();
+    private void openUrl(String url) {
+        driver.get(url);
     }
 
-
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        sleep(1300);
+        driver.quit();
+    }
 }
 

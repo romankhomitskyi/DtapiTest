@@ -1,6 +1,5 @@
 package dtapi.pages;
 
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,12 +9,10 @@ import java.util.List;
 
 public class BasePageObject {
     protected WebDriver driver;
-    protected Logger log;
 
 
-    public BasePageObject(WebDriver driver, Logger log) {
+    public BasePageObject(WebDriver driver) {
         this.driver = driver;
-        this.log = log;
 
     }
 

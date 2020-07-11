@@ -2,7 +2,6 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.*;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,8 +11,8 @@ public class InformModalWindow extends BaseModalWindow {
     private By divText = By.xpath("//div[@class='content']");
     private By exitButton = By.xpath("//span[contains(text(),'Закрити')]/parent::button");
 
-    public InformModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public InformModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
 
@@ -43,7 +42,7 @@ public class InformModalWindow extends BaseModalWindow {
             }
         }
 
-        return new SettingsTestPage(driver, log);
+        return new SettingsTestPage(driver);
     }
     public TestPage clickExitsButton() {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -55,7 +54,7 @@ public class InformModalWindow extends BaseModalWindow {
             }
         }
 
-        return new TestPage(driver, log);
+        return new TestPage(driver);
     }
     protected void sleep(long n) {
         try {
@@ -76,7 +75,7 @@ public class InformModalWindow extends BaseModalWindow {
             }
         }
 
-        return new FacultiesPage(driver, log);
+        return new FacultiesPage(driver);
     }
 
     public GroupPage clickExitButtonAndSwitchToGroupPage() {
@@ -91,7 +90,7 @@ public class InformModalWindow extends BaseModalWindow {
             }
         }
 
-        return new GroupPage(driver, log);
+        return new GroupPage(driver);
     }
 
     public SpecialityPage clickExitButtonAndSwitchToSpecialityPage() {
@@ -106,7 +105,7 @@ public class InformModalWindow extends BaseModalWindow {
             }
         }
 
-        return new SpecialityPage(driver, log);
+        return new SpecialityPage(driver);
     }
     public SubjectPage clickExitButtonAndSwitchToSubjectPage() {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -118,7 +117,7 @@ public class InformModalWindow extends BaseModalWindow {
             }
         }
 
-        return new SubjectPage(driver, log);
+        return new SubjectPage(driver);
     }
 
 }

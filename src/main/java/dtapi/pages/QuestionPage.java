@@ -13,8 +13,8 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 
 public class QuestionPage extends Paginator {
-    public QuestionPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public QuestionPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver,10);
         initElements();
     }
@@ -24,7 +24,7 @@ public class QuestionPage extends Paginator {
 
     private void initElements() {
 
-        questionTableContainer = new QuestionTableContainer(driver, log);
+        questionTableContainer = new QuestionTableContainer(driver);
     }
     public QuestionTableContainer getQuestionTableContainer() {
         return questionTableContainer;
@@ -35,7 +35,7 @@ public class QuestionPage extends Paginator {
         wait.prevenseOfElement(addQuestion);
         wait.visibilityOfElement(addQuestion);
         driver.findElement(addQuestion).click();
-        return new AddQuestionPage(driver, log);
+        return new AddQuestionPage(driver);
     }
 
     public QuestionPage addQuestionWithAnswers(List<NewQuestion> questions) {
@@ -48,13 +48,13 @@ public class QuestionPage extends Paginator {
             i++;
         }
 
-        return new QuestionPage(driver,log);
+        return new QuestionPage(driver);
     }
 
     public QuestionPage getQuestionWithAnswers(NewQuestion question) {
         clickAddQuesButton()
                 .fillAllQuestion(question);
-        return new QuestionPage(driver,log);
+        return new QuestionPage(driver);
     }
 
     public AddQuestionPage navigateToEditQuestionPage(NewQuestion question) {
@@ -63,7 +63,7 @@ public class QuestionPage extends Paginator {
                 .clickEditQuestionIcon();
 
 
-        return new AddQuestionPage(driver, log);
+        return new AddQuestionPage(driver);
     }
     public SettingsTestPage deleteTestsQuestions(List<NewQuestion> questions) {
 
@@ -75,12 +75,12 @@ public class QuestionPage extends Paginator {
             i++;
         }
 
-        return new SettingsTestPage(driver,log);
+        return new SettingsTestPage(driver);
     }
     private QuestionPage deleteAllQuestions(NewQuestion question) {
         switchToDeleteQuestionModalWindow(question)
                 .deleteQuestion();
-        return new QuestionPage(driver,log);
+        return new QuestionPage(driver);
     }
     public DeleteQuestionModalWindow switchToDeleteQuestionModalWindow(NewQuestion question) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -92,7 +92,7 @@ public class QuestionPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteQuestionModalWindow(driver, log);
+        return new  DeleteQuestionModalWindow(driver);
     }
     public boolean verifyQuestionEdited(String questionText) {
 
@@ -126,7 +126,7 @@ public class QuestionPage extends Paginator {
     public TestPage backToTestPage() {
         sleep(1000);
         driver.navigate().back();
-        return new TestPage(driver,log);
+        return new TestPage(driver);
     }
     protected void sleep(long n) {
         try {

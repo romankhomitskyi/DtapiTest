@@ -4,7 +4,6 @@ import dtapi.components.ResultsTableContainer;
 import dtapi.components.ResultsTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,14 +23,14 @@ public class ResultsPage extends Paginator {
     public static final String PAGE_TITLE = "Результати тестувань";
     private ResultsTableContainer resultsTableContainer ;
 
-    public ResultsPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public ResultsPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
         initElements();
     }
     private void initElements() {
 
-        resultsTableContainer  = new ResultsTableContainer (driver, log);
+        resultsTableContainer  = new ResultsTableContainer (driver);
 
     }
 
@@ -136,7 +135,7 @@ public class ResultsPage extends Paginator {
     public ResultsPage showTestResults(String groupName, String testName) {
         setGroupAndTestDropDown(groupName, testName);
         clickSubmitButton();
-        return new ResultsPage(driver,log);
+        return new ResultsPage(driver);
     }
     private void clickSubmitButton() {
         wait.visibilityOfElement(showResultsButton);

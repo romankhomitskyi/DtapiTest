@@ -2,7 +2,6 @@ package dtapi.components;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminTableContainer extends Paginator {
-    public AdminTableContainer(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AdminTableContainer(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
     private final String adminTableContainerXpath = "//table/tbody/tr";

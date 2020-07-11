@@ -3,7 +3,6 @@ package dtapi.modalsWindows;
 import dtapi.data.student.IStudent;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.StudentPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,8 +18,8 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     private By choosePhotoButton = By.xpath("//input[@type='file']");
     private WaitUtils wait;
 
-    public AddNewStudentModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddNewStudentModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 2);
     }
 
@@ -248,14 +247,14 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
             }
         }
 
-        return new StudentPage(driver, log);
+        return new StudentPage(driver);
     }
     public AddNewStudentModalWindow fillInvalidDataInStudentFields(IStudent invalidStudent) {
 
         fillInvalidData(invalidStudent);
 
 
-        return new AddNewStudentModalWindow(driver, log);
+        return new AddNewStudentModalWindow(driver);
     }
     private void fillInvalidData(IStudent validStudent) {
         fillAllStudentFields(validStudent);
@@ -277,7 +276,7 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
             }
         }
 
-        return new StudentPage(driver, log);
+        return new StudentPage(driver);
     }
     private void editStudent(IStudent validStudent) {
         fillStudentNSF(validStudent);

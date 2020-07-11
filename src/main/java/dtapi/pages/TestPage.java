@@ -6,7 +6,6 @@ import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddTestModalWindow;
 import dtapi.modalsWindows.DeleteTestModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,14 +18,14 @@ public class TestPage extends Paginator {
     private WaitUtils wait;
     private TestOfSubjectTableContainer testOfSubjectTableContainer;
 
-    public TestPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public TestPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver,10);
         initElements();
     }
     private void initElements() {
 
-        testOfSubjectTableContainer = new TestOfSubjectTableContainer(driver, log);
+        testOfSubjectTableContainer = new TestOfSubjectTableContainer(driver);
 
     }
     public TestOfSubjectTableContainer getTestOfSubjectTableContainer() {
@@ -39,7 +38,7 @@ public class TestPage extends Paginator {
                 .clickTestParamIcon();
 
 
-        return new SettingsTestPage(driver, log);
+        return new SettingsTestPage(driver);
     }
     public QuestionPage navigateToQuestionPage(String testName) {
         getTestOfSubjectTableContainer()
@@ -47,7 +46,7 @@ public class TestPage extends Paginator {
                 .clickQuestionIcon();
 
 
-        return new QuestionPage(driver, log);
+        return new QuestionPage(driver);
     }
     public AddTestModalWindow switchToEditTestModalWindow(String testName) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -59,7 +58,7 @@ public class TestPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddTestModalWindow(driver, log);
+        return new AddTestModalWindow(driver);
     }
     public DeleteTestModalWindow switchToDeleteTestModalWindow(String testName) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -71,7 +70,7 @@ public class TestPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new DeleteTestModalWindow(driver, log);
+        return new DeleteTestModalWindow(driver);
     }
 
     public AddTestModalWindow switchToAddTestModalWindow() {
@@ -84,7 +83,7 @@ public class TestPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddTestModalWindow(driver, log);
+        return new AddTestModalWindow(driver);
     }
 
     public boolean verifyTestEdited(String testName) {
@@ -122,7 +121,7 @@ public class TestPage extends Paginator {
     public SubjectPage backToSubjectPage() {
         sleep(1000);
         driver.navigate().back();
-        return new SubjectPage(driver,log);
+        return new SubjectPage(driver);
     }
     protected void sleep(long n) {
         try {

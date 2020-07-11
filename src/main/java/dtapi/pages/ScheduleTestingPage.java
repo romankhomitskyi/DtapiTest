@@ -11,8 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ScheduleTestingPage  extends Paginator {
-    public ScheduleTestingPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public ScheduleTestingPage(WebDriver driver) {
+        super(driver);
         initElements();
         wait = new WaitUtils(driver,10);
     }
@@ -24,7 +24,7 @@ public class ScheduleTestingPage  extends Paginator {
 
     private void initElements() {
 
-        testScheduleTableContainer = new TestScheduleTableContainer(driver, log);
+        testScheduleTableContainer = new TestScheduleTableContainer(driver);
     }
 
     public TestScheduleTableContainer getTestScheduleTableContainer() {
@@ -43,7 +43,7 @@ public class ScheduleTestingPage  extends Paginator {
                 wait.waitForPageLoad();
             }
         }
-        return new  AddNewScheduleModalWindow(driver, log);
+        return new  AddNewScheduleModalWindow(driver);
     }
     public DeleteScheduleModalWindow switchToDeleteScheduleModalWindow(String group) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -55,7 +55,7 @@ public class ScheduleTestingPage  extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteScheduleModalWindow(driver, log);
+        return new  DeleteScheduleModalWindow(driver);
     }
     public  AddNewScheduleModalWindow switchToEditScheduleModalWindow(String  group) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -67,7 +67,7 @@ public class ScheduleTestingPage  extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  AddNewScheduleModalWindow(driver, log);
+        return new  AddNewScheduleModalWindow(driver);
     }
     public boolean verifyScheduleRemoved(String  group) {
         for (TestScheduleTableContainerComponent component : getTestScheduleTableContainer().getTestScheduleTableContainerComponents()) {
@@ -101,7 +101,7 @@ public class ScheduleTestingPage  extends Paginator {
     public SubjectPage backToSubjectPage() {
 
         driver.navigate().back();
-        return new SubjectPage(driver,log);
+        return new SubjectPage(driver);
     }
     protected void sleep(long n) {
         try {
