@@ -4,7 +4,6 @@ import dtapi.data.schedule.NewSchedule;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.DatePicker;
 import dtapi.pages.ScheduleTestingPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -153,8 +152,8 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         clickGroupOptions(group);
 
     }
-    public AddNewScheduleModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddNewScheduleModalWindow(WebDriver driver) {
+        super(driver);
         PageFactory.initElements(driver, this);
         wait = new WaitUtils(driver,10);
         datePicker = new DatePicker(driver);
@@ -201,11 +200,11 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
             }
         }
 
-        return new ScheduleTestingPage(driver, log);
+        return new ScheduleTestingPage(driver);
     }
     public AddNewScheduleModalWindow fillInvalidScheduleData(String group,NewSchedule schedule) {
         fillInvalidData(group,schedule);
-        return new AddNewScheduleModalWindow(driver,log);
+        return new AddNewScheduleModalWindow(driver);
     }
 
     private void fillInvalidData(String group,NewSchedule schedule) {

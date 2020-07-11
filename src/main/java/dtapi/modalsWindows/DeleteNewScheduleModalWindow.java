@@ -1,12 +1,11 @@
 package dtapi.modalsWindows;
 
 import dtapi.pages.ScheduleTestingPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public class DeleteNewScheduleModalWindow extends BaseDeleteItemModalWindow{
-    public DeleteNewScheduleModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public DeleteNewScheduleModalWindow(WebDriver driver) {
+        super(driver);
     }
     public ScheduleTestingPage deleteSchedule() {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -18,6 +17,6 @@ public class DeleteNewScheduleModalWindow extends BaseDeleteItemModalWindow{
             }
         }
 
-        return new ScheduleTestingPage(driver, log);
+        return new ScheduleTestingPage(driver);
     }
 }

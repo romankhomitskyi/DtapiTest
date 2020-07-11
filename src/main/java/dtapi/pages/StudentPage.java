@@ -7,7 +7,6 @@ import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewStudentModalWindow;
 import dtapi.modalsWindows.StudentDataModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,15 +15,15 @@ public class StudentPage extends Paginator {
 
     private StudentTableContainer studentTableContainer;
     private WaitUtils wait;
-    public StudentPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public StudentPage(WebDriver driver) {
+        super(driver);
         initElements();
         wait = new WaitUtils(driver,10);
     }
 
     private void initElements() {
 
-        studentTableContainer = new  StudentTableContainer(driver, log);
+        studentTableContainer = new  StudentTableContainer(driver);
 
     }
     public StudentTableContainer getStudentTableContainer() {
@@ -41,7 +40,7 @@ public class StudentPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewStudentModalWindow(driver, log);
+        return new AddNewStudentModalWindow(driver);
     }
     public StudentDataModalWindow switchToInformationAboutStudentModalWindow(IStudent student) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -52,7 +51,7 @@ public class StudentPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  StudentDataModalWindow(driver, log);
+        return new  StudentDataModalWindow(driver);
     }
     public boolean verifyStudentEdited(IStudent student) {
 
@@ -85,7 +84,7 @@ public class StudentPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewStudentModalWindow(driver, log);
+        return new AddNewStudentModalWindow(driver);
     }
 
 

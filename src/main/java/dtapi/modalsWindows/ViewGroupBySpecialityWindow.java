@@ -2,7 +2,6 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.GroupPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,8 +15,8 @@ public class ViewGroupBySpecialityWindow extends BaseModalWindow {
     private String specialityDropDownOption = "//mat-option//span[contains(text(),'%s')]";
     private WaitUtils wait;
 
-    public ViewGroupBySpecialityWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public ViewGroupBySpecialityWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
 
@@ -63,6 +62,6 @@ public class ViewGroupBySpecialityWindow extends BaseModalWindow {
             }
         }
 
-        return new GroupPage(driver, log);
+        return new GroupPage(driver);
     }
 }

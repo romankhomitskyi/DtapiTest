@@ -12,8 +12,8 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
     private By textArea = By.xpath("//mat-dialog-container//textarea");
     private WaitUtils wait;
 
-    public AddFacultiesModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddFacultiesModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 20);
     }
 
@@ -26,12 +26,12 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
             }
         }
 
-        return new InformModalWindow(driver, log);
+        return new InformModalWindow(driver);
     }
     public AddFacultiesModalWindow fillInvalidFacultiesData(NewFaculties faculties) {
 
         fillInvalidData(faculties);
-        return new AddFacultiesModalWindow(driver,log);
+        return new AddFacultiesModalWindow(driver);
     }
     private void fillInvalidData(NewFaculties faculties) {
         fillAllFields(faculties);
@@ -47,7 +47,7 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
             }
         }
 
-        return new FacultiesPage(driver, log);
+        return new FacultiesPage(driver);
     }
 
     private void addNewFaculties(NewFaculties faculties) {

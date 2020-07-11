@@ -22,8 +22,8 @@ public class Paginator extends AdminHeadrer {
     protected By paginationLabel = (By.xpath("//div[@class='mat-paginator-range-label']"));
     private WaitUtils wait;
 
-    public Paginator(WebDriver driver, Logger log) {
-        super(driver, log);
+    public Paginator(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 5);
     }
 
@@ -37,12 +37,9 @@ public class Paginator extends AdminHeadrer {
     }
 
     public void clickNextButton() {
-        wait.visibilityOfElement(nextButton);
-        wait.prevenseOfElement(nextButton);
-        wait.waitForElementClickability(nextButton);
-        click(nextButton);
-        wait.prevenseOfElement(By.xpath("//table//tr//td"));
-        wait.visibilityOfElement(By.xpath("//table//tr//td"));
+
+        driver.findElement(nextButton).click();
+
 
     }
 

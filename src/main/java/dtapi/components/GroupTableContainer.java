@@ -2,7 +2,6 @@ package dtapi.components;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,8 +18,8 @@ public class GroupTableContainer extends Paginator {
 
     /*private List<GroupTableContainerComponent> containerComponents;*/
 
-    public GroupTableContainer(WebDriver driver, Logger log) {
-        super(driver, log);
+    public GroupTableContainer(WebDriver driver) {
+        super(driver);
 
         wait = new WaitUtils(driver, 10);
     }

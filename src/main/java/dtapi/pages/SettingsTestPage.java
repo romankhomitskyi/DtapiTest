@@ -17,8 +17,8 @@ public class SettingsTestPage extends Paginator {
     private By addNewSettingsButton = By.xpath("//span[contains(text(),'Додати налаштування')]/parent::button");
     private WaitUtils wait;
     private By deleteSettingTestIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
-    public SettingsTestPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public SettingsTestPage(WebDriver driver) {
+        super(driver);
         initElements();
         wait = new WaitUtils(driver,10);
     }
@@ -27,7 +27,7 @@ public class SettingsTestPage extends Paginator {
 
     private void initElements() {
 
-        settingTestTableContainer = new SettingTestTableContainer(driver, log);
+        settingTestTableContainer = new SettingTestTableContainer(driver);
     }
 
     public SettingTestTableContainer getSettingTestTableContainer() {
@@ -43,7 +43,7 @@ public class SettingsTestPage extends Paginator {
             i++;
         }
 
-        return new SettingsTestPage(driver,log);
+        return new SettingsTestPage(driver);
     }
     public SettingsTestPage deleteTestsSettings(List<TestSettings> settings) {
 
@@ -55,13 +55,13 @@ public class SettingsTestPage extends Paginator {
             i++;
         }
 
-        return new SettingsTestPage(driver,log);
+        return new SettingsTestPage(driver);
     }
 
     public SettingsTestPage getTestSetting(TestSettings testSettings) {
         switchToAddAddNewSettingOfTestModalWindow()
                 .fillAllSettingsAndSubmitForm(testSettings);
-        return new SettingsTestPage(driver,log);
+        return new SettingsTestPage(driver);
     }
     public AddNewSettingOfTestModalWindow switchToAddAddNewSettingOfTestModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -75,13 +75,13 @@ public class SettingsTestPage extends Paginator {
                 wait.waitForPageLoad();
             }
         }
-        return new AddNewSettingOfTestModalWindow(driver, log);
+        return new AddNewSettingOfTestModalWindow(driver);
     }
     public SettingsTestPage deleteAllTestSetting(TestSettings testSettings) {
         switchToDeleteSettingsModalWindow(testSettings)
                 .deleteSettings()
                 .clickExitButton();
-        return new SettingsTestPage(driver,log);
+        return new SettingsTestPage(driver);
     }
 
     public DeleteSettingOfTestModalWindow switchToDeleteSettingsModalWindow(TestSettings settingId) {
@@ -94,7 +94,7 @@ public class SettingsTestPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteSettingOfTestModalWindow(driver, log);
+        return new  DeleteSettingOfTestModalWindow(driver);
     }
     public AddNewSettingOfTestModalWindow switchToEditSettingsModalWindow(String settingId) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -106,7 +106,7 @@ public class SettingsTestPage extends Paginator {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewSettingOfTestModalWindow(driver, log);
+        return new AddNewSettingOfTestModalWindow(driver);
     }
     public boolean verifySettingsRemoved(String  settingId) {
         for (SettingTestTableContainerComponent component : getSettingTestTableContainer().getSettingsTestContainerComponents()) {
@@ -140,7 +140,7 @@ public class SettingsTestPage extends Paginator {
     public TestPage backToTestPage() {
 
         driver.navigate().back();
-        return new TestPage(driver,log);
+        return new TestPage(driver);
     }
     protected void sleep(long n) {
         try {

@@ -3,7 +3,6 @@ package dtapi.modalsWindows;
 import dtapi.data.testSettings.TestSettings;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.SettingsTestPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,8 +17,8 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
     private By cancelAddingNewSettingsButton = By.xpath("//span[contains(text(),'Відмінити')]/parent::button");
     private By addNewSettingsButton = By.xpath("//span[contains(text(),'Відмінити')]/parent::button/following-sibling::button");
     private WaitUtils wait;
-    public AddNewSettingOfTestModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddNewSettingOfTestModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
     private void clickСountOfTaskField() {
@@ -127,7 +126,7 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
             }
         }
 
-        return new SettingsTestPage(driver, log);
+        return new SettingsTestPage(driver);
     }
 
 }

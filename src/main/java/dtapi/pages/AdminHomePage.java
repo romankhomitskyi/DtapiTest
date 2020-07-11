@@ -22,8 +22,8 @@ public class AdminHomePage extends AdminHeadrer {
     private WaitUtils wait;
 
 
-    public AdminHomePage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AdminHomePage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
 
@@ -47,6 +47,6 @@ public class AdminHomePage extends AdminHeadrer {
         wait.prevenseOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfElement(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
-        return new SubjectPage(driver, log);
+        return new SubjectPage(driver);
     }
 }

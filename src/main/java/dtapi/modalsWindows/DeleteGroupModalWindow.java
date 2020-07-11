@@ -2,14 +2,13 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.GroupPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public class DeleteGroupModalWindow extends BaseDeleteItemModalWindow {
     private WaitUtils wait;
 
-    public DeleteGroupModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public DeleteGroupModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
 
@@ -23,7 +22,7 @@ public class DeleteGroupModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new GroupPage(driver, log);
+        return new GroupPage(driver);
     }
     protected void sleep(long n) {
         try {
@@ -43,7 +42,7 @@ public class DeleteGroupModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new InformModalWindow(driver, log);
+        return new InformModalWindow(driver);
     }
 
     /*public GroupsPage cancelDeleteGroup() {

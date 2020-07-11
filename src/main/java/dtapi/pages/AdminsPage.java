@@ -4,28 +4,29 @@ import dtapi.components.AdminTableContainer;
 import dtapi.components.AdminTableContainerComponent;
 import dtapi.data.admin.IAdmin;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewAdminModalWindow;
 import dtapi.modalsWindows.DeleteAdminModalWindow;
-import dtapi.tables.BaseTable;
+
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AdminsPage extends BaseTable {
+public class AdminsPage extends Paginator {
     private By adminsPageTitle = By.xpath("//h3");
     private By addAdminButton = By.xpath("//span[contains(text(),'Додати адміна')]/parent::button");
     private WaitUtils wait;
     private AdminTableContainer adminTableContainer;
     public static final String PAGE_TITLE = "Адміни";
 
-    public AdminsPage(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AdminsPage(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
         initElements();
     }
     private void initElements() {
 
-        adminTableContainer = new AdminTableContainer(driver, log);
+        adminTableContainer = new AdminTableContainer(driver);
 
     }
     public AdminTableContainer getAdminTableContainer() {
@@ -47,7 +48,7 @@ public class AdminsPage extends BaseTable {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewAdminModalWindow(driver, log);
+        return new AddNewAdminModalWindow(driver);
     }
     public boolean verifyAdminEdited(IAdmin admin) {
 
@@ -89,7 +90,7 @@ public class AdminsPage extends BaseTable {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new AddNewAdminModalWindow(driver, log);
+        return new AddNewAdminModalWindow(driver);
     }
     public DeleteAdminModalWindow switchToDeleteAdminModalWindow(IAdmin admin) {
         String shoppingCartWindow = driver.getWindowHandle();
@@ -101,15 +102,7 @@ public class AdminsPage extends BaseTable {
                 driver.switchTo().window(windowHandle);
             }
         }
-        return new  DeleteAdminModalWindow(driver, log);
+        return new  DeleteAdminModalWindow(driver);
     }
-    public AdminsPage refreshPage() {
-        sleep(1000);
-        wait.prevenseOfElement(adminsPageTitle);
-        wait.visibilityOfElement(adminsPageTitle);
-        driver.navigate().refresh();
 
-
-        return this;
-    }
 }

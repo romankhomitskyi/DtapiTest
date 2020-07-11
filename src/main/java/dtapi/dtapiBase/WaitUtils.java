@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 public class WaitUtils {
-    private final String ALERT_MESSAGE_CSS = ".alert.alert-success";
+    private  By snackBar= By.xpath("//snack-bar-container[contains(class,snackbar-success)]");
     private final String LOADING_CART_BUTTON_CSS = ".btn.btn-inverse.btn-block.btn-lg.dropdown-toggle.disabled";
     private WebDriverWait wait;
     private WebDriver driver;
@@ -52,10 +52,8 @@ public class WaitUtils {
     }
 
     public void waitForAlertVisibility() {
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        waitForJSandJQueryToLoad();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(ALERT_MESSAGE_CSS)));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait.until(ExpectedConditions.presenceOfElementLocated(snackBar));
+
     }
 
     public void waitForElementClickability(By locator) {
@@ -134,8 +132,6 @@ public class WaitUtils {
         wait.until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 
-    public boolean textToBeLocatedInElement(WebElement element, String text) {
-        WebDriverWait wait = new WebDriverWait(driver, 25);
-        return wait.until(ExpectedConditions.textToBePresentInElement(element, text));
-    }
+
+
 }

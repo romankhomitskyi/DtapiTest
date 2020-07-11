@@ -2,14 +2,13 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.SubjectPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public class DeleteSubjectModalWindow extends BaseDeleteItemModalWindow{
     private WaitUtils wait;
 
-    public DeleteSubjectModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public DeleteSubjectModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 5);
     }
 
@@ -22,7 +21,7 @@ public class DeleteSubjectModalWindow extends BaseDeleteItemModalWindow{
             }
         }
 
-        return new SubjectPage(driver, log);
+        return new SubjectPage(driver);
     }
     public InformModalWindow switchToSubjectInformModalWindow() {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -33,6 +32,6 @@ public class DeleteSubjectModalWindow extends BaseDeleteItemModalWindow{
             }
         }
 
-        return new InformModalWindow(driver, log);
+        return new InformModalWindow(driver);
     }
 }

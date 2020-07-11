@@ -2,7 +2,6 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.TestPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,8 +18,8 @@ public class AddTestModalWindow extends BaseModalWindow {
     private By radioButtos = By.xpath("//label[@class='mat-radio-label']");
     private WaitUtils wait;
 
-    public AddTestModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddTestModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver,10);
     }
 
@@ -174,6 +173,6 @@ public class AddTestModalWindow extends BaseModalWindow {
             }
         }
 
-        return new TestPage(driver, log);
+        return new TestPage(driver);
     }
 }

@@ -3,18 +3,18 @@ package dtapi.modalsWindows;
 import dtapi.data.subject.NewSubject;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.SubjectPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddSubjectModalWindow extends BaseModalWindow {
     private By firstInput = By.xpath("//mat-dialog-container//input");
     private By textArea = By.xpath("//mat-dialog-container//textarea");
+    private By snackBar= By.xpath("//snack-bar-container[contains(class,snackbar-success)]");
     private WaitUtils wait;
 
 
-    public AddSubjectModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public AddSubjectModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver,10);
     }
 
@@ -27,8 +27,9 @@ public class AddSubjectModalWindow extends BaseModalWindow {
                 driver.switchTo().window(windowHandle);
             }
         }
-
-        return new SubjectPage(driver, log);
+    
+        new WaitUtils(driver, 10).waitForAlertVisibility();
+        return new SubjectPage(driver);
     }
 
     private void addNewSubject(String name, String desc) {
@@ -91,7 +92,7 @@ public class AddSubjectModalWindow extends BaseModalWindow {
     }
     public AddSubjectModalWindow fillInvalidSubjectData(NewSubject subject) {
         fillInvalidData(subject);
-        return new AddSubjectModalWindow(driver,log);
+        return new AddSubjectModalWindow(driver);
     }
     public InformModalWindow fillInvalidSubjectDataAndClickSubmitButton(NewSubject subject) {
         String addSubjectPageWindow = driver.getWindowHandle();
@@ -104,7 +105,7 @@ public class AddSubjectModalWindow extends BaseModalWindow {
 
             }
         }
-        return new InformModalWindow(driver,log);
+        return new InformModalWindow(driver);
     }
     private void fillInvalidData(NewSubject subject) {
         fillAllFields( subject);

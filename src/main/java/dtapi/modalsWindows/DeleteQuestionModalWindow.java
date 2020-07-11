@@ -2,14 +2,13 @@ package dtapi.modalsWindows;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.QuestionPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 public class DeleteQuestionModalWindow extends BaseDeleteItemModalWindow {
     private WaitUtils wait;
 
-    public DeleteQuestionModalWindow(WebDriver driver, Logger log) {
-        super(driver, log);
+    public DeleteQuestionModalWindow(WebDriver driver) {
+        super(driver);
         wait = new WaitUtils(driver, 10);
     }
 
@@ -23,6 +22,6 @@ public class DeleteQuestionModalWindow extends BaseDeleteItemModalWindow {
             }
         }
 
-        return new QuestionPage(driver, log);
+        return new QuestionPage(driver);
     }
 }
