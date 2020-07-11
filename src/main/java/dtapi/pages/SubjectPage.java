@@ -136,7 +136,7 @@ public class SubjectPage extends Paginator {
 
         return false;
     }
-
+    //check whether element is present or not
    /* public boolean isElementPresent(By by) {
         return !driver.findElements(by).isEmpty();
     }*/
