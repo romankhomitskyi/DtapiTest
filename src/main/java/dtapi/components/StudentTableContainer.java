@@ -1,147 +1,63 @@
 package dtapi.components;
 
-import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.Paginator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentTableContainer extends Paginator{
-
         private final String studentTableContainerXpath = "//div[contains(@class,'mat-table-wrapper')]/table/tbody/tr";
-        private WaitUtils wait;
+        private List<StudentTableContainerComponent> containerComponents;
 
 
 
         public StudentTableContainer(WebDriver driver) {
             super(driver);
-            wait = new WaitUtils(driver, 10);
+            initElements();
         }
 
+        private void initElements(){
+            containerComponents = new ArrayList<>();
 
-        protected void sleep(long n) {
-            try {
-                Thread.sleep(n);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            for (WebElement current : driver.findElements(By.xpath(studentTableContainerXpath))) {
+                containerComponents.add(new StudentTableContainerComponent(current));
             }
+
         }
+
 
         public List<StudentTableContainerComponent> getStudentContainerComponents() {
-            WebDriverWait waits = new WebDriverWait(driver, 10);
-            sleep(2000);
-            /*waits.until(ExpectedConditions.invisibilityOfAllElements(driver.findElements(By.xpath(groupTableContainerXpath))));*/
-            List<StudentTableContainerComponent> containerComponents = new ArrayList<>();
-            List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(studentTableContainerXpath))));
 
-            for (WebElement current : rows) {
-                System.out.println(current.getText());
-                containerComponents.add(new StudentTableContainerComponent(current));
-            }
             return containerComponents;
         }
+    private StudentTableContainerComponent getStudentContainerComponentByName(String studentNSF) {
+        StudentTableContainerComponent result = findStudent(studentNSF);
 
-
-        public int getStudentContainerComponentsCount() {
-            return getStudentContainerComponents().size();
-        }
-
-        public List<String> getStudentContainerComponentNames() {
-            List<String> containerComponentNames = new ArrayList<>();
-            for (StudentTableContainerComponent current : getStudentContainerComponents()) {
-                containerComponentNames.add(current.getStudentNSFText());
-            }
-            return containerComponentNames;
-        }
-
-
-        public String getContainerComponentGradeBookIdByStudentNSF(String studentNSF) {
-            return getStudentContainerComponentByName(studentNSF).getGradeBookIdText();
-        }
-
-        public String getContainerComponentStudentIdByStudentNSF(String studentNSF) {
-            return getStudentContainerComponentByName(studentNSF).getStudentIdText();
-        }
-
-
-        public void clickContainerComponentStudentDataByStudentNSF(String studentNSF) {
-            getStudentContainerComponentByName(studentNSF).clickStudentDataIcon();
-        }
-
-        public void clickContainerComponentSwitchGroupIconByStudentNSF(String studentNSF) {
-            getStudentContainerComponentByName(studentNSF).clickSwitchGroupIcon();
-        }
-
-        public void clickContainerComponentEditStudentIconByStudentNSF(String studentNSF) {
-            getStudentContainerComponentByName(studentNSF).clickEditStudentIcon();
-        }
-
-        public void clickContainerComponentDeleteStudentIconByStudentNSF(String studentNSF) {
-            getStudentContainerComponentByName(studentNSF).clickDeleteStudentIcon();
-        }
-
-
-        public StudentTableContainerComponent getStudentContainerComponentByStudentNSF(String studentNSF) {
-            return getStudentContainerComponentByName(studentNSF);
-        }
-
-
-        protected StudentTableContainerComponent getStudentContainerComponentByName(String studentNSF) {
-            StudentTableContainerComponent result = null;
-            WebDriverWait waits = new WebDriverWait(driver, 10);
-            sleep(2000);
-            List<WebElement> rows = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(studentTableContainerXpath))));
-            List<StudentTableContainerComponent> containerComponents = new ArrayList<>();
-            for (WebElement current : rows) {
-                containerComponents.add(new StudentTableContainerComponent(current));
-            }
-            for (StudentTableContainerComponent current : containerComponents) {
-
-                if (current.getStudentNSFText().toLowerCase().contains(studentNSF.toLowerCase())) {
-                    result = current;
-                    break;
-                }
-
-            }
-            if (result == null){
-
-                boolean isEnabled = isNextArrowEnabled();
-                while (isEnabled) {
-                    clickNextButton();
-                    waits.until(ExpectedConditions.invisibilityOfAllElements(rows));
-                    List<WebElement> rows2 = waits.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath(studentTableContainerXpath))));
-                    List<StudentTableContainerComponent> containerComponents2 = new ArrayList<>();
-                    for (WebElement current2 : rows2) {
-                        containerComponents2.add(new StudentTableContainerComponent(current2));
-
-                    }
-                    for (StudentTableContainerComponent current3 : containerComponents2) {
-
-                        if (current3.getStudentNSFText().toLowerCase().contains(studentNSF.toLowerCase())) {
-                            result = current3;
-                            break;
-                        }
-                    }
-
-                    if (result == null) {
-                        if (isNextArrowEnabled()) isEnabled = true;
-                        else isEnabled = false;
-                    } else return result;
-                }
-            }
-
-            if (result == null) {
+        while (result == null ) {
+            if (!isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Student with studentNSF: %s not found", studentNSF));
             }
-
-            return result;
-
+            clickNextButton();
+            initElements();
+            result = findStudent(studentNSF);
 
         }
+        return result;
+
+    }
+
+    private StudentTableContainerComponent findStudent( String studentNSF) {
+        for (StudentTableContainerComponent current : containerComponents) {
+
+            if (current.getStudentNSFText().toLowerCase().contains(studentNSF.toLowerCase())) {
+
+                return current;
+            }
+        }
+        return null;
+    }
 
     }

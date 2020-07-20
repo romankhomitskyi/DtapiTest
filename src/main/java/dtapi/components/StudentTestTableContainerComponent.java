@@ -6,23 +6,28 @@ import org.openqa.selenium.WebElement;
 public class StudentTestTableContainerComponent {
     private WebElement studentTestTableComponent;
 
-    private By subjectName = By.xpath(".//td[contains(@class,'cdk-column-subject')]");
-    private By testName = By.xpath(".//td[contains(@class,'cdk-column-test')]");
-    private By startTestIcon = By.xpath(".//td//mat-icon[contains(text(),' play_circle_outline ')]");
+    private WebElement subjectName;
+    private WebElement testName;
+    private WebElement startTestIcon ;
 
 
 
     public StudentTestTableContainerComponent(WebElement studentTestTableComponent) {
 
         this.studentTestTableComponent = studentTestTableComponent;
+        initElements();
 
 
+    }
+    private void initElements(){
+    subjectName = studentTestTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-subject')]"));
+    testName = studentTestTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-test')]"));
+    startTestIcon = studentTestTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),' play_circle_outline ')]"));
     }
 
 
     public WebElement getSubjectName() {
-        WebElement subjectsName = studentTestTableComponent.findElement(subjectName);
-        return subjectsName;
+        return subjectName;
     }
 
     public String getSubjectNameText() {
@@ -31,10 +36,7 @@ public class StudentTestTableContainerComponent {
 
 
     public WebElement getTestName() {
-
-
-        WebElement testsName = studentTestTableComponent.findElement(testName);
-        return testsName;
+        return testName;
     }
 
     public String getTestNameText() {
@@ -46,17 +48,12 @@ public class StudentTestTableContainerComponent {
 
     public WebElement getStartTestIcon() {
 
-        WebElement startsTestIcon = studentTestTableComponent.findElement(startTestIcon);
-        return  startsTestIcon;
+        return  startTestIcon;
     }
 
     public void clickStartTestIcon() {
         getStartTestIcon().click();
     }
-
-
-
-
 
 
 }

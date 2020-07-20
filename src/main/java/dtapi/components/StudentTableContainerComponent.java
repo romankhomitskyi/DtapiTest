@@ -6,26 +6,35 @@ import org.openqa.selenium.WebElement;
 public class StudentTableContainerComponent {
     private WebElement studentTableComponent;
 
-    private By studentId = By.xpath(".//td[contains(@class,'cdk-column-numeration')]");
-    private By gradeBookId = By.xpath(".//td[contains(@class,'cdk-column-gradebookID')]");
-    private By studentNSF = By.xpath(".//td[contains(@class,'cdk-column-studentNSF')]");
-    private By studentDataIcon = By.xpath(".//td//mat-icon[contains(text(),'assignment_ind')]");
-    private By switchGroupIcon = By.xpath(".//td//mat-icon[contains(text(),'compare_arrows')]");
-    private By editStudentIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteStudentIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
+    private WebElement studentId;
+    private WebElement gradeBookId ;
+    private WebElement studentNSF ;
+    private WebElement studentDataIcon ;
+    private WebElement switchGroupIcon ;
+    private WebElement editStudentIcon ;
+    private WebElement deleteStudentIcon ;
 
 
     public StudentTableContainerComponent(WebElement studentTableComponent) {
 
         this.studentTableComponent = studentTableComponent;
+        iniElements();
 
+    }
+    private void iniElements(){
+     studentId = studentTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-numeration')]"));
+     gradeBookId = studentTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-gradebookID')]"));
+     studentNSF = studentTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-studentNSF')]"));
+     studentDataIcon = studentTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'assignment_ind')]"));
+     switchGroupIcon = studentTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'compare_arrows')]"));
+     editStudentIcon = studentTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+     deleteStudentIcon = studentTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
 
     }
 
 
     public WebElement getStudentId() {
-        WebElement studentsId = studentTableComponent.findElement(studentId);
-        return studentsId;
+        return studentId;
     }
 
     public String getStudentIdText() {
@@ -34,34 +43,24 @@ public class StudentTableContainerComponent {
 
 
     public WebElement getGradeBookId() {
-
-
-        WebElement gradeBooksId = studentTableComponent.findElement(gradeBookId);
-        return gradeBooksId;
+        return gradeBookId;
     }
 
     public String getGradeBookIdText() {
-
         return getGradeBookId().getText();
     }
 
     public WebElement getStudentNSF() {
-        WebElement studentsNSF = studentTableComponent.findElement(studentNSF);
-
-        return studentsNSF;
+        return studentNSF;
     }
 
     public String getStudentNSFText() {
         return getStudentNSF().getText();
     }
 
-
-
-
     public WebElement getEditStudentIcon() {
 
-        WebElement editsStudentIcon = studentTableComponent.findElement(editStudentIcon);
-        return  editsStudentIcon;
+        return  editStudentIcon;
     }
 
     public void clickEditStudentIcon() {
@@ -69,8 +68,7 @@ public class StudentTableContainerComponent {
     }
 
     public WebElement getStudentDataIcon() {
-        WebElement studentsDataIcon = studentTableComponent.findElement(studentDataIcon);
-        return studentsDataIcon;
+        return studentDataIcon;
     }
 
     public void clickStudentDataIcon() {
@@ -78,8 +76,7 @@ public class StudentTableContainerComponent {
     }
 
     public WebElement getSwitchGroupIcon() {
-        WebElement switchGroupsIcon = studentTableComponent.findElement(switchGroupIcon);
-        return switchGroupsIcon;
+        return switchGroupIcon;
     }
 
     public void clickSwitchGroupIcon() {
@@ -87,8 +84,8 @@ public class StudentTableContainerComponent {
     }
 
     public WebElement getDeleteStudentIcon() {
-        WebElement deleteStudentsIcon = studentTableComponent.findElement(deleteStudentIcon);
-        return deleteStudentsIcon;
+
+        return deleteStudentIcon;
     }
 
     public void clickDeleteStudentIcon() {
