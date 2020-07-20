@@ -18,6 +18,15 @@ public class SubjectTableContainer  extends Paginator {
         initElements();
     }
 
+    private void initElements() {
+
+        containerComponents = new ArrayList<>();
+
+        for (WebElement current : driver.findElements(By.xpath(subjectTableContainerXpath))) {
+            containerComponents.add(new SubjectTableContainerComponent(current));
+        }
+    }
+
     public List<SubjectTableContainerComponent> getSubjectContainerComponents() {
         return containerComponents;
     }
@@ -52,15 +61,6 @@ public class SubjectTableContainer  extends Paginator {
             }
         }
         return null;
-    }
-
-    private void initElements() {
-
-        containerComponents = new ArrayList<>();
-
-        for (WebElement current : driver.findElements(By.xpath(subjectTableContainerXpath))) {
-            containerComponents.add(new SubjectTableContainerComponent(current));
-        }
     }
 }
 

@@ -4,47 +4,52 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class TestOfSubjectTableContainerComponent {
-    private By testId = By.xpath(".//td[contains(@class,'cdk-column-id')]");
-    private By testName = By.xpath(".//td[contains(@class,'cdk-column-name')]");
-    private By subjectName = By.xpath(".//td[contains(@class,'cdk-column-subject')]");
-    private By countTask = By.xpath(".//td//mat-icon[contains(text(),'cdk-column-tasks')]");
-    private By testParamIcon = By.xpath(".//td//mat-icon[contains(text(),'description')]");
-    private By questionIcon = By.xpath(".//td//mat-icon[contains(text(),'list')]");
-    private By editTestIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteTestIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
     private WebElement testOfSubjectTableComponent;
+
+    private WebElement testId;
+    private WebElement testName;
+    private WebElement subjectName;
+    private WebElement countTask;
+    private WebElement testParamIcon ;
+    private WebElement questionIcon;
+    private WebElement editTestIcon;
+    private WebElement deleteTestIcon ;
+
 
     public TestOfSubjectTableContainerComponent(WebElement testOfSubjectTableComponent) {
 
         this.testOfSubjectTableComponent = testOfSubjectTableComponent;
+        iniElements();
+    }
+    private void iniElements(){
+    testId = testOfSubjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-id')]"));
+    testName = testOfSubjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-name')]"));
+    subjectName = testOfSubjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-subject')]"));
+    countTask = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'cdk-column-tasks')]"));
+    testParamIcon = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'description')]"));
+    questionIcon = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'list')]"));
+    editTestIcon = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+    deleteTestIcon = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
 
     }
     public WebElement getTestId() {
-        WebElement testsId = testOfSubjectTableComponent.findElement(testId);
-        return testsId;
+        return testId;
     }
 
     public String getTestIdText() {
         return getTestId().getText();
     }
 
-
     public WebElement getTestOfSubjectName() {
-
-
-        WebElement subjectsName = testOfSubjectTableComponent.findElement(subjectName);
-        return subjectsName;
+        return subjectName;
     }
 
     public String getTestOfSubjectNameText() {
-
         return getTestOfSubjectName().getText();
     }
 
     public WebElement getTestName() {
-        WebElement testsName = testOfSubjectTableComponent.findElement(testName);
-
-        return testsName;
+        return testName;
     }
 
     public String getTestNameText() {
@@ -52,9 +57,7 @@ public class TestOfSubjectTableContainerComponent {
     }
 
     public WebElement getCountTask() {
-        WebElement countsTask = testOfSubjectTableComponent.findElement(countTask);
-
-        return countsTask;
+        return countTask;
     }
 
     public String getCountTaskText() {
@@ -62,12 +65,8 @@ public class TestOfSubjectTableContainerComponent {
     }
 
 
-
-
     public WebElement getEditTestIcon() {
-
-        WebElement editsTestIcon = testOfSubjectTableComponent.findElement(editTestIcon);
-        return  editsTestIcon;
+        return  editTestIcon;
     }
 
     public void clickEditTestIcon() {
@@ -75,8 +74,7 @@ public class TestOfSubjectTableContainerComponent {
     }
 
     public WebElement getTestParamIcon() {
-        WebElement testsParamIcon = testOfSubjectTableComponent.findElement(testParamIcon);
-        return testsParamIcon;
+        return testParamIcon;
     }
 
     public void clickTestParamIcon() {
@@ -84,8 +82,7 @@ public class TestOfSubjectTableContainerComponent {
     }
 
     public WebElement getQuestionIcon() {
-        WebElement questionsIcon = testOfSubjectTableComponent.findElement(questionIcon);
-        return questionsIcon;
+        return questionIcon;
     }
 
     public void clickQuestionIcon() {
@@ -93,8 +90,7 @@ public class TestOfSubjectTableContainerComponent {
     }
 
     public WebElement getDeleteTestIcon() {
-        WebElement deleteTestsIcon = testOfSubjectTableComponent.findElement(deleteTestIcon);
-        return deleteTestsIcon;
+        return deleteTestIcon;
     }
 
     public void clickDeleteTestIcon() {

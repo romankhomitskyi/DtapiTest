@@ -6,27 +6,38 @@ import org.openqa.selenium.WebElement;
 public class TestScheduleTableContainerComponent {
     private WebElement testScheduleTableComponent;
 
-    private By scheduleTestId = By.xpath(".//td[contains(@class,'cdk-column-id')]");
-    private By group = By.xpath(".//td[contains(@class,'cdk-column-group')]");
-    private By startDate = By.xpath(".//td[contains(@class,'cdk-column-start_date')]");
-    private By startTime = By.xpath(".//td[contains(@class,'cdk-column-start_time')]");
-    private By endDate = By.xpath(".//td[contains(@class,' cdk-column-end_date')]");
-    private By endTime = By.xpath(".//td[contains(@class,' cdk-column-end_time')]");
-    private By editScheduleTestIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteScheduleTestIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
+    private WebElement scheduleTestId;
+    private WebElement group ;
+    private WebElement startDate ;
+    private WebElement startTime;
+    private WebElement endDate;
+    private WebElement endTime;
+    private WebElement editScheduleTestIcon ;
+    private WebElement deleteScheduleTestIcon ;
 
 
     public TestScheduleTableContainerComponent(WebElement testScheduleTableComponent) {
 
         this.testScheduleTableComponent = testScheduleTableComponent;
+        initElements();
+
+    }
+    private void initElements(){
+     scheduleTestId = testScheduleTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-id')]"));
+     group = testScheduleTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-group')]"));
+     startDate = testScheduleTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-start_date')]"));
+     startTime = testScheduleTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-start_time')]"));
+     endDate = testScheduleTableComponent.findElement(By.xpath(".//td[contains(@class,' cdk-column-end_date')]"));
+     endTime = testScheduleTableComponent.findElement(By.xpath(".//td[contains(@class,' cdk-column-end_time')]"));
+     editScheduleTestIcon = testScheduleTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+     deleteScheduleTestIcon = testScheduleTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
 
 
     }
 
 
-    public WebElement getScheduleTestId() {
-        WebElement schedulesTestId = testScheduleTableComponent.findElement(scheduleTestId);
-        return schedulesTestId;
+    public WebElement getScheduleTestId() { ;
+        return scheduleTestId;
     }
 
     public String getScheduleTestIdText() {
@@ -35,20 +46,15 @@ public class TestScheduleTableContainerComponent {
 
 
     public WebElement getGroup() {
-
-        WebElement groups = testScheduleTableComponent.findElement(group);
-        return groups;
+        return group;
     }
 
     public String getGroupText() {
-
         return getGroup().getText();
     }
 
     public WebElement getStartDate() {
-        WebElement startsDate = testScheduleTableComponent.findElement(startDate);
-
-        return startsDate;
+        return startDate;
     }
 
     public String getStartDateText() {
@@ -56,18 +62,14 @@ public class TestScheduleTableContainerComponent {
     }
 
     public WebElement getEndDate() {
-
-        WebElement endsDate = testScheduleTableComponent.findElement(endDate);
-        return endsDate;
+        return endDate;
     }
 
     public String getEndDateText() {
         return getEndDate().getText();
     }
     public WebElement getEndTime() {
-
-        WebElement endsTime = testScheduleTableComponent.findElement(endTime);
-        return endsTime;
+        return endTime;
     }
 
     public String getEndTimeText() {
@@ -76,21 +78,15 @@ public class TestScheduleTableContainerComponent {
 
 
     public WebElement getStartTime() {
-
-        WebElement startsTime = testScheduleTableComponent.findElement(startTime);
-        return startsTime;
+        return startTime;
     }
 
     public String getStartTimeText() {
         return getStartTime().getText();
     }
 
-
-
     public WebElement getEditScheduleTestIcon() {
-
-        WebElement editsScheduleTest = testScheduleTableComponent.findElement(editScheduleTestIcon);
-        return editsScheduleTest;
+        return  editScheduleTestIcon;
     }
 
     public void clickEditScheduleTestIcon() {
@@ -98,14 +94,9 @@ public class TestScheduleTableContainerComponent {
     }
 
 
-
-
-
     public WebElement getDeleteScheduleTestIcon() {
-        WebElement deletesScheduleTestIcon = testScheduleTableComponent.findElement(deleteScheduleTestIcon);
-        return deletesScheduleTestIcon;
+        return deleteScheduleTestIcon;
     }
-
     public void clickDeleteScheduleTestIcon() {
         getDeleteScheduleTestIcon().click();
     }
