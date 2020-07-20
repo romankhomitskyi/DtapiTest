@@ -130,11 +130,7 @@ public class SubjectPage extends Paginator {
         String  subjectsName = getSubjectTableContainer().
                 getSubjectContainerComponentBySubjectName(subjectName)
                 .getSubjectNameText();
-        if(subjectName.equals(subjectName)){
-            return true;
-        }
-
-        return false;
+        return subjectName.equals(subjectName);
     }
     //check whether element is present or not
    /* public boolean isElementPresent(By by) {

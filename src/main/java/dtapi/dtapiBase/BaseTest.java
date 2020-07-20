@@ -2,22 +2,25 @@ package dtapi.dtapiBase;
 
 import dtapi.data.enums.Browsers;
 import dtapi.pages.MainPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import java.lang.reflect.Method;
 
+public  abstract class BaseTest {
+    private WebDriver driver;
 
-public class BaseTest {
-    public WebDriver driver;
+    @BeforeClass
+    public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
 
-    @Parameters({"browser", "url"})
+    }
+    @Parameters({"url"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(Method method, @Optional("chrome") String browser, String url, ITestContext ctx) {
+    public void setUp(String url) {
         driver = Browsers.CHROME.create();
         driver.manage().window().maximize();
         openUrl(url);
@@ -44,8 +47,10 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        sleep(1300);
-        driver.quit();
+        if (driver !=null) {
+            sleep(1300);
+            driver.quit();
+        }
     }
 }
 

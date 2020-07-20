@@ -3,12 +3,6 @@
 <suite name="All Test Suite">
     <parameter name="url" value="https://travisdtapi.firebaseapp.com/login"></parameter>
     <test verbose="2" preserve-order="true" name="SubjectTestPage" parallel="tests" thread-count="3">
-        <!--<parameter name="chromeProfile" value="ChromeProfile"></parameter>-->
-        <!-- <groups>
-             <run>
-                 <include name="smokeTest"/>
-             </run>
-         </groups>-->
         <classes>
             <class name="subjectsTests.SubjectTest">
                 <methods>
@@ -18,10 +12,7 @@
                     <!--<include name="addNewTest2" />-->
                     <include name="verifyValidationOnAddNewSubjectModalWindow" />
                  <!--   <include name="verifyTestResults" />-->
-
-
                 </methods>
-
             </class>
         </classes>
     </test>

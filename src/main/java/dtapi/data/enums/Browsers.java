@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
     public enum Browsers {
         CHROME {
             public WebDriver create(){
-                System.setProperty("webdriver.chrome.driver", "D:\\Intellij IDEA\\testgroup\\drivers\\chromedriver.exe");
+                /*System.setProperty("webdriver.chrome.driver", "D:\\Intellij IDEA\\testgroup\\drivers\\chromedriver.exe");*/
                 DesiredCapabilities capabilities = DesiredCapabilities.chrome();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("test-type");

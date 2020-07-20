@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class BasePageObject {
+public abstract class BasePageObject {
     protected WebDriver driver;
 
 
