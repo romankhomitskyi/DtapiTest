@@ -33,6 +33,9 @@ public class StudentTableContainer extends Paginator{
 
             return containerComponents;
         }
+    public StudentTableContainerComponent getStudentContainerComponentByNSF(String studentNSF) {
+        return getStudentContainerComponentByName(studentNSF);
+    }
     private StudentTableContainerComponent getStudentContainerComponentByName(String studentNSF) {
         StudentTableContainerComponent result = findStudent(studentNSF);
 

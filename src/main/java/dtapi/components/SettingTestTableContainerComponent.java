@@ -6,25 +6,33 @@ import org.openqa.selenium.WebElement;
 public class SettingTestTableContainerComponent {
     private WebElement settingTestTableComponent;
 
-    private By settingTestId = By.xpath(".//td[contains(@class,'cdk-column-id')]");
-    private By testLvl = By.xpath(".//td[contains(@class,'cdk-column-level')]");
-    private By countTask = By.xpath(".//td[contains(@class,'cdk-column-tasks')]");
-    private By countGrade = By.xpath(".//td[contains(@class,'cdk-column-rate')]");
-    private By editSettingTestIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteSettingTestIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
+    private WebElement settingTestId;
+    private WebElement testLvl;
+    private WebElement countTask ;
+    private WebElement countGrade;
+    private WebElement editSettingTestIcon ;
+    private WebElement deleteSettingTestIcon ;
 
 
     public SettingTestTableContainerComponent(WebElement settingTestTableComponent) {
 
         this.settingTestTableComponent = settingTestTableComponent;
+        initElements();
 
+    }
+    private void initElements(){
+        settingTestId = settingTestTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-id')]"));
+        testLvl = settingTestTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-level')]"));
+        countTask = settingTestTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-tasks')]"));
+        countGrade = settingTestTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-rate')]"));
+        editSettingTestIcon = settingTestTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+        deleteSettingTestIcon = settingTestTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
 
     }
 
 
     public WebElement getSettingTestId() {
-        WebElement settingsTestId = settingTestTableComponent.findElement(settingTestId);
-        return settingsTestId;
+        return settingTestId;
     }
 
     public String getSettingTestIdText() {
@@ -33,9 +41,7 @@ public class SettingTestTableContainerComponent {
 
 
     public WebElement getTestLvl() {
-
-        WebElement testsLvl = settingTestTableComponent.findElement(testLvl);
-        return testsLvl;
+        return testLvl;
     }
 
     public String getTestLvlText() {
@@ -44,9 +50,7 @@ public class SettingTestTableContainerComponent {
     }
 
     public WebElement getCountTask() {
-        WebElement countsTask = settingTestTableComponent.findElement(countTask);
-
-        return countsTask;
+        return countTask;
     }
 
     public String getCountTaskText() {
@@ -54,9 +58,7 @@ public class SettingTestTableContainerComponent {
     }
 
     public WebElement getCountGrade() {
-
-        WebElement countsGrade = settingTestTableComponent.findElement(countGrade);
-        return countsGrade;
+        return countGrade;
     }
 
     public String getCountGradeText() {
@@ -65,9 +67,7 @@ public class SettingTestTableContainerComponent {
 
 
     public WebElement getSettingTestIcon() {
-
-        WebElement editsSettingTestsIcon = settingTestTableComponent.findElement(editSettingTestIcon);
-        return editsSettingTestsIcon;
+        return editSettingTestIcon;
     }
 
     public void clickEditSettingTestIcon() {
@@ -75,12 +75,8 @@ public class SettingTestTableContainerComponent {
     }
 
 
-
-
-
     public WebElement getDeleteSettingTestIcon() {
-        WebElement deleteSettingsTestIcon = settingTestTableComponent.findElement(deleteSettingTestIcon);
-        return deleteSettingsTestIcon;
+        return deleteSettingTestIcon;
     }
 
     public void clickDeleteSettingTestIcon() {

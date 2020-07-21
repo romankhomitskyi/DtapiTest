@@ -34,7 +34,7 @@ public class StudentPage extends Paginator {
     public AddNewStudentModalWindow switchToEditStudentModalWindow(IStudent student) {
         String shoppingCartWindow = driver.getWindowHandle();
         getStudentTableContainer().
-                getStudentContainerComponentByStudentNSF(student.getSurname()).clickEditStudentIcon();
+                getStudentContainerComponentByNSF(student.getSurname()).clickEditStudentIcon();
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -45,7 +45,7 @@ public class StudentPage extends Paginator {
     public StudentDataModalWindow switchToInformationAboutStudentModalWindow(IStudent student) {
         String shoppingCartWindow = driver.getWindowHandle();
         getStudentTableContainer().
-                getStudentContainerComponentByStudentNSF(student.getSurname()).clickStudentDataIcon();
+                getStudentContainerComponentByNSF(student.getSurname()).clickStudentDataIcon();
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -65,7 +65,7 @@ public class StudentPage extends Paginator {
     public boolean verifyStudentAdded(IStudent studentNSF) {
 
         String  nsf = getStudentTableContainer().
-                getStudentContainerComponentByStudentNSF(studentNSF.getSurname())
+                getStudentContainerComponentByNSF(studentNSF.getSurname())
                 .getStudentNSFText();
         if(nsf.contains(studentNSF.getSurname())){
             return true;

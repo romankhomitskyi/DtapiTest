@@ -6,23 +6,29 @@ import org.openqa.selenium.WebElement;
 public class SpecialityTableContainerComponent {
     private WebElement specialityTableComponent;
 
-    private By specialityId = By.xpath(".//td[contains(@class,'cdk-column-code')]");
-    private By specialityName = By.xpath(".//td[contains(@class,'cdk-column-name')]");
-    private By editSpecialityIcon = By.xpath(".//td//i[contains(text(),'edit')]/parent::a");
-    private By deleteSpecialityIcon = By.xpath(".//td//i[contains(text(),'delete')]/parent::a");
+    private WebElement specialityId;
+    private WebElement specialityName ;
+    private WebElement editSpecialityIcon;
+    private WebElement deleteSpecialityIcon ;
 
 
     public SpecialityTableContainerComponent(WebElement specialityTableComponent) {
 
         this.specialityTableComponent = specialityTableComponent;
+        initElements();
+
+    }
+    private void initElements(){
+        specialityId = specialityTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-code')]"));
+        specialityName = specialityTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-name')]"));
+        editSpecialityIcon = specialityTableComponent.findElement(By.xpath(".//td//i[contains(text(),'edit')]/parent::a"));
+        deleteSpecialityIcon = specialityTableComponent.findElement(By.xpath(".//td//i[contains(text(),'delete')]/parent::a"));
 
 
     }
 
-
     public WebElement getSpecialityId() {
-        WebElement specialitysId = specialityTableComponent.findElement(specialityId);
-        return specialitysId;
+        return specialityId;
     }
 
     public String getSpecialityIdText() {
@@ -31,8 +37,7 @@ public class SpecialityTableContainerComponent {
 
 
     public WebElement getSpecialityName() {
-        WebElement specialitysName = specialityTableComponent.findElement(specialityName);
-        return specialitysName;
+        return specialityName;
     }
 
     public String getSpecialityNameText() {
@@ -42,8 +47,7 @@ public class SpecialityTableContainerComponent {
 
 
     public WebElement getEditSpecialityIcon() {
-        WebElement editSpecialitiesIcon = specialityTableComponent.findElement(editSpecialityIcon);
-        return editSpecialitiesIcon;
+        return editSpecialityIcon;
     }
 
     public void clickSpecialityEditIcon() {
@@ -53,8 +57,7 @@ public class SpecialityTableContainerComponent {
 
 
     public WebElement getDeleteSpecialityIcon() {
-        WebElement deleteSpecialitiesIcon = specialityTableComponent.findElement(deleteSpecialityIcon);
-        return  deleteSpecialitiesIcon;
+        return  deleteSpecialityIcon;
     }
 
     public void clickDeleteSpecialityIcon() {
