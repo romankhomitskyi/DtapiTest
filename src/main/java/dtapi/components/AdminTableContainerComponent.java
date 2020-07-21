@@ -6,22 +6,27 @@ import org.openqa.selenium.WebElement;
 public class AdminTableContainerComponent {
     private WebElement adminTableContainerComponent;
 
-    private By adminLogin = By.xpath(".//td[contains(@class,'cdk-column-username')]");
-    private By editAdminIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteAdmin = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
+    private WebElement adminLogin;
+    private WebElement editAdminIcon ;
+    private WebElement deleteAdmin ;
 
 
     public AdminTableContainerComponent(WebElement adminTableContainerComponent) {
 
         this.adminTableContainerComponent = adminTableContainerComponent;
+        initElements();
 
+    }
+    private void initElements(){
+        adminLogin =adminTableContainerComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-username')]"));
+        editAdminIcon = adminTableContainerComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+        deleteAdmin =adminTableContainerComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
 
     }
 
 
     public WebElement getAdminLogin() {
-        WebElement adminsLogin = adminTableContainerComponent.findElement(adminLogin);
-        return adminsLogin;
+        return adminLogin;
     }
 
     public String getAdminLoginText() {
@@ -32,8 +37,7 @@ public class AdminTableContainerComponent {
 
     public WebElement getEditAdminIcon() {
 
-        WebElement editsAdminIcon = adminTableContainerComponent.findElement(editAdminIcon);
-        return  editsAdminIcon;
+        return  editAdminIcon;
     }
 
     public void clickEditAdminIcon() {
@@ -43,8 +47,8 @@ public class AdminTableContainerComponent {
 
 
     public WebElement getDeleteAdminIcon() {
-        WebElement deletesAdmin = adminTableContainerComponent.findElement(deleteAdmin);
-        return deletesAdmin;
+
+        return deleteAdmin;
     }
 
     public void clickDeleteAdminIcon() {

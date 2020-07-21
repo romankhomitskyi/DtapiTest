@@ -6,24 +6,30 @@ import org.openqa.selenium.WebElement;
 public class FacultyTableContainerComponent {
     private WebElement facultyTableComponent;
 
-    private By facultyId = By.xpath(".//td[contains(@class,'cdk-column-faculty_id')]");
-    private By facultyName = By.xpath(".//td[contains(@class,'cdk-column-faculty_name')]");
-    private By facultyDesc = By.xpath(".//td[contains(@class,'cdk-column-faculty_description')]");
-    private By editFacultyIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteFacultyIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
+    private WebElement facultyId;
+    private WebElement facultyName;
+    private WebElement facultyDesc ;
+    private WebElement editFacultyIcon ;
+    private WebElement deleteFacultyIcon ;
 
 
     public FacultyTableContainerComponent(WebElement facultyTableComponent) {
 
         this.facultyTableComponent = facultyTableComponent;
+        initElements();
 
+    }
+    private void initElements(){
+        facultyId = facultyTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-faculty_id')]"));
+        facultyName = facultyTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-faculty_name')]"));
+        facultyDesc = facultyTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-faculty_description')]"));
+        editFacultyIcon =facultyTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+        deleteFacultyIcon =facultyTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
 
     }
 
-
     public WebElement getFacultyId() {
-        WebElement facultysId = facultyTableComponent.findElement(facultyId);
-        return facultysId;
+        return facultyId;
     }
 
     public String getFacultyIdText() {
@@ -32,21 +38,15 @@ public class FacultyTableContainerComponent {
 
 
     public WebElement getFacultyName() {
-
-
-        WebElement facultysName = facultyTableComponent.findElement(facultyName);
-        return facultysName;
+        return facultyName;
     }
 
     public String getFacultyNameText() {
-
         return getFacultyName().getText();
     }
 
     public WebElement getFacultyDesc() {
-        WebElement facultysDesc = facultyTableComponent.findElement(facultyDesc);
-
-        return facultysDesc;
+        return facultyDesc;
     }
 
     public String getFacultyDescText() {
@@ -54,10 +54,8 @@ public class FacultyTableContainerComponent {
     }
 
 
-
     public WebElement getEditFacultyIcon() {
-        WebElement editFacultysIcon = facultyTableComponent.findElement(editFacultyIcon);
-        return editFacultysIcon;
+        return editFacultyIcon;
     }
 
     public void clickFacultyEditIcon() {
@@ -67,8 +65,7 @@ public class FacultyTableContainerComponent {
 
 
     public WebElement getDeleteFacultyIcon() {
-        WebElement deleteFacultysIcon = facultyTableComponent.findElement(deleteFacultyIcon);
-        return  deleteFacultysIcon;
+        return  deleteFacultyIcon;
     }
 
     public void clickDeleteFacultyIcon() {
