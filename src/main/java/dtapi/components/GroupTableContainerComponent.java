@@ -6,27 +6,35 @@ import org.openqa.selenium.WebElement;
 public class GroupTableContainerComponent {
     private WebElement groupTableComponent;
 
-    private By groupId = By.xpath(".//td[contains(@class,'cdk-column-group_id')]");
-    private By groupCode = By.xpath(".//td[contains(@class,'cdk-column-group_name')]");
-    private By groupSpecility = By.xpath(".//td[contains(@class,'cdk-column-speciality')]");
-    private By groupFaculty = By.xpath(".//td[contains(@class,'cdk-column-faculty')]");
-    private By studentInGroupIcon = By.xpath(".//td//mat-icon[contains(text(),'supervisor_account')]");
-    private By groupTestResultsIcon = By.xpath(".//td//mat-icon[contains(text(),'score')]");
-    private By editGroupIcon = By.xpath(".//td//mat-icon[contains(text(),'edit')]");
-    private By deleteGroupIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
+    private WebElement groupId ;
+    private WebElement groupCode ;
+    private WebElement groupSpecility;
+    private WebElement groupFaculty ;
+    private WebElement studentInGroupIcon;
+    private WebElement groupTestResultsIcon ;
+    private WebElement editGroupIcon ;
+    private WebElement deleteGroupIcon;
 
 
     public GroupTableContainerComponent(WebElement groupTableComponent) {
 
         this.groupTableComponent = groupTableComponent;
-
+        initElements();
 
     }
-
+    private void initElements(){
+        groupId = groupTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-group_id')]"));
+        groupCode =groupTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-group_name')]"));
+        groupSpecility =groupTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-speciality')]"));
+        groupFaculty =groupTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-faculty')]"));
+        studentInGroupIcon =groupTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'supervisor_account')]"));
+        groupTestResultsIcon =groupTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'score')]"));
+        editGroupIcon =groupTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));
+         deleteGroupIcon =groupTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
+    }
 
     public WebElement getGroupId() {
-        WebElement groupsId = groupTableComponent.findElement(groupId);
-        return groupsId;
+        return groupId;
     }
 
     public String getGroupIdText() {
@@ -35,10 +43,7 @@ public class GroupTableContainerComponent {
 
 
     public WebElement getGroupCode() {
-
-
-        WebElement groupsCode = groupTableComponent.findElement(groupCode);
-        return groupsCode;
+        return groupCode;
     }
 
     public String getGroupCodeText() {
@@ -47,9 +52,7 @@ public class GroupTableContainerComponent {
     }
 
     public WebElement getGroupSpecility() {
-        WebElement groupsSpecility = groupTableComponent.findElement(groupSpecility);
-
-        return groupsSpecility;
+        return groupSpecility;
     }
 
     public String getGroupSpecilityText() {
@@ -58,8 +61,7 @@ public class GroupTableContainerComponent {
 
     public WebElement getGroupFaculty() {
 
-        WebElement groupsFaculty = groupTableComponent.findElement(groupFaculty);
-        return groupsFaculty;
+        return groupFaculty;
     }
 
     public String getGroupFacultyText() {
@@ -69,8 +71,7 @@ public class GroupTableContainerComponent {
 
     public WebElement getEditGroupIcon() {
 
-        WebElement editsGroupIcon = groupTableComponent.findElement(editGroupIcon);
-        return editsGroupIcon;
+        return editGroupIcon;
     }
 
     public void clickEditGroupIcon() {
@@ -78,8 +79,7 @@ public class GroupTableContainerComponent {
     }
 
     public WebElement getStudentInGroupIcon() {
-        WebElement studentsInGroupIcon = groupTableComponent.findElement(studentInGroupIcon);
-        return studentsInGroupIcon;
+        return studentInGroupIcon;
     }
 
     public void clickStudentInGroupIcon() {
@@ -87,8 +87,8 @@ public class GroupTableContainerComponent {
     }
 
     public WebElement getGroupTestResultsIcon() {
-        WebElement groupsTestResultsIcon = groupTableComponent.findElement(groupTestResultsIcon);
-        return groupsTestResultsIcon;
+
+        return groupTestResultsIcon;
     }
 
     public void clickGroupTestResultsIcon() {
@@ -96,8 +96,7 @@ public class GroupTableContainerComponent {
     }
 
     public WebElement getDeleteGroupIcon() {
-        WebElement deleteGroupsIcon = groupTableComponent.findElement(deleteGroupIcon);
-        return deleteGroupsIcon;
+        return deleteGroupIcon;
     }
 
     public void clickDeleteGroupIcon() {

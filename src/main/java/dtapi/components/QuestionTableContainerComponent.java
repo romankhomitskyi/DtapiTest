@@ -6,25 +6,32 @@ import org.openqa.selenium.WebElement;
 public class QuestionTableContainerComponent {
     private WebElement questionTableComponent;
 
-    private By questionId = By.xpath(".//td[contains(@class,'cdk-column-number')]");
-    private By questionText = By.xpath(".//td[contains(@class,'cdk-column-question_text')]");
-    private By questionType = By.xpath(".//td[contains(@class,'cdk-column-type')]");
-    private By questionLvl = By.xpath(".//td[contains(@class,'cdk-column-level')]");
-    private By editQuestionIcon = By.xpath(".//td//mat-icon[contains(text(),'settings_applications')]");
-    private By deleteQuestionIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
+    private WebElement questionId ;
+    private WebElement questionText ;
+    private WebElement questionType ;
+    private WebElement questionLvl ;
+    private WebElement editQuestionIcon ;
+    private WebElement deleteQuestionIcon;
 
 
     public QuestionTableContainerComponent(WebElement questionTableComponent) {
 
         this.questionTableComponent = questionTableComponent;
+        initElements();
 
+    }
+    private void initElements(){
+        questionId = questionTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-number')]"));
+        questionText = questionTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-question_text')]"));
+        questionType = questionTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-type')]"));
+        questionLvl = questionTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-level')]"));
+        editQuestionIcon = questionTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'settings_applications')]"));
+        deleteQuestionIcon = questionTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'delete')]"));
 
     }
 
-
     public WebElement getQuestionId() {
-        WebElement questionsId = questionTableComponent.findElement(questionId);
-        return questionsId;
+        return questionId;
     }
 
     public String getQuestionIdText() {
@@ -33,10 +40,7 @@ public class QuestionTableContainerComponent {
 
 
     public WebElement getQuestionText() {
-
-
-        WebElement questionsText = questionTableComponent.findElement(questionText);
-        return questionsText;
+        return questionText;
     }
 
     public String getQuestionTextText() {
@@ -45,9 +49,7 @@ public class QuestionTableContainerComponent {
     }
 
     public WebElement getQuestionType() {
-        WebElement questionsType = questionTableComponent.findElement(questionType);
-
-        return questionsType;
+        return questionType;
     }
 
     public String getQuestionTypeText() {
@@ -56,9 +58,7 @@ public class QuestionTableContainerComponent {
 
 
     public WebElement getQuestionLvl() {
-        WebElement questionsLvl = questionTableComponent.findElement(questionLvl);
-
-        return questionsLvl;
+        return questionLvl;
     }
 
     public String getQuestionLvlText() {
@@ -68,8 +68,7 @@ public class QuestionTableContainerComponent {
 
 
     public WebElement getEditQuestionIcon() {
-        WebElement editQuestionsIcon = questionTableComponent.findElement(editQuestionIcon);
-        return editQuestionsIcon;
+        return editQuestionIcon;
     }
 
     public void clickEditQuestionIcon() {
@@ -79,8 +78,7 @@ public class QuestionTableContainerComponent {
 
 
     public WebElement getDeleteQuestionIcon() {
-        WebElement deleteQuestionsIcon = questionTableComponent.findElement(deleteQuestionIcon);
-        return  deleteQuestionsIcon;
+        return  deleteQuestionIcon;
     }
 
     public void clickDeleteQuestionIcon() {

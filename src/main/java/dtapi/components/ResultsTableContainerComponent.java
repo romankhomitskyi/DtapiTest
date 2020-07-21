@@ -6,11 +6,11 @@ import org.openqa.selenium.WebElement;
 public class ResultsTableContainerComponent {
     private WebElement resultsTableContainerComponent;
 
-    private By studentNSF = By.xpath(".//td[contains(@class,'cdk-column-student')]");
-    private By studentId = By.xpath(".//td[contains(@class,'cdk-column-id')]");
-    private By studentResult = By.xpath(".//td[contains(@class,'cdk-column-twenty')]");
-    private By studentScore = By.xpath(".//td[contains(@class,'cdk-column-score')]");
-    private By sessionDate = By.xpath(".//td[contains(@class,'cdk-column-session_date')]");
+    private WebElement studentNSF;
+    private WebElement studentId ;
+    private WebElement studentResult ;
+    private WebElement studentScore ;
+    private WebElement sessionDate ;
 
 
 
@@ -18,20 +18,29 @@ public class ResultsTableContainerComponent {
     public ResultsTableContainerComponent(WebElement resultsTableContainerComponent) {
 
         this.resultsTableContainerComponent = resultsTableContainerComponent;
-
+        initElements();
 
     }
+
+    private void initElements(){
+        studentNSF = resultsTableContainerComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-student')]"));
+        studentId = resultsTableContainerComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-id')]"));
+        studentResult = resultsTableContainerComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-twenty')]"));
+        studentScore = resultsTableContainerComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-score')]"));
+        sessionDate = resultsTableContainerComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-session_date')]"));
+
+    }
+
     public WebElement getSessionDate() {
-        WebElement sessionsDate = resultsTableContainerComponent.findElement(sessionDate);
-        return sessionsDate;
+        return sessionDate;
     }
 
     public String getSessionDateText() {
         return getSessionDate().getText();
     }
+
     public WebElement getStudentId() {
-        WebElement StudentId = resultsTableContainerComponent.findElement(studentId);
-        return StudentId;
+        return studentId;
     }
 
     public String getStudentIdText() {
@@ -39,8 +48,7 @@ public class ResultsTableContainerComponent {
     }
 
     public WebElement getStudentScore() {
-        WebElement studentsScore = resultsTableContainerComponent.findElement(studentScore);
-        return studentsScore;
+        return studentScore;
     }
 
     public String getStudentScoreText() {
@@ -50,9 +58,7 @@ public class ResultsTableContainerComponent {
 
     public WebElement getStudentResult() {
 
-
-        WebElement studentsResult = resultsTableContainerComponent.findElement(studentResult);
-        return studentsResult;
+        return studentResult;
     }
 
     public String getStudentResultText() {
@@ -61,9 +67,8 @@ public class ResultsTableContainerComponent {
     }
 
     public WebElement getStudentNSF() {
-        WebElement studentsNSF = resultsTableContainerComponent.findElement(studentNSF);
 
-        return studentsNSF;
+        return studentNSF;
     }
 
     public String getStudentNSFText() {
