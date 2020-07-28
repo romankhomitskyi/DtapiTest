@@ -21,17 +21,17 @@ public class ViewGroupBySpecialityWindow extends BaseModalWindow {
     }
 
     private void clickSpecialityDropDown() {
-        wait.visibilityOfElement(specialityDropDown);
-        wait.prevenseOfElement(specialityDropDown);
+        wait.visibilityOfElementByLocator(specialityDropDown);
+        wait.presenceOfElement(specialityDropDown);
         click(specialityDropDown);
-        wait.visibilityOfElement2(driver.findElement(listBox));
-        wait.prevenseOfElement(listBox);
+        wait.visibilityOfWebElement(driver.findElement(listBox));
+        wait.presenceOfElement(listBox);
 
     }
 
     private void clickSpecialityOptions(String specialityName) {
-        wait.visibilityOfElement2(driver.findElement(By.xpath("//mat-option/span")));
-        wait.waitForElementClickability2(driver.findElement(By.xpath("//mat-option/span")));
+        wait.visibilityOfWebElement(driver.findElement(By.xpath("//mat-option/span")));
+        wait.waitForElementToBeClickable(driver.findElement(By.xpath("//mat-option/span")));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(specialityName)) {

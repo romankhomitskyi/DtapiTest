@@ -4,13 +4,13 @@ import dtapi.components.StudentTableContainer;
 import dtapi.components.StudentTableContainerComponent;
 import dtapi.data.student.IStudent;
 import dtapi.dtapiBase.WaitUtils;
-import dtapi.elements.Paginator;
+import dtapi.elements.AdminHeadrer;
 import dtapi.modalsWindows.AddNewStudentModalWindow;
 import dtapi.modalsWindows.StudentDataModalWindow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class StudentPage extends Paginator {
+public class StudentPage extends AdminHeadrer {
     private By addStudentButton = By.xpath("//span[contains(text(),'Додати студента')]/parent::button");
 
     private StudentTableContainer studentTableContainer;
@@ -76,8 +76,8 @@ public class StudentPage extends Paginator {
 
     public AddNewStudentModalWindow switchToAddNewStudentModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.prevenseOfElement(addStudentButton);
-        wait.visibilityOfElement(addStudentButton);
+        wait.presenceOfElement(addStudentButton);
+        wait.visibilityOfElementByLocator(addStudentButton);
         click(addStudentButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {

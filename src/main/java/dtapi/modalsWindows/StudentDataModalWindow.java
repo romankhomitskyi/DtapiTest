@@ -28,13 +28,13 @@ public class StudentDataModalWindow {
 
     }
     private void clickCloseWindowIcon(){
-        wait.visibilityOfElement(closeWindow);
-        wait.prevenseOfElement(closeWindow);
+        wait.visibilityOfElementByLocator(closeWindow);
+        wait.presenceOfElement(closeWindow);
         driver.findElement(closeWindow).click();
     }
     public WebElement getStudentSNF() {
-        wait.visibilityOfElement(studentSNF);
-        wait.prevenseOfElement(studentSNF);
+        wait.visibilityOfElementByLocator(studentSNF);
+        wait.presenceOfElement(studentSNF);
         WebElement studentsSNF = driver.findElement(studentSNF);
         return studentsSNF;
     }
@@ -44,8 +44,8 @@ public class StudentDataModalWindow {
     }
 
     public WebElement getStudentFaculty() {
-        wait.visibilityOfElement(studentFaculty);
-        wait.prevenseOfElement(studentFaculty);
+        wait.visibilityOfElementByLocator(studentFaculty);
+        wait.presenceOfElement(studentFaculty);
         WebElement studentsFaculty = driver.findElement(studentFaculty);
         return studentsFaculty;
     }
@@ -55,8 +55,8 @@ public class StudentDataModalWindow {
     }
 
     public WebElement getStudentSpeciality() {
-        wait.visibilityOfElement(studentSpeciality);
-        wait.prevenseOfElement(studentSpeciality);
+        wait.visibilityOfElementByLocator(studentSpeciality);
+        wait.presenceOfElement(studentSpeciality);
         WebElement studentsSpeciality = driver.findElement(studentSpeciality);
         return studentsSpeciality;
     }
@@ -65,8 +65,8 @@ public class StudentDataModalWindow {
         return getStudentSpeciality().getText();
     }
     public WebElement getStudentGroup() {
-        wait.visibilityOfElement(studentGroup);
-        wait.prevenseOfElement(studentGroup);
+        wait.visibilityOfElementByLocator(studentGroup);
+        wait.presenceOfElement(studentGroup);
         WebElement studentsGroup = driver.findElement(studentGroup);
         return studentsGroup;
     }
@@ -76,8 +76,8 @@ public class StudentDataModalWindow {
     }
 
     public WebElement getStudentGradeBookId() {
-        wait.visibilityOfElement(studentGradeBookId);
-        wait.prevenseOfElement(studentGradeBookId);
+        wait.visibilityOfElementByLocator(studentGradeBookId);
+        wait.presenceOfElement(studentGradeBookId);
         WebElement studentsGradeBookId = driver.findElement(studentGradeBookId);
         return studentsGradeBookId;
     }
@@ -87,8 +87,8 @@ public class StudentDataModalWindow {
     }
 
     public WebElement getStudentEmail() {
-        wait.visibilityOfElement(studentEmail);
-        wait.prevenseOfElement(studentEmail);
+        wait.visibilityOfElementByLocator(studentEmail);
+        wait.presenceOfElement(studentEmail);
         WebElement studentsEmail = driver.findElement(studentEmail);
         return studentsEmail;
     }
@@ -97,8 +97,8 @@ public class StudentDataModalWindow {
         return getStudentEmail().getText();
     }
     public WebElement getStudentLogin() {
-        wait.visibilityOfElement(studentLogin);
-        wait.prevenseOfElement(studentLogin);
+        wait.visibilityOfElementByLocator(studentLogin);
+        wait.presenceOfElement(studentLogin);
         WebElement studentsLog = driver.findElement(studentLogin);
         return studentsLog;
     }
@@ -107,8 +107,8 @@ public class StudentDataModalWindow {
         return getStudentLogin().getText();
     }
     private String getStudentModalWindowTitleText() {
-        wait.visibilityOfElement(title);
-        wait.prevenseOfElement(title);
+        wait.visibilityOfElementByLocator(title);
+        wait.presenceOfElement(title);
         return driver.findElement(title).getText();
     }
     private boolean verifyInformation(IStudent student,IStudent student2,String speciality,String faculty,String group) {

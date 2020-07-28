@@ -2,12 +2,13 @@ package dtapi.pages;
 
 import dtapi.components.StudentTestTableContainer;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.BaseHeader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class UserPage extends BasePageObject {
+public class UserPage extends BaseHeader {
 
     private String studentUrl = "https://travisdtapi.firebaseapp.com/student/home";
     private By headerTestPage = By.xpath("//section[@class='test-details']/h3");
@@ -49,9 +50,9 @@ public class UserPage extends BasePageObject {
     }
 
  public MainPage logOut(){
-        wait.waitForElementClickability(logOutButton);
+        wait.waitForElementToBeClickableByLocator(logOutButton);
         driver.findElement(logOutButton).click();
-     wait.waitForElementClickability(logOutButton2);
+     wait.waitForElementToBeClickableByLocator(logOutButton2);
         driver.findElement(logOutButton2).click();
 
      return new MainPage(driver);

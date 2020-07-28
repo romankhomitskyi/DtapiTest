@@ -3,13 +3,14 @@ package dtapi.pages;
 import dtapi.components.TestOfSubjectTableContainer;
 import dtapi.components.TestOfSubjectTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
-import dtapi.elements.Paginator;
+import dtapi.elements.AdminHeadrer;
 import dtapi.modalsWindows.AddTestModalWindow;
 import dtapi.modalsWindows.DeleteTestModalWindow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class TestPage extends Paginator {
+public class TestPage extends AdminHeadrer {
+
     private By headerTestPage = By.xpath("//h3");
     private By addNewTestButton = By.xpath("//span[contains(text(),'Додати тест')]/parent::button");
     private By dropDown = By.xpath("//mat-select[@id='mat-select-1']");
@@ -20,10 +21,12 @@ public class TestPage extends Paginator {
 
     public TestPage(WebDriver driver) {
         super(driver);
+
         wait = new WaitUtils(driver,10);
         initElements();
     }
     private void initElements() {
+
 
         testOfSubjectTableContainer = new TestOfSubjectTableContainer(driver);
 
@@ -75,8 +78,8 @@ public class TestPage extends Paginator {
 
     public AddTestModalWindow switchToAddTestModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.visibilityOfElement(addNewTestButton);
-        wait.prevenseOfElement(addNewTestButton);
+        wait.visibilityOfElementByLocator(addNewTestButton);
+        wait.presenceOfElement(addNewTestButton);
         click(addNewTestButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
@@ -111,8 +114,8 @@ public class TestPage extends Paginator {
 
 
     public String getTestPageHeaderText() {
-        wait.prevenseOfElement(headerTestPage);
-        wait.visibilityOfElement(headerTestPage);
+        wait.presenceOfElement(headerTestPage);
+        wait.visibilityOfElementByLocator(headerTestPage);
         return find(headerTestPage).getText();
     }
     public Boolean verifyTestPageHeaderText(String subjectName) {

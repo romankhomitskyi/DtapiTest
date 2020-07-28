@@ -4,16 +4,17 @@ import dtapi.components.SettingTestTableContainer;
 import dtapi.components.SettingTestTableContainerComponent;
 import dtapi.data.testSettings.TestSettings;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.AdminHeadrer;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewSettingOfTestModalWindow;
 import dtapi.modalsWindows.DeleteSettingOfTestModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
-public class SettingsTestPage extends Paginator {
+public class SettingsTestPage extends AdminHeadrer {
+
     private By addNewSettingsButton = By.xpath("//span[contains(text(),'Додати налаштування')]/parent::button");
     private WaitUtils wait;
     private By deleteSettingTestIcon = By.xpath(".//td//mat-icon[contains(text(),'delete')]");
@@ -28,6 +29,7 @@ public class SettingsTestPage extends Paginator {
     private void initElements() {
 
         settingTestTableContainer = new SettingTestTableContainer(driver);
+
     }
 
     public SettingTestTableContainer getSettingTestTableContainer() {
@@ -65,14 +67,14 @@ public class SettingsTestPage extends Paginator {
     }
     public AddNewSettingOfTestModalWindow switchToAddAddNewSettingOfTestModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.prevenseOfElement(addNewSettingsButton);
-        wait.visibilityOfElement(addNewSettingsButton);
+        wait.presenceOfElement(addNewSettingsButton);
+        wait.visibilityOfElementByLocator(addNewSettingsButton);
         click(addNewSettingsButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
-                wait.waitForPageLoad();
+
                 driver.switchTo().window(windowHandle);
-                wait.waitForPageLoad();
+
             }
         }
         return new AddNewSettingOfTestModalWindow(driver);

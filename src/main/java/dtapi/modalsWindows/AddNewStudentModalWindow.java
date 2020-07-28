@@ -24,20 +24,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickSurnameField() {
-        wait.visibilityOfElement(surnameField);
-        wait.prevenseOfElement(surnameField);
+        wait.visibilityOfElementByLocator(surnameField);
+        wait.presenceOfElement(surnameField);
         driver.findElement(surnameField).click();
     }
 
     private void clearSurnameField() {
-        wait.visibilityOfElement(surnameField);
-        wait.prevenseOfElement(surnameField);
+        wait.visibilityOfElementByLocator(surnameField);
+        wait.presenceOfElement(surnameField);
         driver.findElement(surnameField).clear();
     }
 
     private void setSurnameField(String surname) {
-        wait.visibilityOfElement(surnameField);
-        wait.prevenseOfElement(surnameField);
+        wait.visibilityOfElementByLocator(surnameField);
+        wait.presenceOfElement(surnameField);
         wait.scrollUntilElementVisible(driver.findElement(surnameField));
         type(surname, surnameField);
     }
@@ -49,20 +49,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickFatherNameField() {
-        wait.visibilityOfElement(fatherNameField);
-        wait.prevenseOfElement(fatherNameField);
+        wait.visibilityOfElementByLocator(fatherNameField);
+        wait.presenceOfElement(fatherNameField);
         driver.findElement(fatherNameField).click();
     }
 
     private void clearFatherNameField() {
-        wait.visibilityOfElement(fatherNameField);
-        wait.prevenseOfElement(fatherNameField);
+        wait.visibilityOfElementByLocator(fatherNameField);
+        wait.presenceOfElement(fatherNameField);
         driver.findElement(fatherNameField).clear();
     }
 
     private void setFatherNameField(String fatherName) {
-        wait.visibilityOfElement(fatherNameField);
-        wait.prevenseOfElement(fatherNameField);
+        wait.visibilityOfElementByLocator(fatherNameField);
+        wait.presenceOfElement(fatherNameField);
         wait.scrollUntilElementVisible(driver.findElement(fatherNameField));
         type(fatherName, fatherNameField);
     }
@@ -74,20 +74,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickFirstNameField() {
-        wait.visibilityOfElement(firstNameField);
-        wait.prevenseOfElement(firstNameField);
+        wait.visibilityOfElementByLocator(firstNameField);
+        wait.presenceOfElement(firstNameField);
         driver.findElement(firstNameField).click();
     }
 
     private void clearFirstNameField() {
-        wait.visibilityOfElement(firstNameField);
-        wait.prevenseOfElement(firstNameField);
+        wait.visibilityOfElementByLocator(firstNameField);
+        wait.presenceOfElement(firstNameField);
         driver.findElement(firstNameField).clear();
     }
 
     private void setFirstNameField(String firstName) {
-        wait.visibilityOfElement(firstNameField);
-        wait.prevenseOfElement(firstNameField);
+        wait.visibilityOfElementByLocator(firstNameField);
+        wait.presenceOfElement(firstNameField);
         wait.scrollUntilElementVisible(driver.findElement(firstNameField));
         type(firstName, firstNameField);
     }
@@ -99,20 +99,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickGradeBookIdField() {
-        wait.visibilityOfElement(gradeBookId);
-        wait.prevenseOfElement(gradeBookId);
+        wait.visibilityOfElementByLocator(gradeBookId);
+        wait.presenceOfElement(gradeBookId);
         driver.findElement(gradeBookId).click();
     }
 
     private void clearGradeBookIdField() {
-        wait.visibilityOfElement(gradeBookId);
-        wait.prevenseOfElement(gradeBookId);
+        wait.visibilityOfElementByLocator(gradeBookId);
+        wait.presenceOfElement(gradeBookId);
         driver.findElement(gradeBookId).clear();
     }
 
     private void setGradeBookIdField(String gradeBooksId) {
-        wait.visibilityOfElement(gradeBookId);
-        wait.prevenseOfElement(gradeBookId);
+        wait.visibilityOfElementByLocator(gradeBookId);
+        wait.presenceOfElement(gradeBookId);
         wait.scrollUntilElementVisible(driver.findElement(gradeBookId));
         type(gradeBooksId, gradeBookId);
     }
@@ -124,20 +124,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickLoginField() {
-        wait.visibilityOfElement(loginField);
-        wait.prevenseOfElement(loginField);
+        wait.visibilityOfElementByLocator(loginField);
+        wait.presenceOfElement(loginField);
         driver.findElement(loginField).click();
     }
 
     private void clearLoginFieldField() {
-        wait.visibilityOfElement(loginField);
-        wait.prevenseOfElement(loginField);
+        wait.visibilityOfElementByLocator(loginField);
+        wait.presenceOfElement(loginField);
         driver.findElement(loginField).clear();
     }
 
     private void setLoginFieldField(String login) {
-        wait.visibilityOfElement(loginField);
-        wait.prevenseOfElement(loginField);
+        wait.visibilityOfElementByLocator(loginField);
+        wait.presenceOfElement(loginField);
         wait.scrollUntilElementVisible(driver.findElement(loginField));
         type(login, loginField);
     }
@@ -149,20 +149,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickEmailField() {
-        wait.visibilityOfElement(emailField);
-        wait.prevenseOfElement(emailField);
+        wait.visibilityOfElementByLocator(emailField);
+        wait.presenceOfElement(emailField);
         driver.findElement(emailField).click();
     }
 
     private void clearEmailField() {
-        wait.visibilityOfElement(emailField);
-        wait.prevenseOfElement(emailField);
+        wait.visibilityOfElementByLocator(emailField);
+        wait.presenceOfElement(emailField);
         driver.findElement(emailField).clear();
     }
 
     private void setEmailField(String email) {
-        wait.visibilityOfElement(emailField);
-        wait.prevenseOfElement(emailField);
+        wait.visibilityOfElementByLocator(emailField);
+        wait.presenceOfElement(emailField);
         wait.scrollUntilElementVisible(driver.findElement(emailField));
         type(email, emailField);
     }
@@ -174,20 +174,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickOnPasswordField() {
-        wait.visibilityOfElement(passwordField);
-        wait.prevenseOfElement(passwordField);
+        wait.visibilityOfElementByLocator(passwordField);
+        wait.presenceOfElement(passwordField);
         driver.findElement(passwordField).click();
     }
 
     private void clearPasswordField() {
-        wait.visibilityOfElement(passwordField);
-        wait.prevenseOfElement(passwordField);
+        wait.visibilityOfElementByLocator(passwordField);
+        wait.presenceOfElement(passwordField);
         driver.findElement(passwordField).clear();
     }
 
     private void setPassword(String password) {
-        wait.visibilityOfElement(passwordField);
-        wait.prevenseOfElement(passwordField);
+        wait.visibilityOfElementByLocator(passwordField);
+        wait.presenceOfElement(passwordField);
         wait.scrollUntilElementVisible(driver.findElement(passwordField));
         type(password, passwordField);
     }
@@ -199,20 +199,20 @@ public class AddNewStudentModalWindow extends BaseModalWindow {
     }
 
     private void clickConfirmPasswordField() {
-        wait.visibilityOfElement(confirmPasswordField);
-        wait.prevenseOfElement(confirmPasswordField);
+        wait.visibilityOfElementByLocator(confirmPasswordField);
+        wait.presenceOfElement(confirmPasswordField);
         driver.findElement(confirmPasswordField).click();
     }
 
     private void clearConfirmPasswordField() {
-        wait.visibilityOfElement(confirmPasswordField);
-        wait.prevenseOfElement(confirmPasswordField);
+        wait.visibilityOfElementByLocator(confirmPasswordField);
+        wait.presenceOfElement(confirmPasswordField);
         driver.findElement(confirmPasswordField).clear();
     }
 
     private void setConfirmPassword(String password) {
-        wait.visibilityOfElement(confirmPasswordField);
-        wait.prevenseOfElement(confirmPasswordField);
+        wait.visibilityOfElementByLocator(confirmPasswordField);
+        wait.presenceOfElement(confirmPasswordField);
         wait.scrollUntilElementVisible(driver.findElement(confirmPasswordField));
         type(password, confirmPasswordField);
     }

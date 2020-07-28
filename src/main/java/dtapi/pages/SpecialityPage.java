@@ -3,14 +3,14 @@ package dtapi.pages;
 import dtapi.components.SpecialityTableContainer;
 import dtapi.components.SpecialityTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.AdminHeadrer;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewSpecialityModalWindow;
 import dtapi.modalsWindows.DeleteSpecialityModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SpecialityPage extends Paginator {
+public class SpecialityPage extends AdminHeadrer {
 
 
     private By pageTitle = By.xpath("//h3");
@@ -31,8 +31,8 @@ public class SpecialityPage extends Paginator {
         return specialityTableContainer;
     }
     public String getPageTitleText() {
-        wait.visibilityOfElement(pageTitle);
-        wait.prevenseOfElement(pageTitle);
+        wait.visibilityOfElementByLocator(pageTitle);
+        wait.presenceOfElement(pageTitle);
         return find(pageTitle).getText();
     }
     public AddNewSpecialityModalWindow switchToEditFacultyModalWindow(String specialityName) {
@@ -63,8 +63,8 @@ public class SpecialityPage extends Paginator {
 
     public AddNewSpecialityModalWindow switchToAddNewSpecialityModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.visibilityOfElement(addNewSpecialityButton);
-        wait.prevenseOfElement(addNewSpecialityButton);
+        wait.visibilityOfElementByLocator(addNewSpecialityButton);
+        wait.presenceOfElement(addNewSpecialityButton);
         click(addNewSpecialityButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {

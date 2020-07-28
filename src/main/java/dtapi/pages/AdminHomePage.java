@@ -2,7 +2,6 @@ package dtapi.pages;
 
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.elements.AdminHeadrer;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,8 +27,8 @@ public class AdminHomePage extends AdminHeadrer {
     }
 
     public String getAdminPageTitleText() {
-        wait.visibilityOfElement(homePageTitle);
-        wait.prevenseOfElement(homePageTitle);
+        wait.visibilityOfElementByLocator(homePageTitle);
+        wait.presenceOfElement(homePageTitle);
         return find(homePageTitle).getText();
     }
 
@@ -40,12 +39,11 @@ public class AdminHomePage extends AdminHeadrer {
 
     public SubjectPage clickSubjectIcon() {
 
-        wait.visibilityOfElement(subjectIcon);
-        wait.prevenseOfElement(subjectIcon);
+        wait.visibilityOfElementByLocator(subjectIcon);
+        wait.presenceOfElement(subjectIcon);
         click(subjectIcon);
-        wait.waitForPageLoad();
-        wait.prevenseOfElement(By.xpath("//table//tr//td"));
-        wait.visibilityOfElement(By.xpath("//table//tr//td"));
+        wait.presenceOfElement(By.xpath("//table//tr//td"));
+        wait.visibilityOfElementByLocator(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
         return new SubjectPage(driver);
     }

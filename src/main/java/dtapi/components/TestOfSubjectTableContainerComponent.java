@@ -25,7 +25,7 @@ public class TestOfSubjectTableContainerComponent {
     testId = testOfSubjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-id')]"));
     testName = testOfSubjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-name')]"));
     subjectName = testOfSubjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-subject')]"));
-    countTask = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'cdk-column-tasks')]"));
+    countTask = testOfSubjectTableComponent.findElement(By.xpath(".//td[contains(@class,'cdk-column-tasks')]"));
     testParamIcon = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'description')]"));
     questionIcon = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'list')]"));
     editTestIcon = testOfSubjectTableComponent.findElement(By.xpath(".//td//mat-icon[contains(text(),'edit')]"));

@@ -3,13 +3,14 @@ package dtapi.pages;
 import dtapi.components.SubjectTableContainer;
 import dtapi.components.SubjectTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
-import dtapi.elements.Paginator;
+import dtapi.elements.AdminHeadrer;
 import dtapi.modalsWindows.AddSubjectModalWindow;
 import dtapi.modalsWindows.DeleteSubjectModalWindow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SubjectPage extends Paginator {
+public class SubjectPage extends AdminHeadrer {
+
     private By addNewSubjectButton = By.xpath("//span[contains(text(),'Додати предмет')]/parent::button");
     private By searchSubjectInput = By.xpath("//input[@placeholder='Пошук']");
     private SubjectTableContainer subjectTableContainer;
@@ -32,15 +33,15 @@ public class SubjectPage extends Paginator {
     }
 
     public String getPageTitleText() {
-        wait.visibilityOfElement(pageTitle);
-        wait.prevenseOfElement(pageTitle);
+        wait.visibilityOfElementByLocator(pageTitle);
+        wait.presenceOfElement(pageTitle);
         return find(pageTitle).getText();
     }
 
     public AddSubjectModalWindow switchAddNewSubjectToModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.prevenseOfElement(addNewSubjectButton);
-        wait.visibilityOfElement(addNewSubjectButton);
+        wait.presenceOfElement(addNewSubjectButton);
+        wait.visibilityOfElementByLocator(addNewSubjectButton);
         click(addNewSubjectButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {

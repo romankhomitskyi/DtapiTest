@@ -9,12 +9,15 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionTableContainer extends Paginator {
+public class QuestionTableContainer  {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String questionTableContainerXpath = "//table/tbody/tr";
     private List<QuestionTableContainerComponent> containerComponents;
 
     public QuestionTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
         initElements();
     }
     private void initElements(){
@@ -41,10 +44,10 @@ public class QuestionTableContainer extends Paginator {
         QuestionTableContainerComponent result = findQuestion(questionText);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Question with questionText: %s not found", questionText));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findQuestion(questionText);
 

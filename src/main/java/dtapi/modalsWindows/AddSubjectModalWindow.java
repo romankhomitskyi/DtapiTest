@@ -38,20 +38,20 @@ public class AddSubjectModalWindow extends BaseModalWindow {
     }
 
     private void clickSubjectNameField() {
-        wait.visibilityOfElement(firstInput);
-        wait.prevenseOfElement(firstInput);
+        wait.visibilityOfElementByLocator(firstInput);
+        wait.presenceOfElement(firstInput);
         find(firstInput).click();
     }
 
     private void clearSubjectTitleField() {
-        wait.visibilityOfElement(firstInput);
-        wait.prevenseOfElement(firstInput);
+        wait.visibilityOfElementByLocator(firstInput);
+        wait.presenceOfElement(firstInput);
         find(firstInput).clear();
     }
 
     private void setSujectNameField(String name) {
-        wait.visibilityOfElement(firstInput);
-        wait.prevenseOfElement(firstInput);
+        wait.visibilityOfElementByLocator(firstInput);
+        wait.presenceOfElement(firstInput);
         type(name, firstInput);
     }
 
@@ -62,20 +62,20 @@ public class AddSubjectModalWindow extends BaseModalWindow {
     }
 
     private void clickSubjectTexAreaField() {
-        wait.visibilityOfElement(textArea);
-        wait.prevenseOfElement(textArea);
+        wait.visibilityOfElementByLocator(textArea);
+        wait.presenceOfElement(textArea);
         find(textArea).click();
     }
 
     private void clearSubjectTextAreaField() {
-        wait.visibilityOfElement(textArea);
-        wait.prevenseOfElement(textArea);
+        wait.visibilityOfElementByLocator(textArea);
+        wait.presenceOfElement(textArea);
         find(textArea).clear();
     }
 
     private void setSubjectTextAreaField(String desc) {
-        wait.visibilityOfElement(textArea);
-        wait.prevenseOfElement(textArea);
+        wait.visibilityOfElementByLocator(textArea);
+        wait.presenceOfElement(textArea);
         type(desc, textArea);
     }
 
@@ -119,8 +119,8 @@ public class AddSubjectModalWindow extends BaseModalWindow {
 
     }
     private void setInvalidSubjectNameField(NewSubject subject) {
-        wait.visibilityOfElement(firstInput);
-        wait.prevenseOfElement(firstInput);
+        wait.visibilityOfElementByLocator(firstInput);
+        wait.presenceOfElement(firstInput);
         type(subject.getSubjectName(),firstInput);
     }
 
@@ -130,8 +130,8 @@ public class AddSubjectModalWindow extends BaseModalWindow {
         setInvalidSubjectNameField(subject);
     }
     private void setInvalidSubjectDescField(NewSubject subject) {
-        wait.visibilityOfElement(textArea);
-        wait.prevenseOfElement(textArea);
+        wait.visibilityOfElementByLocator(textArea);
+        wait.presenceOfElement(textArea);
         type(subject.getSubjectDesc(),textArea);
     }
 

@@ -3,7 +3,7 @@ package dtapi.pages;
 import dtapi.components.AnswerComponent;
 import dtapi.data.question.NewQuestion;
 import dtapi.dtapiBase.WaitUtils;
-import org.apache.logging.log4j.Logger;
+import dtapi.elements.AdminHeadrer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class AddQuestionPage extends BasePageObject {
+public class AddQuestionPage extends AdminHeadrer {
     private final String ANSWER_COMPONENT_XPATH = "//mat-form-field/parent::div";
     private List<AnswerComponent> answerComponents;
     private WaitUtils wait;
@@ -36,23 +36,23 @@ public class AddQuestionPage extends BasePageObject {
         return answerComponents;
     }
     private void clickQuestionTypeDropDown() {
-        wait.visibilityOfElement2(driver.findElement(questionTypeDropDown));
-        wait.prevenseOfElement(questionTypeDropDown);
-        wait.waitForElementClickability(questionTypeDropDown);
+        wait.visibilityOfWebElement(driver.findElement(questionTypeDropDown));
+        wait.presenceOfElement(questionTypeDropDown);
+        wait.waitForElementToBeClickableByLocator(questionTypeDropDown);
         click(questionTypeDropDown);
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
     }
 
 
     private void clickQuestionTypeOptions(NewQuestion questionType) {
 
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(questionType.getQuestionType().toString())) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);
+                wait.invisibilityOfElement(options);
                 break;
             }
         }
@@ -65,23 +65,23 @@ public class AddQuestionPage extends BasePageObject {
 
     }
     private void clickQuestionLvlDropDown() {
-        wait.visibilityOfElement2(driver.findElement(questionLvlDropDown));
-        wait.prevenseOfElement(questionLvlDropDown);
-        wait.waitForElementClickability(questionLvlDropDown);
+        wait.visibilityOfWebElement(driver.findElement(questionLvlDropDown));
+        wait.presenceOfElement(questionLvlDropDown);
+        wait.waitForElementToBeClickableByLocator(questionLvlDropDown);
         click(questionLvlDropDown);
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
     }
 
 
     private void clickQuestionLvlDropDownOptions(NewQuestion question) {
 
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(question.getQuestionLvl().toString())) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);
+                wait.invisibilityOfElement(options);
                 break;
 
             }
@@ -223,8 +223,8 @@ public class AddQuestionPage extends BasePageObject {
 
     public AddQuestionPage clickAddAnswerButton(NewQuestion question) {
         for (int i = 0; i <question.getAnswers().size() ; i++) {
-            wait.prevenseOfElement(addAnswer);
-            wait.visibilityOfElement(addAnswer);
+            wait.presenceOfElement(addAnswer);
+            wait.visibilityOfElementByLocator(addAnswer);
 
             driver.findElement(addAnswer).click();
         }

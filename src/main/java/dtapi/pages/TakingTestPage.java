@@ -1,12 +1,13 @@
 package dtapi.pages;
 
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.BaseHeader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class TakingTestPage extends BasePageObject {
+public class TakingTestPage extends BaseHeader {
         private By markAnswerButton = By.xpath("//button[contains(text(),'Позначити питання')]");
         private By firstAnswer = By.xpath("//p[contains(text(),'50')]/ancestor::mat-radio-button//input");
 
@@ -44,48 +45,48 @@ public class TakingTestPage extends BasePageObject {
         Actions actions = new Actions(driver);
 
 
-        wait.visibilityOfElement(firstAnswer);
-        wait.waitForElementClickability(firstAnswer);
+        wait.visibilityOfElementByLocator(firstAnswer);
+        wait.waitForElementToBeClickableByLocator(firstAnswer);
         /*wait.scrollUntilElementVisible(driver.findElement(firstAnswer));*/
         driver.findElement(firstAnswer).sendKeys(Keys.SPACE);
         sleep(1000);
-        wait.visibilityOfElement(secondQuestion);
-        wait.waitForElementClickability(secondQuestion);
+        wait.visibilityOfElementByLocator(secondQuestion);
+        wait.waitForElementToBeClickableByLocator(secondQuestion);
         wait.javaClick(driver.findElement(secondQuestion));
         sleep(1000);
-        wait.prevenseOfElement(secondAnswer);
-        wait.visibilityOfElement(secondAnswer);
-        wait.waitForElementClickability(secondAnswer);
+        wait.presenceOfElement(secondAnswer);
+        wait.visibilityOfElementByLocator(secondAnswer);
+        wait.waitForElementToBeClickableByLocator(secondAnswer);
         wait.scrollUntilElementVisible(driver.findElement(secondAnswer));
         driver.findElement(secondAnswer).click();
-        wait.prevenseOfElement(thirdAnswer);
-        wait.visibilityOfElement(thirdAnswer);
-        wait.waitForElementClickability(thirdAnswer);
+        wait.presenceOfElement(thirdAnswer);
+        wait.visibilityOfElementByLocator(thirdAnswer);
+        wait.waitForElementToBeClickableByLocator(thirdAnswer);
         wait.scrollUntilElementVisible(driver.findElement(thirdAnswer));
         driver.findElement(thirdAnswer).click();
-        wait.visibilityOfElement(thirdQuestion);
-        wait.waitForElementClickability(thirdQuestion);
+        wait.visibilityOfElementByLocator(thirdQuestion);
+        wait.waitForElementToBeClickableByLocator(thirdQuestion);
         /*wait.scrollUntilElementVisible(driver.findElement(thirdQuestion));*/
         driver.findElement(thirdQuestion).click();
         sleep(1000);
         driver.findElement(fourAnswer).sendKeys("Київ");
-        wait.visibilityOfElement(fourtQuestion);
-        wait.waitForElementClickability(fourtQuestion);
+        wait.visibilityOfElementByLocator(fourtQuestion);
+        wait.waitForElementToBeClickableByLocator(fourtQuestion);
         /*wait.scrollUntilElementVisible(driver.findElement(fourtQuestion));*/
         driver.findElement(fourtQuestion).click();
         sleep(1000);
         driver.findElement(numberAnswer).sendKeys("5");
-        wait.visibilityOfElement(fiveQuestion);
-        wait.waitForElementClickability(fiveQuestion);
+        wait.visibilityOfElementByLocator(fiveQuestion);
+        wait.waitForElementToBeClickableByLocator(fiveQuestion);
        /* wait.scrollUntilElementVisible(driver.findElement(fiveQuestion));*/
         driver.findElement(fiveQuestion).click();
         sleep(1000);
-        wait.visibilityOfElement(firstAnswer);
-        wait.waitForElementClickability(firstAnswer);
+        wait.visibilityOfElementByLocator(firstAnswer);
+        wait.waitForElementToBeClickableByLocator(firstAnswer);
         wait.scrollUntilElementVisible(driver.findElement(firstAnswer));
         driver.findElement(firstAnswer).sendKeys(Keys.SPACE);
-        wait.visibilityOfElement(sixQuestion);
-        wait.waitForElementClickability(sixQuestion);
+        wait.visibilityOfElementByLocator(sixQuestion);
+        wait.waitForElementToBeClickableByLocator(sixQuestion);
        /* wait.scrollUntilElementVisible(driver.findElement(sixQuestion));*/
         driver.findElement(sixQuestion).click();
         sleep(1000);

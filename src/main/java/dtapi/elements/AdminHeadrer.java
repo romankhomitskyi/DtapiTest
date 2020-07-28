@@ -21,18 +21,18 @@ public class AdminHeadrer extends BaseHeader {
     }
 
     public SubjectPage clickSubjectLink() {
-        wait.waitForElementClickability(subjectsLink);
-        wait.prevenseOfElement(subjectsLink);
-        wait.visibilityOfElement(subjectsLink);
+        wait.waitForElementToBeClickableByLocator(subjectsLink);
+        wait.presenceOfElement(subjectsLink);
+        wait.visibilityOfElementByLocator(subjectsLink);
         click(subjectsLink);
-        wait.prevenseOfElement(By.xpath("//table//tr//td"));
-        wait.visibilityOfElement(By.xpath("//table//tr//td"));
+        wait.presenceOfElement(By.xpath("//table//tr//td"));
+        wait.visibilityOfElementByLocator(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
         return new SubjectPage(driver);
     }
     public SubjectPage clickSubjectLinks() {
-        wait.prevenseOfElement(subjectsLink);
-        wait.visibilityOfElement(subjectsLink);
+        wait.presenceOfElement(subjectsLink);
+        wait.visibilityOfElementByLocator(subjectsLink);
         click(subjectsLink);
 
 
@@ -40,52 +40,52 @@ public class AdminHeadrer extends BaseHeader {
     }
 
     public SpecialityPage clickSpecialityLink() {
-        wait.prevenseOfElement(specialtiesLink);
-        wait.visibilityOfElement(specialtiesLink);
+        wait.presenceOfElement(specialtiesLink);
+        wait.visibilityOfElementByLocator(specialtiesLink);
         click(specialtiesLink);
-        wait.prevenseOfElement(By.xpath("//table//tr//td"));
-        wait.visibilityOfElement(By.xpath("//table//tr//td"));
+        wait.presenceOfElement(By.xpath("//table//tr//td"));
+        wait.visibilityOfElementByLocator(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
         return new SpecialityPage(driver);
     }
 
     public AdminHomePage clickHomeLink() {
-        wait.prevenseOfElement(homeLink);
-        wait.visibilityOfElement(homeLink);
+        wait.presenceOfElement(homeLink);
+        wait.visibilityOfElementByLocator(homeLink);
         click(homeLink);
         return new AdminHomePage(driver);
     }
 
     public FacultiesPage clickFacultiesLink() {
-        wait.prevenseOfElement(facultiesLink);
-        wait.visibilityOfElement(facultiesLink);
+        wait.presenceOfElement(facultiesLink);
+        wait.visibilityOfElementByLocator(facultiesLink);
         click(facultiesLink);
-        wait.prevenseOfElement(By.xpath("//table//tr//td"));
-        wait.visibilityOfElement(By.xpath("//table//tr//td"));
+        wait.presenceOfElement(By.xpath("//table//tr//td"));
+        wait.visibilityOfElementByLocator(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
         return new FacultiesPage(driver);
     }
 
     public GroupPage clickGroupLink() {
-        wait.visibilityOfElement(groupsLink);
-        wait.prevenseOfElement(groupsLink);
+        wait.visibilityOfElementByLocator(groupsLink);
+        wait.presenceOfElement(groupsLink);
         click(groupsLink);
-        wait.prevenseOfElement(By.xpath("//table//tr//td"));
-        wait.visibilityOfElement(By.xpath("//table//tr//td"));
+        wait.presenceOfElement(By.xpath("//table//tr//td"));
+        wait.visibilityOfElementByLocator(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
         return new GroupPage(driver);
     }
 
     public ResultsPage clickResultsLink() {
-        wait.prevenseOfElement(resultsLink);
-        wait.visibilityOfElement(resultsLink);
+        wait.presenceOfElement(resultsLink);
+        wait.visibilityOfElementByLocator(resultsLink);
         click(resultsLink);
         return new ResultsPage(driver);
     }
 
     public AdminsPage clickAdminsLink() {
-        wait.prevenseOfElement(adminsLink);
-        wait.visibilityOfElement(adminsLink);
+        wait.presenceOfElement(adminsLink);
+        wait.visibilityOfElementByLocator(adminsLink);
         click(adminsLink);
         return new AdminsPage(driver);
     }

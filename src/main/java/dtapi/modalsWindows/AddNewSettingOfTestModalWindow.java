@@ -22,20 +22,20 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         wait = new WaitUtils(driver, 10);
     }
     private void clickСountOfTaskField() {
-        wait.visibilityOfElement(countOfTask);
-        wait.prevenseOfElement(countOfTask);
+        wait.visibilityOfElementByLocator(countOfTask);
+        wait.presenceOfElement(countOfTask);
         click(countOfTask);
     }
 
     private void clearСountOfTaskField() {
-        wait.visibilityOfElement(countOfTask);
-        wait.prevenseOfElement(countOfTask);
+        wait.visibilityOfElementByLocator(countOfTask);
+        wait.presenceOfElement(countOfTask);
         find(countOfTask).clear();
     }
 
     private void setСountOfTaskField(String countOfTasks) {
-        wait.visibilityOfElement(countOfTask);
-        wait.prevenseOfElement(countOfTask);
+        wait.visibilityOfElementByLocator(countOfTask);
+        wait.presenceOfElement(countOfTask);
         type(countOfTasks, countOfTask);
     }
 
@@ -45,20 +45,20 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         setСountOfTaskField(countOfTasks.getTasks());
     }
     private void clickCountOfGradesField() {
-        wait.visibilityOfElement(countOfGrades);
-        wait.prevenseOfElement(countOfGrades);
+        wait.visibilityOfElementByLocator(countOfGrades);
+        wait.presenceOfElement(countOfGrades);
         click(countOfGrades);
     }
 
     private void clearCountOfGradesField() {
-        wait.visibilityOfElement(countOfGrades);
-        wait.prevenseOfElement(countOfGrades);
+        wait.visibilityOfElementByLocator(countOfGrades);
+        wait.presenceOfElement(countOfGrades);
         find(countOfGrades).clear();
     }
 
     private void setCountOfGradesField(String countsOfGrades) {
-        wait.visibilityOfElement(countOfGrades);
-        wait.prevenseOfElement(countOfGrades);
+        wait.visibilityOfElementByLocator(countOfGrades);
+        wait.presenceOfElement(countOfGrades);
         type(countsOfGrades, countOfGrades);
     }
 
@@ -68,21 +68,21 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         setCountOfGradesField(countsOfGrades.getRate());
     }
     private void clickLvlDropDown() {
-        wait.visibilityOfElement(lvlDropDown);
-        wait.prevenseOfElement(lvlDropDown);
-        wait.waitForElementClickability(lvlDropDown);
+        wait.visibilityOfElementByLocator(lvlDropDown);
+        wait.presenceOfElement(lvlDropDown);
+        wait.waitForElementToBeClickableByLocator(lvlDropDown);
         click(lvlDropDown);
-        wait.prevenseOfElement(listBox);
-        wait.visibilityOfAllElements2(listBox);
+        wait.presenceOfElement(listBox);
+        wait.visibilityOfAllElementsByLocator(listBox);
 
     }
     private void clickLvlOptions(TestSettings lvl) {
-        wait.visibilityOfElement2(driver.findElement(By.xpath("//mat-option/span")));
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.visibilityOfWebElement(driver.findElement(By.xpath("//mat-option/span")));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(lvl.getQuestionLvl().toString())) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
 
                 break;
@@ -103,8 +103,8 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
 
     }
     private void clickAddSettingsButton() {
-        wait.visibilityOfElement(addNewSettingsButton);
-        wait.prevenseOfElement(addNewSettingsButton);
+        wait.visibilityOfElementByLocator(addNewSettingsButton);
+        wait.presenceOfElement(addNewSettingsButton);
         driver.findElement(addNewSettingsButton).click();
     }
 
@@ -119,7 +119,7 @@ public class AddNewSettingOfTestModalWindow  extends BaseModalWindow{
         addNewSettings(testSettings);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
-                wait.invisibilityOfEmelement2(getSubmitButton());
+                wait.invisibilityOfElement(getSubmitButton());
                 driver.switchTo().window(windowHandle);
 
 

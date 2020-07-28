@@ -20,27 +20,27 @@ public class AddNewAdminModalWindow  extends BaseModalWindow{
     }
     public boolean isAdminButtonEnabled() {
 
-        wait.prevenseOfElement(addAdminButton);
-        wait.visibilityOfElement(addAdminButton);
+        wait.presenceOfElement(addAdminButton);
+        wait.visibilityOfElementByLocator(addAdminButton);
         WebElement result = driver.findElement(addAdminButton);
         wait.scrollUntilElementVisible(result);
         return result.isEnabled();
     }
     private void clickAdminLoginField() {
-        wait.visibilityOfElement(adminLogin);
-        wait.prevenseOfElement(adminLogin);
+        wait.visibilityOfElementByLocator(adminLogin);
+        wait.presenceOfElement(adminLogin);
         driver.findElement(adminLogin).click();
     }
 
     private void clearAdminLoginField() {
-        wait.visibilityOfElement(adminLogin);
-        wait.prevenseOfElement(adminLogin);
+        wait.visibilityOfElementByLocator(adminLogin);
+        wait.presenceOfElement(adminLogin);
         driver.findElement(adminLogin).clear();
     }
 
     private void setAdminLoginField(String adminLog) {
-        wait.visibilityOfElement(adminLogin);
-        wait.prevenseOfElement(adminLogin);
+        wait.visibilityOfElementByLocator(adminLogin);
+        wait.presenceOfElement(adminLogin);
         type(adminLog, adminLogin);
     }
 
@@ -51,20 +51,20 @@ public class AddNewAdminModalWindow  extends BaseModalWindow{
     }
 
     private void clickAdminEmailField() {
-        wait.visibilityOfElement(adminEmail);
-        wait.prevenseOfElement(adminEmail);
+        wait.visibilityOfElementByLocator(adminEmail);
+        wait.presenceOfElement(adminEmail);
         driver.findElement(adminEmail).click();
     }
 
     private void clearAdminEmailField() {
-        wait.visibilityOfElement(adminEmail);
-        wait.prevenseOfElement(adminEmail);
+        wait.visibilityOfElementByLocator(adminEmail);
+        wait.presenceOfElement(adminEmail);
         driver.findElement(adminEmail).clear();
     }
 
     private void setAdminEmailField(String adminsEmail) {
-        wait.visibilityOfElement(adminEmail);
-        wait.prevenseOfElement(adminEmail);
+        wait.visibilityOfElementByLocator(adminEmail);
+        wait.presenceOfElement(adminEmail);
 
         type(adminsEmail, adminEmail);
     }
@@ -80,20 +80,20 @@ public class AddNewAdminModalWindow  extends BaseModalWindow{
 
 
     private void clickAdminСonfirmPasswordField() {
-        wait.visibilityOfElement(adminСonfirmPassword);
-        wait.prevenseOfElement(adminСonfirmPassword);
+        wait.visibilityOfElementByLocator(adminСonfirmPassword);
+        wait.presenceOfElement(adminСonfirmPassword);
         driver.findElement(adminСonfirmPassword).click();
     }
 
     private void clearAdminСonfirmPasswordField() {
-        wait.visibilityOfElement(adminСonfirmPassword);
-        wait.prevenseOfElement(adminСonfirmPassword);
+        wait.visibilityOfElementByLocator(adminСonfirmPassword);
+        wait.presenceOfElement(adminСonfirmPassword);
         driver.findElement(adminСonfirmPassword).clear();
     }
 
     private void setAdminСonfirmPasswordField(String adminsСonfirmPassword) {
-        wait.visibilityOfElement(adminСonfirmPassword);
-        wait.prevenseOfElement(adminСonfirmPassword);
+        wait.visibilityOfElementByLocator(adminСonfirmPassword);
+        wait.presenceOfElement(adminСonfirmPassword);
 
         type(adminsСonfirmPassword, adminСonfirmPassword);
     }
@@ -104,20 +104,20 @@ public class AddNewAdminModalWindow  extends BaseModalWindow{
         setAdminСonfirmPasswordField(adminsСonfirmPassword);
     }
     private void clickAdminPasswordField() {
-        wait.visibilityOfElement(adminPassword);
-        wait.prevenseOfElement(adminPassword);
+        wait.visibilityOfElementByLocator(adminPassword);
+        wait.presenceOfElement(adminPassword);
         driver.findElement(adminPassword).click();
     }
 
     private void clearAdminPasswordField() {
-        wait.visibilityOfElement(adminPassword);
-        wait.prevenseOfElement(adminPassword);
+        wait.visibilityOfElementByLocator(adminPassword);
+        wait.presenceOfElement(adminPassword);
         driver.findElement(adminPassword).clear();
     }
 
     private void setAdminPasswordField(String adminsPassword) {
-        wait.visibilityOfElement(adminPassword);
-        wait.prevenseOfElement(adminPassword);
+        wait.visibilityOfElementByLocator(adminPassword);
+        wait.presenceOfElement(adminPassword);
 
         type(adminsPassword, adminPassword);
     }
@@ -135,8 +135,8 @@ public class AddNewAdminModalWindow  extends BaseModalWindow{
 
     }
     private void clickAddAdminButton() {
-        wait.visibilityOfElement(addAdminButton);
-        wait.prevenseOfElement(addAdminButton);
+        wait.visibilityOfElementByLocator(addAdminButton);
+        wait.presenceOfElement(addAdminButton);
         click(addAdminButton);
     }
     private void createAdmin(IAdmin validAdmin) {

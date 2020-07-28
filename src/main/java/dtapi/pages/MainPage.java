@@ -2,7 +2,6 @@ package dtapi.pages;
 
 import dtapi.data.user.IUser;
 import dtapi.dtapiBase.WaitUtils;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,22 +31,22 @@ public class MainPage extends BasePageObject {
 
     private void clickOnLoginField() {
 
-        wait.prevenseOfElement(loginField);
-        wait.visibilityOfElement(loginField);
+        wait.presenceOfElement(loginField);
+        wait.visibilityOfElementByLocator(loginField);
         driver.findElement(loginField).click();
     }
 
     private void setLogin(String login) {
 
-        wait.visibilityOfElement(loginField);
-        wait.prevenseOfElement(loginField);
+        wait.visibilityOfElementByLocator(loginField);
+        wait.presenceOfElement(loginField);
         type(login, loginField);
     }
 
     private void clearLoginField() {
 
-        wait.visibilityOfElement(loginField);
-        wait.prevenseOfElement(loginField);
+        wait.visibilityOfElementByLocator(loginField);
+        wait.presenceOfElement(loginField);
         driver.findElement(loginField).clear();
     }
 
@@ -59,22 +58,22 @@ public class MainPage extends BasePageObject {
 
     private void clickOnPasswordField() {
 
-        wait.visibilityOfElement(passwordField);
-        wait.prevenseOfElement(passwordField);
+        wait.visibilityOfElementByLocator(passwordField);
+        wait.presenceOfElement(passwordField);
         driver.findElement(passwordField).click();
     }
 
     private void setPassword(String password) {
 
-        wait.visibilityOfElement(passwordField);
-        wait.prevenseOfElement(passwordField);
+        wait.visibilityOfElementByLocator(passwordField);
+        wait.presenceOfElement(passwordField);
         type(password, passwordField);
     }
 
     private void clearPasswordField() {
 
-        wait.visibilityOfElement(passwordField);
-        wait.prevenseOfElement(passwordField);
+        wait.visibilityOfElementByLocator(passwordField);
+        wait.presenceOfElement(passwordField);
         driver.findElement(passwordField).clear();
     }
 
@@ -93,8 +92,8 @@ public class MainPage extends BasePageObject {
 
     private void clickLoginButton() {
 
-        wait.visibilityOfElement(buttonLogin);
-        wait.prevenseOfElement(buttonLogin);
+        wait.visibilityOfElementByLocator(buttonLogin);
+        wait.presenceOfElement(buttonLogin);
         driver.findElement(buttonLogin).click();
 
 
@@ -108,7 +107,7 @@ public class MainPage extends BasePageObject {
 
     public AdminHomePage successfulAdminLogin(IUser validAdmin) {
         login(validAdmin);
-        wait.waitForPageLoad();
+
         return new AdminHomePage(driver);
     }
 

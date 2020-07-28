@@ -3,16 +3,17 @@ package dtapi.pages;
 import dtapi.components.GroupTableContainer;
 import dtapi.components.GroupTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.AdminHeadrer;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewGroupModalWindow;
 import dtapi.modalsWindows.DeleteGroupModalWindow;
 import dtapi.modalsWindows.ViewGroupByFacultyWindow;
 import dtapi.modalsWindows.ViewGroupBySpecialityWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class GroupPage extends Paginator {
+public class GroupPage extends AdminHeadrer {
+
     private By groupsPageTitle = By.xpath("//h3");
     private By addNewGroupButton = By.xpath("//span[contains(text(),'Додати групу')]/parent::button");
     private By viewGroupBySpecialityButton = By.xpath("//span[contains(text(),'Перегляд груп за спеціальністю')]/parent::button");
@@ -27,8 +28,8 @@ public class GroupPage extends Paginator {
         wait = new WaitUtils(driver, 10);
     }
     public String getGroupPageTitleText() {
-        wait.visibilityOfElement(groupsPageTitle);
-        wait.prevenseOfElement(groupsPageTitle);
+        wait.visibilityOfElementByLocator(groupsPageTitle);
+        wait.presenceOfElement(groupsPageTitle);
         return find(groupsPageTitle).getText();
     }
 
@@ -80,14 +81,13 @@ public class GroupPage extends Paginator {
     }
     public AddNewGroupModalWindow switchToAddNewGroupModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.prevenseOfElement(addNewGroupButton);
-        wait.visibilityOfElement(addNewGroupButton);
+        wait.presenceOfElement(addNewGroupButton);
+        wait.visibilityOfElementByLocator(addNewGroupButton);
         click(addNewGroupButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
-                wait.waitForPageLoad();
                 driver.switchTo().window(windowHandle);
-                wait.waitForPageLoad();
+
             }
         }
         return new AddNewGroupModalWindow(driver);
@@ -142,20 +142,20 @@ public class GroupPage extends Paginator {
         return false;
     }
     private void clickSearchGroupInput() {
-        wait.visibilityOfElement(searchGroupInput);
-        wait.prevenseOfElement(searchGroupInput);
+        wait.visibilityOfElementByLocator(searchGroupInput);
+        wait.presenceOfElement(searchGroupInput);
         click(searchGroupInput);
     }
 
     private void clearSearchGroupInput() {
-        wait.visibilityOfElement(searchGroupInput);
-        wait.prevenseOfElement(searchGroupInput);
+        wait.visibilityOfElementByLocator(searchGroupInput);
+        wait.presenceOfElement(searchGroupInput);
         find(searchGroupInput).clear();
     }
 
     private void setSearchGroupInput(String groupId) {
-        wait.visibilityOfElement(searchGroupInput);
-        wait.prevenseOfElement(searchGroupInput);
+        wait.visibilityOfElementByLocator(searchGroupInput);
+        wait.presenceOfElement(searchGroupInput);
         type(groupId, searchGroupInput);
     }
 
@@ -168,8 +168,8 @@ public class GroupPage extends Paginator {
 
     public ViewGroupBySpecialityWindow switchToViewGroupBySpecialityWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.visibilityOfElement(viewGroupBySpecialityButton);
-        wait.prevenseOfElement(viewGroupBySpecialityButton);
+        wait.visibilityOfElementByLocator(viewGroupBySpecialityButton);
+        wait.presenceOfElement(viewGroupBySpecialityButton);
         click(viewGroupBySpecialityButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
@@ -181,8 +181,8 @@ public class GroupPage extends Paginator {
 
     public ViewGroupByFacultyWindow switchToViewGroupByFacultyWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.visibilityOfElement(viewGroupByFacultyButton);
-        wait.prevenseOfElement(viewGroupByFacultyButton);
+        wait.visibilityOfElementByLocator(viewGroupByFacultyButton);
+        wait.presenceOfElement(viewGroupByFacultyButton);
         click(viewGroupByFacultyButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
@@ -197,8 +197,8 @@ public class GroupPage extends Paginator {
 
     public GroupPage refreshPage() {
         sleep(1000);
-        wait.prevenseOfElement(groupsPageTitle);
-        wait.visibilityOfElement(groupsPageTitle);
+        wait.presenceOfElement(groupsPageTitle);
+        wait.visibilityOfElementByLocator(groupsPageTitle);
         driver.navigate().refresh();
 
 

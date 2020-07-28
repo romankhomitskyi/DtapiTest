@@ -9,13 +9,15 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SettingTestTableContainer  extends Paginator {
-
+public class SettingTestTableContainer {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String settingsTestTableContainerXpath = "//table/tbody/tr";
     private  List<SettingTestTableContainerComponent> containerComponents;
 
     public SettingTestTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
        initElements();
     }
 
@@ -42,10 +44,10 @@ public class SettingTestTableContainer  extends Paginator {
         SettingTestTableContainerComponent result = findTestSettings(settingTestId);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Setting test with id: %s not found", settingTestId));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findTestSettings(settingTestId);
 

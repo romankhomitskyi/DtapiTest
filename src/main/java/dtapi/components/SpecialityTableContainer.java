@@ -8,12 +8,15 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpecialityTableContainer extends Paginator {
+public class SpecialityTableContainer {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String specialityTableContainerXpath = "//table/tbody/tr";
     private List<SpecialityTableContainerComponent> containerComponents;
 
     public SpecialityTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
       initElements();
     }
     private void initElements(){
@@ -37,10 +40,10 @@ public class SpecialityTableContainer extends Paginator {
         SpecialityTableContainerComponent result = findSpeciality(specialityName);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Speciality with specialityName: %s not found", specialityName));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findSpeciality(specialityName);
 

@@ -8,13 +8,16 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectTableContainer  extends Paginator {
+public class SubjectTableContainer  {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String subjectTableContainerXpath = "//div[@class='table-container']/table/tbody/tr";
     private List<SubjectTableContainerComponent> containerComponents;
 
 
     public SubjectTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
         initElements();
     }
 
@@ -40,10 +43,10 @@ public class SubjectTableContainer  extends Paginator {
         SubjectTableContainerComponent result = findSubject(subjectName);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Subject with subjectName: %s not found", subjectName));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findSubject(subjectName);
 

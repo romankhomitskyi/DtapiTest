@@ -3,6 +3,7 @@ package dtapi.pages;
 import dtapi.components.ResultsTableContainer;
 import dtapi.components.ResultsTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.AdminHeadrer;
 import dtapi.elements.Paginator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,8 +15,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-public class ResultsPage extends Paginator {
+public class ResultsPage extends AdminHeadrer {
     private By resultsPageTitle = By.xpath("//h3");
+    private Paginator paginator;//FIXME
     private WaitUtils wait;
     private By groupDropDown = By.xpath("//mat-select[contains(@class,'mat-select') and contains(@placeholder,'Виберіть групу')]");
     private By testDropDown = By.xpath("//mat-select[contains(@class,'mat-select') and contains(@placeholder,'Виберіть тест')]");
@@ -29,13 +31,13 @@ public class ResultsPage extends Paginator {
         initElements();
     }
     private void initElements() {
-
+        paginator = new Paginator(driver);
         resultsTableContainer  = new ResultsTableContainer (driver);
 
     }
 
     public boolean verifyStudentResults(String result) {
-        clickLastButton();
+        paginator.clickLastButton();//FIXME
         sleep(500);
 
         List<Integer> id = new ArrayList<>();
@@ -50,8 +52,7 @@ public class ResultsPage extends Paginator {
                 .getStudentResultContainerComponentByStudentId(Collections.max(id).toString())
                 .getStudentResultText();
         if(results.contains(result)){
-            System.out.println(" Результат мого коду" +results );
-            System.out.println(" Результат тесту" +result );
+
             return true;
         }
 
@@ -61,28 +62,28 @@ public class ResultsPage extends Paginator {
         return resultsTableContainer ;
     }
     public String getResultsPageTitleText() {
-        wait.visibilityOfElement(resultsPageTitle);
-        wait.prevenseOfElement(resultsPageTitle);
+        wait.visibilityOfElementByLocator(resultsPageTitle);
+        wait.presenceOfElement(resultsPageTitle);
         return find(resultsPageTitle).getText();
     }
     private void clickGroupDropDown() {
-        wait.visibilityOfElement2(driver.findElement(groupDropDown));
-        wait.prevenseOfElement(groupDropDown);
-        wait.waitForElementClickability(groupDropDown);
+        wait.visibilityOfWebElement(driver.findElement(groupDropDown));
+        wait.presenceOfElement(groupDropDown);
+        wait.waitForElementToBeClickableByLocator(groupDropDown);
         click(groupDropDown);
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
     }
 
 
     private void clickGroupOptions(String groupName) {
 
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(groupName)) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);
+                wait.invisibilityOfElement(options);
                 break;
             }
         }
@@ -95,11 +96,11 @@ public class ResultsPage extends Paginator {
 
     }
     private void clickTestNameDropDown() {
-        wait.visibilityOfElement2(driver.findElement(testDropDown));
-        wait.prevenseOfElement(testDropDown);
-        wait.waitForElementClickability(testDropDown);
+        wait.visibilityOfWebElement(driver.findElement(testDropDown));
+        wait.presenceOfElement(testDropDown);
+        wait.waitForElementToBeClickableByLocator(testDropDown);
         click(testDropDown);
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
 
     }
 
@@ -110,9 +111,9 @@ public class ResultsPage extends Paginator {
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(testName)) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);
+                wait.invisibilityOfElement(options);
                 break;
             }
         }
@@ -138,11 +139,11 @@ public class ResultsPage extends Paginator {
         return new ResultsPage(driver);
     }
     private void clickSubmitButton() {
-        wait.visibilityOfElement(showResultsButton);
-        wait.prevenseOfElement(showResultsButton);
+        wait.visibilityOfElementByLocator(showResultsButton);
+        wait.presenceOfElement(showResultsButton);
         click(showResultsButton);
-        wait.prevenseOfElement(By.xpath("//table//tr//td"));
-        wait.visibilityOfElement(By.xpath("//table//tr//td"));
+        wait.presenceOfElement(By.xpath("//table//tr//td"));
+        wait.visibilityOfElementByLocator(By.xpath("//table//tr//td"));
         wait.visibilityOfAllElements(driver.findElements(By.xpath("//table//tr//td")));
     }
     protected void sleep(long n) {

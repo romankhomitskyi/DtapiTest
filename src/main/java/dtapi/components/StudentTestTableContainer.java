@@ -8,14 +8,17 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentTestTableContainer extends Paginator {
+public class StudentTestTableContainer {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String studentTestTableContainerXpath = "//table/tbody/tr";
     private List<StudentTestTableContainerComponent> containerComponents;
 
 
 
     public StudentTestTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
         initElements();
 
     }
@@ -42,10 +45,10 @@ public class StudentTestTableContainer extends Paginator {
         StudentTestTableContainerComponent  result = findStudentTestByTestName(testName);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Test with testName: %s not found", testName));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findStudentTestByTestName(testName);
 

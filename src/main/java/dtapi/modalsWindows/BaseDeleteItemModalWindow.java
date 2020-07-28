@@ -23,8 +23,8 @@ public class BaseDeleteItemModalWindow extends BasePageObject {
     }
 
     protected void clickSubmitButton() {
-        wait.visibilityOfElement(submitButton);
-        wait.prevenseOfElement(submitButton);
+        wait.visibilityOfElementByLocator(submitButton);
+        wait.presenceOfElement(submitButton);
         driver.findElement(submitButton).click();
     }
 

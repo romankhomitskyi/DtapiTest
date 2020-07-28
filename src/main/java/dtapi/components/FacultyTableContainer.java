@@ -8,12 +8,15 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FacultyTableContainer extends Paginator {
+public class FacultyTableContainer  {
+   private WebDriver driver;
+   private Paginator paginator;
     private final String facultyTableContainerXpath = "//div[@class='table-container']/table/tbody/tr";
     private List<FacultyTableContainerComponent> containerComponents;
 
     public FacultyTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
       initElements();
     }
 
@@ -37,10 +40,10 @@ public class FacultyTableContainer extends Paginator {
         FacultyTableContainerComponent result = findFaculty(facultyName);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Faculty with facultyName: %s not found", facultyName));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findFaculty(facultyName);
 

@@ -19,15 +19,15 @@ public class BaseModalWindow extends BasePageObject {
     }
     public boolean isSubmitButtonEnabled() {
 
-        wait.prevenseOfElement(submitButton);
-        wait.visibilityOfElement(submitButton);
+        wait.presenceOfElement(submitButton);
+        wait.visibilityOfElementByLocator(submitButton);
        wait.scrollUntilElementVisible(driver.findElement(submitButton));
         WebElement result = driver.findElement(submitButton);
         return result.isEnabled();
     }
     protected void clickSubmitButton() {
-        wait.visibilityOfElement(submitButton);
-        wait.prevenseOfElement(submitButton);
+        wait.visibilityOfElementByLocator(submitButton);
+        wait.presenceOfElement(submitButton);
         click(submitButton);
     }
 

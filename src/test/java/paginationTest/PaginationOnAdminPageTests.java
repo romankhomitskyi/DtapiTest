@@ -1,18 +1,11 @@
 package paginationTest;
 
-import dtapi.data.data_provider.DataForPaginationTest;
-import dtapi.data.enums.Pagination;
-import dtapi.data.enums.RowsOnPage;
-import dtapi.data.user.IUser;
 import dtapi.dtapiBase.TestUtilities;
-import dtapi.pages.SubjectPage;
-import org.junit.Assert;
-import org.testng.annotations.Test;
 
 public class PaginationOnAdminPageTests extends TestUtilities {
 
-
-    @Test(dataProvider = "dataPaginationTests", dataProviderClass = DataForPaginationTest.class, groups = {"dropdown"},
+    //FIXME
+    /*@Test(dataProvider = "dataPaginationTests", dataProviderClass = DataForPaginationTest.class, groups = {"dropdown"},
             description = "verifies that number of records displayed in a table and pagination are equal")
     public void checkShowDropDownMenu(IUser validAdmin, RowsOnPage five, RowsOnPage ten, RowsOnPage twenty) {
         SubjectPage subjectPage = loadSignInPage()
@@ -64,7 +57,7 @@ public class PaginationOnAdminPageTests extends TestUtilities {
                         && subPage.isArrowEnabled(next)
         );
 
-    }
+    }*/
 
     /*@Test(dataProvider = "dataPaginationTests", dataProviderClass = DataForPaginationTest.class, groups = {"updatePagination"},
             description = "check that new subject creation affects  pagination")

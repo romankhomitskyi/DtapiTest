@@ -28,7 +28,7 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
         addNewSpeciality(code, name);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
-                wait.invisibilityOfEmelement(submitButton);
+                wait.invisibilityOfElementByLocator(submitButton);
                 driver.switchTo().window(windowHandle);
             }
         }
@@ -37,20 +37,20 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
     }
 
     private void clickSpecialityCodeField() {
-        wait.visibilityOfElement(codeSpeciality);
-        wait.prevenseOfElement(codeSpeciality);
+        wait.visibilityOfElementByLocator(codeSpeciality);
+        wait.presenceOfElement(codeSpeciality);
         click(codeSpeciality);
     }
 
     private void clearSpecialityCodeField() {
-        wait.visibilityOfElement(codeSpeciality);
-        wait.prevenseOfElement(codeSpeciality);
+        wait.visibilityOfElementByLocator(codeSpeciality);
+        wait.presenceOfElement(codeSpeciality);
         find(codeSpeciality).clear();
     }
 
     private void setSpecialityCodeField(String code) {
-        wait.visibilityOfElement(codeSpeciality);
-        wait.prevenseOfElement(codeSpeciality);
+        wait.visibilityOfElementByLocator(codeSpeciality);
+        wait.presenceOfElement(codeSpeciality);
         type(code, codeSpeciality);
     }
 
@@ -61,20 +61,20 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
     }
 
     private void clickNameOfSpecialityField() {
-        wait.visibilityOfElement(nameOfSpeciality);
-        wait.prevenseOfElement(nameOfSpeciality);
+        wait.visibilityOfElementByLocator(nameOfSpeciality);
+        wait.presenceOfElement(nameOfSpeciality);
         click(nameOfSpeciality);
     }
 
     private void clearNameOfSpecialityField() {
-        wait.visibilityOfElement(nameOfSpeciality);
-        wait.prevenseOfElement(nameOfSpeciality);
+        wait.visibilityOfElementByLocator(nameOfSpeciality);
+        wait.presenceOfElement(nameOfSpeciality);
         find(nameOfSpeciality).clear();
     }
 
     private void setNameOfSpecialityField(String name) {
-        wait.visibilityOfElement(nameOfSpeciality);
-        wait.prevenseOfElement(nameOfSpeciality);
+        wait.visibilityOfElementByLocator(nameOfSpeciality);
+        wait.presenceOfElement(nameOfSpeciality);
         type(name, nameOfSpeciality);
     }
 
@@ -97,8 +97,8 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
 
     private void clickSubmitButton() {
 
-        wait.prevenseOfElement(submitButton);
-        wait.visibilityOfElement(submitButton);
+        wait.presenceOfElement(submitButton);
+        wait.visibilityOfElementByLocator(submitButton);
         click(submitButton);
     }
 
@@ -108,8 +108,8 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
     }
     public boolean isErrorDisplayed() {
 
-        wait.prevenseOfElement(error);
-        wait.visibilityOfElement(error);
+        wait.presenceOfElement(error);
+        wait.visibilityOfElementByLocator(error);
         WebElement result = driver.findElement(error);
         wait.scrollUntilElementVisible(result);
         return result.isDisplayed();
@@ -130,8 +130,8 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
 
     }
     private void setInvalidSpecialityCodeField(NewSpeciality specialityCodeField) {
-        wait.visibilityOfElement(codeSpeciality);
-        wait.prevenseOfElement(codeSpeciality);
+        wait.visibilityOfElementByLocator(codeSpeciality);
+        wait.presenceOfElement(codeSpeciality);
         type(specialityCodeField.getCodeSpeciality(),codeSpeciality);
     }
 
@@ -146,8 +146,8 @@ public class AddNewSpecialityModalWindow extends BasePageObject {
         setInvalidSpecialityNameField(specialityCodeField);
     }
     private void setInvalidSpecialityNameField(NewSpeciality specialityCodeField) {
-        wait.visibilityOfElement(nameOfSpeciality);
-        wait.prevenseOfElement(nameOfSpeciality);
+        wait.visibilityOfElementByLocator(nameOfSpeciality);
+        wait.presenceOfElement(nameOfSpeciality);
         type(specialityCodeField.getCodeSpeciality(),nameOfSpeciality);
     }
 

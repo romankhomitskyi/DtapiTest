@@ -3,14 +3,14 @@ package dtapi.pages;
 import dtapi.components.TestScheduleTableContainer;
 import dtapi.components.TestScheduleTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
-import dtapi.elements.Paginator;
+import dtapi.elements.AdminHeadrer;
 import dtapi.modalsWindows.AddNewScheduleModalWindow;
 import dtapi.modalsWindows.DeleteScheduleModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ScheduleTestingPage  extends Paginator {
+public class ScheduleTestingPage  extends AdminHeadrer {
+
     public ScheduleTestingPage(WebDriver driver) {
         super(driver);
         initElements();
@@ -33,14 +33,13 @@ public class ScheduleTestingPage  extends Paginator {
 
     public AddNewScheduleModalWindow switchToAddNewScheduleModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.prevenseOfElement(addNewScheduleButton);
-        wait.visibilityOfElement(addNewScheduleButton);
+        wait.presenceOfElement(addNewScheduleButton);
+        wait.visibilityOfElementByLocator(addNewScheduleButton);
         click(addNewScheduleButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {
-                wait.waitForPageLoad();
                 driver.switchTo().window(windowHandle);
-                wait.waitForPageLoad();
+
             }
         }
         return new  AddNewScheduleModalWindow(driver);

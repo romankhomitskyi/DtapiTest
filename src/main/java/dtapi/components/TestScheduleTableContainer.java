@@ -8,13 +8,16 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestScheduleTableContainer extends Paginator {
+public class TestScheduleTableContainer {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String testScheduleTableContainerXpath = "//table/tbody/tr";
     private List<TestScheduleTableContainerComponent> containerComponents;
 
 
     public TestScheduleTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
         initElements();
 
     }
@@ -38,10 +41,10 @@ public class TestScheduleTableContainer extends Paginator {
         TestScheduleTableContainerComponent result  = findTestSchedule(group);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Schedule test with group: %s not found", group));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findTestSchedule(group);
 

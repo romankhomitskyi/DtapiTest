@@ -4,25 +4,26 @@ import dtapi.components.QuestionTableContainer;
 import dtapi.components.QuestionTableContainerComponent;
 import dtapi.data.question.NewQuestion;
 import dtapi.dtapiBase.WaitUtils;
-import dtapi.elements.Paginator;
+import dtapi.elements.AdminHeadrer;
 import dtapi.modalsWindows.DeleteQuestionModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
-public class QuestionPage extends Paginator {
+public class QuestionPage extends AdminHeadrer {
+
+    private WaitUtils wait;
+    private QuestionTableContainer questionTableContainer;
+    private By addQuestion = By.xpath("//span[contains(text(),'Додати питання')]/parent::a");
+
     public QuestionPage(WebDriver driver) {
         super(driver);
         wait = new WaitUtils(driver,10);
         initElements();
     }
-    private WaitUtils wait;
-    private QuestionTableContainer questionTableContainer;
-    private By addQuestion = By.xpath("//span[contains(text(),'Додати питання')]/parent::a");
-
     private void initElements() {
+
 
         questionTableContainer = new QuestionTableContainer(driver);
     }
@@ -32,8 +33,8 @@ public class QuestionPage extends Paginator {
 
 
     public AddQuestionPage clickAddQuesButton() {
-        wait.prevenseOfElement(addQuestion);
-        wait.visibilityOfElement(addQuestion);
+        wait.presenceOfElement(addQuestion);
+        wait.visibilityOfElementByLocator(addQuestion);
         driver.findElement(addQuestion).click();
         return new AddQuestionPage(driver);
     }

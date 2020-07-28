@@ -3,7 +3,6 @@ package dtapi.modalsWindows;
 import dtapi.data.faculties.NewFaculties;
 import dtapi.dtapiBase.WaitUtils;
 import dtapi.pages.FacultiesPage;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -56,20 +55,20 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
     }
 
     private void clickFacultiesNameField() {
-        wait.visibilityOfElement(firstInput);
-        wait.prevenseOfElement(firstInput);
+        wait.visibilityOfElementByLocator(firstInput);
+        wait.presenceOfElement(firstInput);
         click(firstInput);
     }
 
     private void clearFacultiesTitleField() {
-        wait.visibilityOfElement(firstInput);
-        wait.prevenseOfElement(firstInput);
+        wait.visibilityOfElementByLocator(firstInput);
+        wait.presenceOfElement(firstInput);
         find(firstInput).clear();
     }
 
     private void setFacultiesNameField(NewFaculties faculties) {
-        wait.visibilityOfElement(firstInput);
-        wait.prevenseOfElement(firstInput);
+        wait.visibilityOfElementByLocator(firstInput);
+        wait.presenceOfElement(firstInput);
         type(faculties.getFacultiesName(), firstInput);
     }
 
@@ -80,20 +79,20 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
     }
 
     private void clickFacultiesTexAreaField() {
-        wait.visibilityOfElement(textArea);
-        wait.prevenseOfElement(textArea);
+        wait.visibilityOfElementByLocator(textArea);
+        wait.presenceOfElement(textArea);
         click(textArea);
     }
 
     private void clearFacultiesTextAreaField() {
-        wait.visibilityOfElement(textArea);
-        wait.prevenseOfElement(textArea);
+        wait.visibilityOfElementByLocator(textArea);
+        wait.presenceOfElement(textArea);
         find(textArea).clear();
     }
 
     private void setFacultiesTextAreaField(NewFaculties faculties) {
-        wait.visibilityOfElement(textArea);
-        wait.prevenseOfElement(textArea);
+        wait.visibilityOfElementByLocator(textArea);
+        wait.presenceOfElement(textArea);
         type(faculties.getFacultiesDesc(), textArea);
     }
 

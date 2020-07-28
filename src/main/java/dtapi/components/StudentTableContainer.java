@@ -8,14 +8,17 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentTableContainer extends Paginator{
-        private final String studentTableContainerXpath = "//div[contains(@class,'mat-table-wrapper')]/table/tbody/tr";
+public class StudentTableContainer {
+        private WebDriver driver;
+        private Paginator paginator;
+         private final String studentTableContainerXpath = "//div[contains(@class,'mat-table-wrapper')]/table/tbody/tr";
         private List<StudentTableContainerComponent> containerComponents;
 
 
 
         public StudentTableContainer(WebDriver driver) {
-            super(driver);
+            this.driver = driver;
+            paginator = new Paginator(driver);
             initElements();
         }
 
@@ -40,10 +43,10 @@ public class StudentTableContainer extends Paginator{
         StudentTableContainerComponent result = findStudent(studentNSF);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Student with studentNSF: %s not found", studentNSF));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findStudent(studentNSF);
 

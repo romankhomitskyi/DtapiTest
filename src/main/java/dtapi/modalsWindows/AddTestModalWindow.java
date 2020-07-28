@@ -24,20 +24,20 @@ public class AddTestModalWindow extends BaseModalWindow {
     }
 
     private void clickTestNameField() {
-        wait.visibilityOfElement(testNameInput);
-        wait.prevenseOfElement(testNameInput);
+        wait.visibilityOfElementByLocator(testNameInput);
+        wait.presenceOfElement(testNameInput);
         find(testNameInput).click();
     }
 
     private void clearTestNameField() {
-        wait.visibilityOfElement(testNameInput);
-        wait.prevenseOfElement(testNameInput);
+        wait.visibilityOfElementByLocator(testNameInput);
+        wait.presenceOfElement(testNameInput);
         find(testNameInput).clear();
     }
 
     private void setTestNameField(String testName) {
-        wait.visibilityOfElement(testNameInput);
-        wait.prevenseOfElement(testNameInput);
+        wait.visibilityOfElementByLocator(testNameInput);
+        wait.presenceOfElement(testNameInput);
         type(testName, testNameInput);
     }
 
@@ -48,20 +48,20 @@ public class AddTestModalWindow extends BaseModalWindow {
     }
 
     private void clickTaskCountField() {
-        wait.visibilityOfElement(taskCountInput);
-        wait.prevenseOfElement(taskCountInput);
+        wait.visibilityOfElementByLocator(taskCountInput);
+        wait.presenceOfElement(taskCountInput);
         find(taskCountInput).click();
     }
 
     private void clearTaskCountField() {
-        wait.visibilityOfElement(taskCountInput);
-        wait.prevenseOfElement(taskCountInput);
+        wait.visibilityOfElementByLocator(taskCountInput);
+        wait.presenceOfElement(taskCountInput);
         find(taskCountInput).clear();
     }
 
     private void setTaskCountField(int taskCount) {
-        wait.visibilityOfElement(taskCountInput);
-        wait.prevenseOfElement(taskCountInput);
+        wait.visibilityOfElementByLocator(taskCountInput);
+        wait.presenceOfElement(taskCountInput);
         find(taskCountInput).sendKeys(String.valueOf(taskCount));
     }
 
@@ -72,20 +72,20 @@ public class AddTestModalWindow extends BaseModalWindow {
     }
 
     private void clickTimeField() {
-        wait.visibilityOfElement(timeInput);
-        wait.prevenseOfElement(timeInput);
+        wait.visibilityOfElementByLocator(timeInput);
+        wait.presenceOfElement(timeInput);
         find(timeInput).click();
     }
 
     private void clearTimeField() {
-        wait.visibilityOfElement(timeInput);
-        wait.prevenseOfElement(timeInput);
+        wait.visibilityOfElementByLocator(timeInput);
+        wait.presenceOfElement(timeInput);
         find(timeInput).clear();
     }
 
     private void setTimeField(int timeCount) {
-        wait.visibilityOfElement(timeInput);
-        wait.prevenseOfElement(timeInput);
+        wait.visibilityOfElementByLocator(timeInput);
+        wait.presenceOfElement(timeInput);
         find(timeInput).sendKeys(String.valueOf(timeCount));
     }
 
@@ -96,20 +96,20 @@ public class AddTestModalWindow extends BaseModalWindow {
     }
 
     private void clickNumberOfAttemptsField() {
-        wait.visibilityOfElement(numberOfAttemptsInput);
-        wait.prevenseOfElement(numberOfAttemptsInput);
+        wait.visibilityOfElementByLocator(numberOfAttemptsInput);
+        wait.presenceOfElement(numberOfAttemptsInput);
         find(numberOfAttemptsInput).click();
     }
 
     private void clearNumberOfAttemptsField() {
-        wait.visibilityOfElement(numberOfAttemptsInput);
-        wait.prevenseOfElement(numberOfAttemptsInput);
+        wait.visibilityOfElementByLocator(numberOfAttemptsInput);
+        wait.presenceOfElement(numberOfAttemptsInput);
         find(numberOfAttemptsInput).clear();
     }
 
     private void setNumberOfAttemptsField(int numberOfAttempts) {
-        wait.visibilityOfElement(numberOfAttemptsInput);
-        wait.prevenseOfElement(numberOfAttemptsInput);
+        wait.visibilityOfElementByLocator(numberOfAttemptsInput);
+        wait.presenceOfElement(numberOfAttemptsInput);
         find(numberOfAttemptsInput).sendKeys(String.valueOf(numberOfAttempts));
     }
 
@@ -120,8 +120,8 @@ public class AddTestModalWindow extends BaseModalWindow {
     }
 
     private void selectOnRadioButton() {
-        wait.visibilityOfElement(radioButtos);
-        wait.prevenseOfElement(radioButtos);
+        wait.visibilityOfElementByLocator(radioButtos);
+        wait.presenceOfElement(radioButtos);
         List<WebElement> radiobuttons = driver.findElements(radioButtos);
         if (!radiobuttons.get(0).isSelected()) {
             radiobuttons.get(0).click();
@@ -130,8 +130,8 @@ public class AddTestModalWindow extends BaseModalWindow {
     }
 
     private void selectOffRadioButton() {
-        wait.visibilityOfElement(radioButtos);
-        wait.prevenseOfElement(radioButtos);
+        wait.visibilityOfElementByLocator(radioButtos);
+        wait.presenceOfElement(radioButtos);
         List<WebElement> radiobuttons = findAll(radioButtos);
         for (WebElement radiobutton : radiobuttons) {
             if (!radiobutton.isSelected()) {
@@ -141,8 +141,8 @@ public class AddTestModalWindow extends BaseModalWindow {
     }
 
     private void clickAddTestButton() {
-        wait.visibilityOfElement(addTestButton);
-        wait.prevenseOfElement(addTestButton);
+        wait.visibilityOfElementByLocator(addTestButton);
+        wait.presenceOfElement(addTestButton);
         driver.findElement(addTestButton).click();
     }
 
@@ -172,7 +172,7 @@ public class AddTestModalWindow extends BaseModalWindow {
                 driver.switchTo().window(windowHandle);
             }
         }
-
+        wait.waitForAlertVisibility();
         return new TestPage(driver);
     }
 }

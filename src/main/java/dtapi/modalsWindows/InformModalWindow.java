@@ -18,15 +18,15 @@ public class InformModalWindow extends BaseModalWindow {
 
     public boolean isTextPresent() {
         sleep(300);
-        wait.prevenseOfElement(divText);
-        wait.visibilityOfElement(divText);
+        wait.presenceOfElement(divText);
+        wait.visibilityOfElementByLocator(divText);
         WebElement result = driver.findElement(divText);
         return result.isDisplayed();
     }
 
     private void clickExitButtons() {
-        wait.visibilityOfElement(exitButton);
-        wait.prevenseOfElement(exitButton);
+        wait.visibilityOfElementByLocator(exitButton);
+        wait.presenceOfElement(exitButton);
         driver.findElement(exitButton).click();
     }
 

@@ -8,12 +8,15 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupTableContainer extends Paginator {
+public class GroupTableContainer  {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String groupTableContainerXpath = "//div[@class='table-container']/table/tbody/tr";
     private List<GroupTableContainerComponent> containerComponents;
 
     public GroupTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
         initElements();
 
     }
@@ -37,10 +40,10 @@ public class GroupTableContainer extends Paginator {
         GroupTableContainerComponent result = findGroup(groupCode);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Group with groupCode: %s not found", groupCode));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findGroup(groupCode);
 

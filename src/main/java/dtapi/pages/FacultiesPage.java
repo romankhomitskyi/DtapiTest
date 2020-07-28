@@ -3,14 +3,15 @@ package dtapi.pages;
 import dtapi.components.FacultyTableContainer;
 import dtapi.components.FacultyTableContainerComponent;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.AdminHeadrer;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddFacultiesModalWindow;
 import dtapi.modalsWindows.DeleteFacultiesModalWindow;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class FacultiesPage extends Paginator {
+public class FacultiesPage extends AdminHeadrer {
+
     private By addNewFacultiesButton = By.xpath("//span[contains(text(),'Додати факультет')]/parent::button");
     private By searchFacultiesInput = By.xpath("//div[@class='mat-form-field-infix']/input");
     private By facultiesPageTitle = By.xpath("//h3");
@@ -32,8 +33,8 @@ public class FacultiesPage extends Paginator {
     }
 
     public String getFacultiesPageTitleText() {
-        wait.visibilityOfElement(facultiesPageTitle);
-        wait.prevenseOfElement(facultiesPageTitle);
+        wait.visibilityOfElementByLocator(facultiesPageTitle);
+        wait.presenceOfElement(facultiesPageTitle);
         return find(facultiesPageTitle).getText();
     }
     public AddFacultiesModalWindow switchToEditFacultyModalWindow(String facultyName) {
@@ -83,8 +84,8 @@ public class FacultiesPage extends Paginator {
 
     public AddFacultiesModalWindow switchToAddNewFacultiesModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.visibilityOfElement(addNewFacultiesButton);
-        wait.prevenseOfElement(addNewFacultiesButton);
+        wait.visibilityOfElementByLocator(addNewFacultiesButton);
+        wait.presenceOfElement(addNewFacultiesButton);
         click(addNewFacultiesButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {

@@ -8,13 +8,15 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminTableContainer extends Paginator {
-
+public class AdminTableContainer {
+    private WebDriver driver;
+    private Paginator paginator;
     private final String adminTableContainerXpath = "//table/tbody/tr";
     private List<AdminTableContainerComponent> containerComponents;
 
     public AdminTableContainer(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        paginator = new Paginator(driver);
         initElements();
     }
 
@@ -38,10 +40,10 @@ public class AdminTableContainer extends Paginator {
         AdminTableContainerComponent result = findAdmin(adminLog);
 
         while (result == null ) {
-            if (!isNextArrowEnabled() && result == null) {
+            if (!paginator.isNextArrowEnabled() && result == null) {
                 throw new RuntimeException(String.format("Admin with adminLog: %s not found", adminLog));
             }
-            clickNextButton();
+            paginator.clickNextButton();
             initElements();
             result = findAdmin(adminLog);
 

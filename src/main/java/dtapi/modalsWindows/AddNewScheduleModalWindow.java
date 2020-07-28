@@ -31,21 +31,21 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
     private DatePicker datePicker;
 
     private void clickStartDateInput() {
-        wait.waitForElementClickability(startDateInput);
-        wait.visibilityOfElement(startDateInput);
-        wait.prevenseOfElement(startDateInput);
+        wait.waitForElementToBeClickableByLocator(startDateInput);
+        wait.visibilityOfElementByLocator(startDateInput);
+        wait.presenceOfElement(startDateInput);
         click(startDateInput);
     }
 
     private void clearStartDateInput() {
-        wait.visibilityOfElement(startDateInput);
-        wait.prevenseOfElement(startDateInput);
+        wait.visibilityOfElementByLocator(startDateInput);
+        wait.presenceOfElement(startDateInput);
         find(startDateInput).clear();
     }
 
     private void setStartDateInput(String startsDateInput) {
-        wait.visibilityOfElement(startDateInput);
-        wait.prevenseOfElement(startDateInput);
+        wait.visibilityOfElementByLocator(startDateInput);
+        wait.presenceOfElement(startDateInput);
         type(startsDateInput, startDateInput);
     }
     private void fillStartDateInput(String startsDateInput) {
@@ -54,20 +54,20 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         setStartDateInput(startsDateInput);
     }
     private void clickEndDateInput() {
-        wait.visibilityOfElement(endDateInput);
-        wait.prevenseOfElement(endDateInput);
+        wait.visibilityOfElementByLocator(endDateInput);
+        wait.presenceOfElement(endDateInput);
         click(endDateInput);
     }
 
     private void clearEndDateInput() {
-        wait.visibilityOfElement(endDateInput);
-        wait.prevenseOfElement(endDateInput);
+        wait.visibilityOfElementByLocator(endDateInput);
+        wait.presenceOfElement(endDateInput);
         find(endDateInput).clear();
     }
 
     private void setEndDateInput(String endsDateInput) {
-        wait.visibilityOfElement(endDateInput);
-        wait.prevenseOfElement(endDateInput);
+        wait.visibilityOfElementByLocator(endDateInput);
+        wait.presenceOfElement(endDateInput);
         type(endsDateInput, endDateInput);
     }
     private void fillEndDateInput(String endsDateInput) {
@@ -78,20 +78,20 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
 
 
     private void clickStartTimeField() {
-        wait.visibilityOfElement(startTimeField);
-        wait.prevenseOfElement(startTimeField);
+        wait.visibilityOfElementByLocator(startTimeField);
+        wait.presenceOfElement(startTimeField);
         click(startTimeField);
     }
 
     private void clearStartTimeField() {
-        wait.visibilityOfElement(startTimeField);
-        wait.prevenseOfElement(startTimeField);
+        wait.visibilityOfElementByLocator(startTimeField);
+        wait.presenceOfElement(startTimeField);
         find(startTimeField).clear();
     }
 
     private void setStartTimeField(String startsTimeField) {
-        wait.visibilityOfElement(startTimeField);
-        wait.prevenseOfElement(startTimeField);
+        wait.visibilityOfElementByLocator(startTimeField);
+        wait.presenceOfElement(startTimeField);
         type(startsTimeField, startTimeField);
     }
 
@@ -101,20 +101,20 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         setStartTimeField( startsTimeField);
     }
     private void clickEndTimeField() {
-        wait.visibilityOfElement(endTimeField);
-        wait.prevenseOfElement(endTimeField);
+        wait.visibilityOfElementByLocator(endTimeField);
+        wait.presenceOfElement(endTimeField);
         click(endTimeField);
     }
 
     private void clearEndTimeField() {
-        wait.visibilityOfElement(endTimeField);
-        wait.prevenseOfElement(endTimeField);
+        wait.visibilityOfElementByLocator(endTimeField);
+        wait.presenceOfElement(endTimeField);
         find(endTimeField).clear();
     }
 
     private void setEndTimeField(String endsTimeField) {
-        wait.visibilityOfElement(endTimeField);
-        wait.prevenseOfElement(endTimeField);
+        wait.visibilityOfElementByLocator(endTimeField);
+        wait.presenceOfElement(endTimeField);
         type(endsTimeField, endTimeField);
     }
 
@@ -124,11 +124,11 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         setEndTimeField( endsTimeField);
     }
     private void clickGroupDropDown() {
-        wait.visibilityOfElement2(driver.findElement(groupDropDown));
-        wait.prevenseOfElement(groupDropDown);
-        wait.waitForElementClickability(groupDropDown);
+        wait.visibilityOfWebElement(driver.findElement(groupDropDown));
+        wait.presenceOfElement(groupDropDown);
+        wait.waitForElementToBeClickableByLocator(groupDropDown);
         click(groupDropDown);
-        wait.prevenseOfElement(By.xpath("//mat-option/span"));
+        wait.presenceOfElement(By.xpath("//mat-option/span"));
     }
 
 
@@ -137,9 +137,9 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(group)) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);
+                wait.invisibilityOfElement(options);
                 break;
             }
 
@@ -193,7 +193,7 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         addNewSchedule(group, startDate,endDate,startTime,endTime);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
-                wait.invisibilityOfEmelement2(getSubmitButton());
+                wait.invisibilityOfElement(getSubmitButton());
                 driver.switchTo().window(windowHandle);
 
 
@@ -223,8 +223,8 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
     }
 
     private void setInvalidEndDateField(NewSchedule schedule) {
-        wait.visibilityOfElement(endDateInput);
-        wait.prevenseOfElement(endDateInput);
+        wait.visibilityOfElementByLocator(endDateInput);
+        wait.presenceOfElement(endDateInput);
         type(schedule.getEndDate(),endDateInput);
     }
 
@@ -235,8 +235,8 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         setInvalidEndDateField(schedule);
     }
     private void setInvalidStartDateField(NewSchedule schedule) {
-        wait.visibilityOfElement(startDateInput);
-        wait.prevenseOfElement(startDateInput);
+        wait.visibilityOfElementByLocator(startDateInput);
+        wait.presenceOfElement(startDateInput);
         type(schedule.getStartDate(),startDateInput);
     }
 
@@ -246,8 +246,8 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
        setInvalidStartDateField(schedule);
     }
     private void setInvalidStartTimeField(NewSchedule schedule) {
-        wait.visibilityOfElement(startTimeField);
-        wait.prevenseOfElement(startTimeField);
+        wait.visibilityOfElementByLocator(startTimeField);
+        wait.presenceOfElement(startTimeField);
         type(schedule.getStartTime(),startTimeField);
     }
 
@@ -262,8 +262,8 @@ public class AddNewScheduleModalWindow extends BaseModalWindow {
         setInvalidEndTimeField(schedule);
     }
     private void setInvalidEndTimeField(NewSchedule schedule) {
-        wait.visibilityOfElement(endTimeField);
-        wait.prevenseOfElement(endTimeField);
+        wait.visibilityOfElementByLocator(endTimeField);
+        wait.presenceOfElement(endTimeField);
         type(schedule.getEndTime(),endTimeField);
     }
 

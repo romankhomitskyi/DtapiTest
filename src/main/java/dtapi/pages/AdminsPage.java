@@ -4,15 +4,15 @@ import dtapi.components.AdminTableContainer;
 import dtapi.components.AdminTableContainerComponent;
 import dtapi.data.admin.IAdmin;
 import dtapi.dtapiBase.WaitUtils;
+import dtapi.elements.AdminHeadrer;
 import dtapi.elements.Paginator;
 import dtapi.modalsWindows.AddNewAdminModalWindow;
 import dtapi.modalsWindows.DeleteAdminModalWindow;
-
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AdminsPage extends Paginator {
+public class AdminsPage extends AdminHeadrer {
+
     private By adminsPageTitle = By.xpath("//h3");
     private By addAdminButton = By.xpath("//span[contains(text(),'Додати адміна')]/parent::button");
     private WaitUtils wait;
@@ -34,8 +34,8 @@ public class AdminsPage extends Paginator {
     }
 
     public String getAdminsPageTitleText() {
-        wait.visibilityOfElement(adminsPageTitle);
-        wait.prevenseOfElement(adminsPageTitle);
+        wait.visibilityOfElementByLocator(adminsPageTitle);
+        wait.presenceOfElement(adminsPageTitle);
         return find(adminsPageTitle).getText();
     }
     public AddNewAdminModalWindow switchToEditAdminModalWindow(IAdmin admin) {
@@ -82,8 +82,8 @@ public class AdminsPage extends Paginator {
 
     public AddNewAdminModalWindow switchToAddNewAdminModalWindow() {
         String shoppingCartWindow = driver.getWindowHandle();
-        wait.prevenseOfElement(addAdminButton);
-        wait.visibilityOfElement(addAdminButton);
+        wait.presenceOfElement(addAdminButton);
+        wait.visibilityOfElementByLocator(addAdminButton);
         click(addAdminButton);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(shoppingCartWindow)) {

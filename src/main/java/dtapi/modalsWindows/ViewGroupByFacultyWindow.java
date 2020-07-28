@@ -21,17 +21,17 @@ public class ViewGroupByFacultyWindow extends BaseModalWindow {
     }
 
     private void clickFacultyDropDown() {
-        wait.prevenseOfElement(facultyDropDown);
-        wait.visibilityOfElement(facultyDropDown);
+        wait.presenceOfElement(facultyDropDown);
+        wait.visibilityOfElementByLocator(facultyDropDown);
         click(facultyDropDown);
-        wait.visibilityOfElement2(driver.findElement(listBox));
-        wait.prevenseOfElement(listBox);
+        wait.visibilityOfWebElement(driver.findElement(listBox));
+        wait.presenceOfElement(listBox);
 
     }
 
     private void clickFacultyOptions(String facultyName) {
-        wait.visibilityOfElement2(driver.findElement(By.xpath("//mat-option/span")));
-        wait.waitForElementClickability2(driver.findElement(By.xpath("//mat-option/span")));
+        wait.visibilityOfWebElement(driver.findElement(By.xpath("//mat-option/span")));
+        wait.waitForElementToBeClickable(driver.findElement(By.xpath("//mat-option/span")));
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(facultyName)) {

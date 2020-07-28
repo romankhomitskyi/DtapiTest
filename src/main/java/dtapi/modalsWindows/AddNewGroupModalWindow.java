@@ -32,7 +32,7 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         addNewGroup(groudId, gpoupSpeciality, groupFaculty);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
-                wait.invisibilityOfEmelement2(getSubmitButton());
+                wait.invisibilityOfElement(getSubmitButton());
                 driver.switchTo().window(windowHandle);
 
 
@@ -54,8 +54,8 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         actions.moveToElement(driver.findElement(groupId)).click().build().perform();
     }
     private void setInvalidGroupIdField(NewGroup group) {
-        wait.visibilityOfElement(groupId);
-        wait.prevenseOfElement(groupId);
+        wait.visibilityOfElementByLocator(groupId);
+        wait.presenceOfElement(groupId);
         type(group.getGroupId(), groupId);
     }
 
@@ -68,20 +68,20 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
 
 
     private void clickGroupIdField() {
-        wait.visibilityOfElement(groupId);
-        wait.prevenseOfElement(groupId);
+        wait.visibilityOfElementByLocator(groupId);
+        wait.presenceOfElement(groupId);
         click(groupId);
     }
 
     private void clearGroupIdField() {
-        wait.visibilityOfElement(groupId);
-        wait.prevenseOfElement(groupId);
+        wait.visibilityOfElementByLocator(groupId);
+        wait.presenceOfElement(groupId);
         find(groupId).clear();
     }
 
     private void setGroupIdField(String newGroup) {
-        wait.visibilityOfElement(groupId);
-        wait.prevenseOfElement(groupId);
+        wait.visibilityOfElementByLocator(groupId);
+        wait.presenceOfElement(groupId);
         type(newGroup, groupId);
     }
 
@@ -92,11 +92,11 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
     }
 
     private void clickSpecialityDropDown() {
-        wait.visibilityOfElement2(driver.findElement(specialityDropDown));
-        wait.prevenseOfElement(specialityDropDown);
-        wait.waitForElementClickability(specialityDropDown);
+        wait.visibilityOfWebElement(driver.findElement(specialityDropDown));
+        wait.presenceOfElement(specialityDropDown);
+        wait.waitForElementToBeClickableByLocator(specialityDropDown);
         click(specialityDropDown);
-        wait.visibilityOfAllElements2(By.xpath("//mat-option/span"));
+        wait.visibilityOfAllElementsByLocator(By.xpath("//mat-option/span"));
     }
 
 
@@ -105,9 +105,9 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(specialityName)) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);
+                wait.invisibilityOfElement(options);
                 break;
             }
         }
@@ -122,9 +122,9 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
 
     private void clickFacultyDropDown() {
 
-        wait.waitForElementClickability(facultyDropDown);
+        wait.waitForElementToBeClickableByLocator(facultyDropDown);
         driver.findElement(facultyDropDown).click();
-        wait.visibilityOfAllElements2(By.xpath("//mat-option/span"));
+        wait.visibilityOfAllElementsByLocator(By.xpath("//mat-option/span"));
 
     }
 
@@ -137,9 +137,9 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         List<WebElement> dropDown = driver.findElements(By.xpath("//mat-option/span"));
         for (WebElement options : dropDown) {
             if (options.getText().equals(facultyName)) {
-                wait.waitForElementClickability2(options);
+                wait.waitForElementToBeClickable(options);
                 options.click();
-                wait.invisibilityOfEmelement2(options);// click the desired option
+                wait.invisibilityOfElement(options);// click the desired option
                 break;
             }
         }
@@ -170,7 +170,7 @@ public class AddNewGroupModalWindow extends BaseModalWindow {
         addNewGroup(groupText, specialityName, facultyName);
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(addSubjectPageWindow)) {
-                wait.invisibilityOfEmelement2(getSubmitButton());
+                wait.invisibilityOfElement(getSubmitButton());
                 driver.switchTo().window(windowHandle);
 
 
