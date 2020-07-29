@@ -136,7 +136,7 @@ public class SubjectTest extends TestUtilities {
                                     .switchToGroupInformModalWindow();
             Assert.assertTrue(informModalWindow.isTextPresent(), "Inform Window isn't present");
                             informModalWindow.clickExitButtonAndSwitchToGroupPage()
-                                    .clickSubjectLinks()
+                                    .clickSubjectLink()
                                     .navigateToTestOfSubjectPage(subjectName)
                                     .switchToDeleteTestModalWindow(testName)
                                     .deleteTest();
