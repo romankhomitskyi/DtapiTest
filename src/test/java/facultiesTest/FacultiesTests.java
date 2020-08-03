@@ -27,10 +27,10 @@ public class FacultiesTests extends TestUtilities {
                 .switchToAddNewFacultiesModalWindow()
                 .fillAllFacultiesFieldsAndSubmitForm(filologiya());
         Assert.assertTrue(facultiesPage.verifyFacultyAdded(facultyName), "Isn't exist");
-            facultiesPage.switchToEditFacultyModalWindow(facultyName)
+            facultiesPage = facultiesPage.switchToEditFacultyModalWindow(facultyName)
                     .fillAllFacultiesFieldsAndSubmitForm(financy());
         Assert.assertTrue(facultiesPage.verifyFacultyEdited(facultyName), "Isn't edited");
-            facultiesPage.switchToDeleteFacultiesModalWindow(newFacultyName)
+            facultiesPage = facultiesPage.switchToDeleteFacultiesModalWindow(newFacultyName)
                     .deleteFaculties();
         Assert.assertTrue(facultiesPage.verifyFacultyRemoved(newFacultyName), "Exist");
 

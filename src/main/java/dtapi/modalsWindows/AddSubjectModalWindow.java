@@ -28,7 +28,7 @@ public class AddSubjectModalWindow extends BaseModalWindow {
             }
         }
     
-        new WaitUtils(driver, 10).waitForAlertVisibility();
+        wait.waitForAlertVisibility();
         return new SubjectPage(driver);
     }
 

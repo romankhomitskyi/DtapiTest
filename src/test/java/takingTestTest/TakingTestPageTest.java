@@ -19,7 +19,7 @@ public class TakingTestPageTest extends TestUtilities {
 
     ) {
         TakingTestPage testPage = loadSignInPage()
-                .successfulLogin(validUser)
+                .successfulUserLogin(validUser)
                 .navigateToQuestionPage(testName);
          testPage.passTest();
                 String result = testPage.getMark();

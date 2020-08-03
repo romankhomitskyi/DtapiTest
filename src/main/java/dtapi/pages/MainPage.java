@@ -6,49 +6,62 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
 public class MainPage extends BasePageObject {
 
     private WaitUtils wait;
 
+    public static final String ERROR_MESSAGE = "Не вірний пароль або логін";
+    private WebElement loginField;
+    private WebElement passwordField;
+    private WebElement buttonLogin ;
+    private WebElement errorMessage ;
+
+
     public MainPage(WebDriver driver) {
         super(driver);
         wait = new WaitUtils(driver, 2);
+        initElements();
+
+    }
+    private void initElements(){
+        loginField = driver.findElement(By.xpath("//input[@name='username']"));
+        passwordField = driver.findElement( By.xpath("//input[@name='password']"));
+        buttonLogin = driver.findElement(By.xpath("//form//button"));
 
 
     }
-    public static final String ERROR_MESSAGE = "Не вірний пароль або логін";
-    private By loginField = By.xpath("//input[@name='username']");
-    private By passwordField = By.xpath("//input[@name='password']");
-    private By buttonLogin = By.xpath("//form//button");
-    private By heading = By.xpath("//form/h3");
-    private By errorMessage = By.xpath("//label[contains(text(),'Не вірний пароль або логін')]");
-    private List<WebElement> languageOption;
 
+    public UserPage successfulUserLogin(IUser validUser) {
+        login(validUser);
+        return new UserPage(driver);
+    }
 
+    public AdminHomePage successfulAdminLogin(IUser validAdmin) {
+        login(validAdmin);
+        return new AdminHomePage(driver);
+    }
 
+    public void unsuccessfulLoginPage(IUser invalidUser) {
+        login(invalidUser);
+    }
 
+    private void login(IUser user) {
+        fillLoginField(user.getLogin());
+        fillPasswordField(user.getPassword());
+        clickLoginButton();
+    }
     private void clickOnLoginField() {
-
-        wait.presenceOfElement(loginField);
-        wait.visibilityOfElementByLocator(loginField);
-        driver.findElement(loginField).click();
+        wait.waitForElementToBeClickable(loginField);
+        loginField.click();
+    }
+    private void clearLoginField() {
+       loginField.clear();
     }
 
     private void setLogin(String login) {
-
-        wait.visibilityOfElementByLocator(loginField);
-        wait.presenceOfElement(loginField);
-        type(login, loginField);
+       loginField.sendKeys(login);
     }
 
-    private void clearLoginField() {
-
-        wait.visibilityOfElementByLocator(loginField);
-        wait.presenceOfElement(loginField);
-        driver.findElement(loginField).clear();
-    }
 
     private void fillLoginField(String name) {
         clickOnLoginField();
@@ -57,24 +70,16 @@ public class MainPage extends BasePageObject {
     }
 
     private void clickOnPasswordField() {
-
-        wait.visibilityOfElementByLocator(passwordField);
-        wait.presenceOfElement(passwordField);
-        driver.findElement(passwordField).click();
-    }
-
-    private void setPassword(String password) {
-
-        wait.visibilityOfElementByLocator(passwordField);
-        wait.presenceOfElement(passwordField);
-        type(password, passwordField);
+        wait.waitForElementToBeClickable(passwordField);
+        passwordField.click();
     }
 
     private void clearPasswordField() {
+        passwordField.clear();
+    }
 
-        wait.visibilityOfElementByLocator(passwordField);
-        wait.presenceOfElement(passwordField);
-        driver.findElement(passwordField).clear();
+    private void setPassword(String password) {
+        passwordField.sendKeys(password);
     }
 
     private void fillPasswordField(String password) {
@@ -83,57 +88,16 @@ public class MainPage extends BasePageObject {
         setPassword(password);
     }
 
-    private void login(IUser user) {
-        fillLoginField(user.getLogin());
-        fillPasswordField(user.getPassword());
-
-        clickLoginButton();
-    }
-
     private void clickLoginButton() {
-
-        wait.visibilityOfElementByLocator(buttonLogin);
-        wait.presenceOfElement(buttonLogin);
-        driver.findElement(buttonLogin).click();
-
-
+        wait.waitForElementToBeClickable(buttonLogin);
+        buttonLogin.click();
     }
-
-
-    public UserPage successfulLogin(IUser validUser) {
-        login(validUser);
-        return new UserPage(driver);
-    }
-
-    public AdminHomePage successfulAdminLogin(IUser validAdmin) {
-        login(validAdmin);
-
-        return new AdminHomePage(driver);
-    }
-
-    public void unsuccessfulLoginPage(IUser invalidUser) {
-        login(invalidUser);
-
-    }
-
 
     public String getErrorMessageText() {
-        waitForVisibilityOf(errorMessage, 5);
-        return find(errorMessage).getText();
+
+        wait.visibilityOfAllElementsByLocator(By.xpath("//label[contains(text(),'Не вірний пароль або логін')]"));
+        errorMessage = driver.findElement(By.xpath("//label[contains(text(),'Не вірний пароль або логін')]"));
+        return errorMessage.getText();
     }
-
-
-    public String getHeadingText() {
-        return find(heading).getText();
-    }
-
-
-
-    protected void sleep(long n) {
-        try {
-            Thread.sleep(n);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+    
 }

@@ -3,12 +3,11 @@
 <suite name="All Test Suite">
     <parameter name="url" value="https://travisdtapi.firebaseapp.com/login"></parameter>
     <suite-files>
-<!--
-        <suite-file path="src/main/resources/TestSuites/LoginTests.xml" />
-        <suite-file path="src/main/resources/TestSuites/PaginationTests.xml" />
+        <!--<suite-file path="src/main/resources/TestSuites/LoginTests.xml" />-->
+       <!-- <suite-file path="src/main/resources/TestSuites/PaginationTests.xml" />-->
         <suite-file path="src/main/resources/TestSuites/FacultiesPageTests.xml" />
-        <suite-file path="src/main/resources/TestSuites/SpecialityPageTests.xml" />-->
-        <suite-file path="src/main/resources/TestSuites/GroupsPageTests.xml" />
+        <!--<suite-file path="src/main/resources/TestSuites/SpecialityPageTests.xml" />
+        <suite-file path="src/main/resources/TestSuites/GroupsPageTests.xml" />-->
        <!-- <suite-file path="src/main/resources/TestSuites/StudentPageTests.xml" />
         <suite-file path="src/main/resources/TestSuites/SubjectPageTest.xml" />
         <suite-file path="src/main/resources/TestSuites/SchedulePageTests.xml" />

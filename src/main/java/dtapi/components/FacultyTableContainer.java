@@ -11,7 +11,7 @@ import java.util.List;
 public class FacultyTableContainer  {
    private WebDriver driver;
    private Paginator paginator;
-    private final String facultyTableContainerXpath = "//div[@class='table-container']/table/tbody/tr";
+    private final String facultyTableContainerXpath = "//tbody/tr";
     private List<FacultyTableContainerComponent> containerComponents;
 
     public FacultyTableContainer(WebDriver driver) {
@@ -23,7 +23,7 @@ public class FacultyTableContainer  {
     private void initElements(){
         containerComponents = new ArrayList<>();
         for (WebElement current : driver.findElements(By.xpath(facultyTableContainerXpath))) {
-       ;
+
             containerComponents.add(new FacultyTableContainerComponent(current));
         }
     }

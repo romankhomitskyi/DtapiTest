@@ -13,7 +13,7 @@ import org.testng.annotations.Parameters;
 public  abstract class BaseTest {
     private WebDriver driver;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public static void setupClass() {
         WebDriverManager.chromedriver().setup();
 

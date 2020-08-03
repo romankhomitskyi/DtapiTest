@@ -46,6 +46,8 @@ public class AddFacultiesModalWindow extends BaseModalWindow {
             }
         }
 
+
+        wait.waitForAlertVisibility();
         return new FacultiesPage(driver);
     }
 
